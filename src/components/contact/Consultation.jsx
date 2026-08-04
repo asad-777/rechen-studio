@@ -29,8 +29,7 @@ export default function Consultation() {
         'Headless CMS integrations (Sanity/Strapi) or Supabase realtime DB',
         'SOC-2 / HIPAA grade role-based authentication and security'
       ],
-      link: '/services/websites-and-web-apps',
-      color: 'from-violet-500 via-pink-500 to-amber-500'
+      link: '/services/websites-and-web-apps'
     },
     {
       id: 'seo',
@@ -44,8 +43,7 @@ export default function Consultation() {
         'Core Web Vitals crawl bottleneck remediation',
         'High-authority architectural link sculpting'
       ],
-      link: '/services/seo',
-      color: 'from-emerald-500 via-teal-500 to-cyan-500'
+      link: '/services/seo'
     },
     {
       id: 'social',
@@ -59,8 +57,7 @@ export default function Consultation() {
         'Developer relations (DevRel) & open-source alignments',
         'Omnichannel viral conversion funnel engineering'
       ],
-      link: '/services/social-media',
-      color: 'from-amber-500 via-orange-500 to-red-500'
+      link: '/services/social-media'
     },
   ];
 
@@ -68,23 +65,23 @@ export default function Consultation() {
   const Icon = currentService.icon;
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto transition-colors duration-300">
       
       <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-        <span className="font-mono text-xs uppercase tracking-widest font-semibold text-indigo-400 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">
-          <Target weight="duotone" className="w-4 h-4 text-indigo-400" />
+        <span className="font-mono text-xs uppercase tracking-widest font-bold text-text-black inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-2a border border-base-3a shadow-sm">
+          <Target weight="duotone" className="w-4 h-4 text-primary-a" />
           <span>Consultative Scoping Domains</span>
         </span>
-        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight">
+        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-text-black tracking-tight">
           Tailor Your Architecture Scoping
         </h2>
-        <p className="font-sans text-sm sm:text-base text-slate-400">
+        <p className="font-sans text-sm sm:text-base text-text-black/80">
           Select a core practice area below to preview exact deliverables and schedule a targeted scoping discussion with our principal technical directors.
         </p>
       </div>
 
       {/* Domain Selection Tabs */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8 bg-slate-900/40 p-2 rounded-3xl border border-slate-800">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8 bg-base-2a p-2 rounded-3xl border border-base-3a shadow-sm">
         {services.map((tab) => {
           const TabIcon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -95,11 +92,11 @@ export default function Consultation() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center justify-center gap-3 py-4 px-6 rounded-2xl font-button text-sm sm:text-base font-bold transition-all duration-300 ${
                 isActive
-                  ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg border border-slate-700'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+                  ? 'bg-primary-a text-text-white shadow-md'
+                  : 'text-text-black hover:text-primary-a hover:bg-base-3a/30'
               }`}
             >
-              <TabIcon weight={isActive ? "duotone" : "regular"} className={`w-5 h-5 ${isActive ? 'text-indigo-400 scale-110' : 'text-slate-500'} transition-transform`} />
+              <TabIcon weight={isActive ? "duotone" : "regular"} className={`w-5 h-5 ${isActive ? 'text-text-white scale-110' : 'text-text-black'} transition-transform`} />
               <span>{tab.name}</span>
             </button>
           );
@@ -107,31 +104,31 @@ export default function Consultation() {
       </div>
 
       {/* Active Service Deliverable Box */}
-      <div className="rounded-3xl bg-gradient-to-b from-slate-900/80 to-slate-950 p-8 sm:p-12 border border-slate-800 shadow-2xl relative overflow-hidden">
-        <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${currentService.color}`} />
+      <div className="rounded-3xl bg-base-2a/80 p-8 sm:p-12 border border-base-3a shadow-md relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-2 bg-primary-a" />
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-2">
-              <span className="font-mono text-xs uppercase tracking-widest text-indigo-400 font-semibold block">
+              <span className="font-mono text-xs uppercase tracking-widest text-primary-a font-bold block">
                 {currentService.badge}
               </span>
-              <h3 className="font-heading text-2xl sm:text-4xl font-bold text-white">
+              <h3 className="font-heading text-2xl sm:text-4xl font-bold text-text-black">
                 {currentService.name}
               </h3>
             </div>
             
-            <p className="font-sans text-base text-slate-300 leading-relaxed">
+            <p className="font-sans text-base text-text-black/80 leading-relaxed">
               {currentService.description}
             </p>
 
             <div className="space-y-3 pt-2">
-              <p className="font-mono text-xs uppercase tracking-wider text-slate-400 font-semibold">Included Architectural Deliverables:</p>
+              <p className="font-mono text-xs uppercase tracking-wider text-text-black/70 font-bold">Included Architectural Deliverables:</p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {currentService.deliverables.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-300 font-sans">
-                    <CheckCircle weight="fill" className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <li key={idx} className="flex items-start gap-2.5 text-xs text-text-black font-sans font-medium">
+                    <CheckCircle weight="fill" className="w-4 h-4 text-primary-a shrink-0 mt-0.5" />
                     <span className="leading-snug">{item}</span>
                   </li>
                 ))}
@@ -140,19 +137,19 @@ export default function Consultation() {
           </div>
 
           <div className="lg:col-span-5 flex flex-col items-stretch sm:items-center lg:items-end justify-center">
-            <div className="w-full p-6 sm:p-8 rounded-2xl bg-slate-950/80 border border-slate-800/80 space-y-6 text-center lg:text-left shadow-inner">
+            <div className="w-full p-6 sm:p-8 rounded-2xl bg-base-1a border border-base-3a space-y-6 text-center lg:text-left shadow-sm">
               <div className="space-y-1">
-                <p className="font-mono text-[11px] text-slate-400 uppercase tracking-wider">Ready to talk specifications?</p>
-                <h4 className="font-heading text-lg font-bold text-white">Scope Your {currentService.name}</h4>
+                <p className="font-mono text-[11px] text-text-black/70 uppercase tracking-wider font-bold">Ready to talk specifications?</p>
+                <h4 className="font-heading text-lg font-bold text-text-black">Scope Your {currentService.name}</h4>
               </div>
 
               <div className="space-y-3">
                 <Link
                   href={currentService.link}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-button text-sm font-bold uppercase tracking-wider transition-all"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-base-2a hover:bg-base-3a/40 border border-base-3a text-text-black font-button text-sm font-bold uppercase tracking-wider transition-all shadow-sm"
                 >
                   <span>Explore Technical Specs</span>
-                  <ArrowRight weight="bold" className="w-4 h-4 text-slate-400" />
+                  <ArrowRight weight="bold" className="w-4 h-4 text-primary-a" />
                 </Link>
 
                 <Link
@@ -161,7 +158,7 @@ export default function Consultation() {
                     const el = document.getElementById('book-scoping-form');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className={`w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r ${currentService.color} hover:opacity-90 text-white font-button text-sm font-bold uppercase tracking-wider transition-all shadow-lg`}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-primary-a hover:bg-primary-a/90 text-text-white font-button text-sm font-bold uppercase tracking-wider transition-all shadow-md"
                 >
                   <span>Book Immediate Scoping</span>
                 </Link>

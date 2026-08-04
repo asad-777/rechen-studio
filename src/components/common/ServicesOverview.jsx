@@ -22,8 +22,6 @@ export default function ServicesOverview() {
       tagline: "Flagship Digital Architecture",
       description: "From aesthetic luxury marketing destinations to production-grade Next.js SaaS web applications, we engineer transcendent frontends and reactive edge database backends.",
       highlights: ["Next.js 15 & React 19 Ecosystems", "Sub-Second Rendering & Custom UI", "Realtime WebSockets & Edge Security"],
-      accentColor: "from-violet-500 via-pink-500 to-amber-500",
-      bgHover: "hover:border-violet-500/50",
       colSpan: "md:col-span-2 lg:col-span-1"
     },
     {
@@ -33,8 +31,6 @@ export default function ServicesOverview() {
       tagline: "Dominate Search Authority",
       description: "Technical search engine optimization, programmatic content scaling, structural JSON-LD schemas, and Lighthouse performance tuning to drive organic acquisition.",
       highlights: ["Technical Core Web Vitals Auditing", "Programmatic SEO Architecture", "High-Authority Digital Visibility"],
-      accentColor: "from-emerald-500 via-teal-500 to-cyan-500",
-      bgHover: "hover:border-emerald-500/50",
       colSpan: "md:col-span-1"
     },
     {
@@ -44,35 +40,33 @@ export default function ServicesOverview() {
       tagline: "Viral Digital Brand Resonance",
       description: "Comprehensive content curation, digital narrative branding, design assets, and strategic distribution campaigns designed to capture developer and executive attention.",
       highlights: ["High-Impact Video & Motion Assets", "Targeted Founder & Enterprise Branding", "Omnichannel Growth Mechanics"],
-      accentColor: "from-amber-500 via-orange-500 to-red-500",
-      bgHover: "hover:border-amber-500/50",
       colSpan: "md:col-span-1"
     }
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative transition-colors duration-300">
       
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
         <div className="space-y-4 max-w-2xl">
-          <span className="font-mono text-xs uppercase tracking-widest font-semibold text-indigo-400 flex items-center gap-2">
-            <Sparkle weight="fill" className="w-4 h-4 text-indigo-400" />
+          <span className="font-mono text-xs uppercase tracking-widest font-semibold text-primary-a flex items-center gap-2">
+            <Sparkle weight="fill" className="w-4 h-4 text-primary-a" />
             <span>Studio Core Expertise</span>
           </span>
-          <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight">
+          <h2 className="font-heading text-3xl sm:text-5xl font-bold text-text-black tracking-tight">
             Services Engineered for Growth
           </h2>
-          <p className="font-sans text-sm sm:text-base text-slate-400 leading-relaxed">
+          <p className="font-sans text-sm sm:text-base text-text-black/80 leading-relaxed">
             We provide full-lifecycle digital consultancy—from initial interactive prototypes and custom backend architectures to aggressive organic distribution strategies.
           </p>
         </div>
 
         <Link
           href="/services"
-          className="w-fit inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-button text-base font-bold uppercase tracking-wider transition-all shadow-xl shrink-0"
+          className="w-fit inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-base-2a hover:bg-base-3a/40 border border-base-3a text-text-black font-button text-base font-bold uppercase tracking-wider transition-all shadow-sm shrink-0"
         >
           <span>Explore All Studio Services</span>
-          <ArrowUpRight weight="bold" className="w-4 h-4 text-indigo-400" />
+          <ArrowUpRight weight="bold" className="w-4 h-4 text-primary-a" />
         </Link>
       </div>
 
@@ -83,41 +77,41 @@ export default function ServicesOverview() {
             <Link
               key={idx}
               href={service.slug}
-              className={`group relative rounded-3xl bg-gradient-to-b from-slate-900/80 to-slate-950/90 p-8 sm:p-10 border border-slate-800/80 ${service.bgHover} transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col justify-between overflow-hidden space-y-8 ${service.colSpan}`}
+              className={`group relative rounded-3xl bg-base-2a/70 hover:bg-base-2a p-8 sm:p-10 border border-base-3a hover:border-primary-a transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between overflow-hidden space-y-8 ${service.colSpan}`}
             >
-              {/* Top Accent line glow */}
-              <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${service.accentColor} opacity-70 group-hover:opacity-100 transition-opacity`} />
+              {/* Top Accent line */}
+              <div className="absolute top-0 left-0 right-0 h-2 bg-primary-a opacity-80 group-hover:opacity-100 transition-opacity" />
               
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <div className="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 shadow-inner">
-                    <Icon weight="duotone" className="w-7 h-7 text-indigo-400" />
+                  <div className="w-14 h-14 rounded-2xl bg-base-1a border border-base-3a flex items-center justify-center text-text-black group-hover:scale-110 group-hover:border-primary-a transition-all duration-300 shadow-sm">
+                    <Icon weight="duotone" className="w-7 h-7 text-primary-a" />
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-colors">
+                  <div className="w-10 h-10 rounded-full bg-base-1a border border-base-3a flex items-center justify-center text-text-black/70 group-hover:text-text-white group-hover:bg-primary-a group-hover:border-primary-a transition-all duration-300">
                     <ArrowUpRight weight="bold" className="w-5 h-5" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <span className="font-mono text-xs uppercase tracking-widest text-indigo-400 font-semibold block">
+                  <span className="font-mono text-xs uppercase tracking-widest text-primary-a font-bold block">
                     {service.tagline}
                   </span>
-                  <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white group-hover:text-indigo-300 transition-colors">
+                  <h3 className="font-heading text-2xl sm:text-3xl font-bold text-text-black group-hover:text-primary-a transition-colors">
                     {service.title}
                   </h3>
-                  <p className="font-sans text-sm text-slate-400 leading-relaxed pt-1">
+                  <p className="font-sans text-sm text-text-black/80 leading-relaxed pt-1">
                     {service.description}
                   </p>
                 </div>
               </div>
 
               {/* Bullet highlights */}
-              <div className="pt-6 border-t border-slate-800/80 space-y-3">
-                <p className="font-mono text-[11px] uppercase tracking-wider text-slate-500 font-medium">Key Capabilities:</p>
+              <div className="pt-6 border-t border-base-3a space-y-3">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-text-black/70 font-bold">Key Capabilities:</p>
                 <ul className="space-y-2">
                   {service.highlights.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs font-sans text-slate-300">
-                      <CheckCircle weight="fill" className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <li key={i} className="flex items-center gap-2 text-xs font-sans text-text-black">
+                      <CheckCircle weight="fill" className="w-4 h-4 text-primary-a shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}

@@ -12,18 +12,18 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="space-y-16 pb-20">
+    <div className="space-y-16 pb-20 transition-colors duration-300">
       
       {/* Contact Intro & Booking Form Layout */}
       <section className="pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="font-mono text-xs uppercase tracking-widest text-indigo-400 font-bold bg-indigo-500/10 border border-indigo-500/20 px-4 py-1.5 rounded-full">
+          <span className="font-mono text-xs uppercase tracking-widest text-text-black font-bold bg-base-2a border border-base-3a px-4 py-1.5 rounded-full shadow-sm inline-block">
             Start Your Architecture Journey
           </span>
-          <h1 className="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight text-white">
+          <h1 className="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight text-text-black">
             Get In Touch & Book Scoping
           </h1>
-          <p className="font-sans text-base text-slate-300">
+          <p className="font-sans text-base text-text-black/80">
             Choose your communication channel below, explore consultative service deliverables, or lock in an immediate 30-minute kickoff video consultation with our principal architects.
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function ContactPage() {
       </section>
 
       {/* Consultation Selector Component (leading to Social Media, Websites, SEO, WebApps) */}
-      <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800/80 pt-8">
+      <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-base-3a pt-8">
         <Consultation />
       </div>
 

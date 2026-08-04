@@ -10,16 +10,16 @@ export const metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <div className="space-y-12 pb-16">
+    <div className="space-y-12 pb-16 transition-colors duration-300">
       {/* Page Header */}
-      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-slate-800/80 space-y-4">
-        <span className="font-mono text-xs uppercase tracking-widest font-semibold text-pink-400 bg-pink-500/10 border border-pink-500/20 px-3.5 py-1.5 rounded-full">
+      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center border-b border-base-3a space-y-4">
+        <span className="font-mono text-xs uppercase tracking-widest font-bold text-text-black bg-base-2a border border-base-3a px-3.5 py-1.5 rounded-full shadow-sm inline-block">
           Verified Commercial Velocity
         </span>
-        <h1 className="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight text-white">
+        <h1 className="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight text-text-black">
           Studio Archive & Case Studies
         </h1>
-        <p className="font-sans text-base text-slate-300 max-w-2xl mx-auto">
+        <p className="font-sans text-base text-text-black/80 max-w-2xl mx-auto">
           From AI-driven high fashion retail experiences to low-latency fintech data telemetry, analyze the structural architecture and commercial metrics behind our client engagements.
         </p>
       </section>

@@ -20,11 +20,6 @@ const spaceMono = localFont({
   display: "swap",
 });
 
-const josefinSans = localFont({
-  src: "../fonts/JosefinSans-VariableFont_wght.ttf",
-  variable: "--font-josefin",
-  display: "swap",
-});
 
 const smoochSans = localFont({
   src: "../fonts/SmoochSans-VariableFont_wght.ttf",
@@ -35,15 +30,26 @@ const smoochSans = localFont({
 export const metadata = {
   title: "Rechen Studio | Digital Architecture & Bespoke Web Apps",
   description: "Rechen Studio engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
+  openGraph: {
+    title: "Rechen Studio | Digital Architecture & Bespoke Web Apps",
+    description: "Rechen Studio engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
+    images: [{ url: "/logo.png" }],
+  },
 };
+
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${spaceMono.variable} ${josefinSans.variable} ${smoochSans.variable} h-full antialiased dark`}
+      className={`${spaceMono.variable} ${smoochSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-slate-950 text-slate-100 selection:bg-violet-600 selection:text-white">
+      <body className="min-h-full flex flex-col bg-base-1a text-text-black selection:bg-primary-a selection:text-text-white transition-colors duration-300">
         <Navbar />
         <main className="flex-grow">
           {children}

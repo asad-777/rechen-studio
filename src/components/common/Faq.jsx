@@ -35,18 +35,18 @@ export default function Faq({ title = "Frequently Asked Questions", subtitle = "
   };
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10 transition-colors duration-300">
       
       {/* Header section */}
       <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 font-mono text-xs uppercase tracking-wider font-semibold">
-          <Question weight="bold" className="w-4 h-4 text-violet-400" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-base-2a border border-base-3a text-text-black font-mono text-xs uppercase tracking-wider font-bold shadow-sm">
+          <Question weight="bold" className="w-4 h-4 text-primary-a" />
           <span>Knowledge & Clarity</span>
         </div>
-        <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-white">
+        <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-text-black">
           {title}
         </h2>
-        <p className="font-sans text-sm sm:text-base text-slate-400">
+        <p className="font-sans text-sm sm:text-base text-text-black/80">
           {subtitle}
         </p>
       </div>
@@ -60,23 +60,23 @@ export default function Faq({ title = "Frequently Asked Questions", subtitle = "
               key={idx}
               className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                 isOpen
-                  ? 'bg-slate-900/80 border-violet-500/50 shadow-xl shadow-violet-900/10'
-                  : 'bg-slate-900/40 border-slate-800/80 hover:border-slate-700'
+                  ? 'bg-base-2a border-primary-a shadow-md'
+                  : 'bg-base-1a/80 border-base-3a hover:border-text-black/40'
               }`}
             >
               <button
                 type="button"
                 onClick={() => toggleFaq(idx)}
                 aria-expanded={isOpen}
-                className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left focus:outline-none focus:ring-2 focus:ring-violet-500/30"
+                className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left focus:outline-none focus:ring-2 focus:ring-primary-a"
               >
-                <span className={`font-mono text-sm sm:text-base font-semibold transition-colors duration-200 ${
-                  isOpen ? 'text-violet-300' : 'text-slate-200 hover:text-white'
+                <span className={`font-mono text-sm sm:text-base font-bold transition-colors duration-200 ${
+                  isOpen ? 'text-primary-a' : 'text-text-black hover:text-primary-a'
                 }`}>
                   {idx + 1}. {faq.question}
                 </span>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                  isOpen ? 'bg-violet-600 rotate-180 text-white' : 'bg-slate-800 text-slate-400'
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-base-3a transition-transform duration-300 ${
+                  isOpen ? 'bg-primary-a rotate-180 text-text-white border-primary-a' : 'bg-base-2a text-text-black'
                 }`}>
                   <CaretDown weight="bold" className="w-4 h-4" />
                 </div>
@@ -87,7 +87,7 @@ export default function Faq({ title = "Frequently Asked Questions", subtitle = "
                   isOpen ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 pb-0 opacity-0'
                 }`}
               >
-                <div className="pt-2 border-t border-slate-800/80 text-slate-400 font-sans text-sm sm:text-base leading-relaxed">
+                <div className="pt-4 border-t border-base-3a text-text-black/80 font-sans text-sm sm:text-base leading-relaxed">
                   {faq.answer}
                 </div>
               </div>
@@ -97,19 +97,19 @@ export default function Faq({ title = "Frequently Asked Questions", subtitle = "
       </div>
 
       {/* Footer Support Prompt */}
-      <div className="mt-12 p-8 rounded-3xl bg-gradient-to-r from-slate-900/90 via-violet-950/20 to-slate-900/90 border border-slate-800 text-center flex flex-col sm:flex-row items-center justify-between gap-6 shadow-lg">
+      <div className="mt-12 p-8 rounded-3xl bg-base-2a border border-base-3a text-center flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
         <div className="flex items-center gap-4 text-left">
-          <div className="w-12 h-12 rounded-2xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center text-violet-400 shrink-0">
-            <ChatCircleText weight="fill" className="w-6 h-6" />
+          <div className="w-12 h-12 rounded-2xl bg-base-1a border border-base-3a flex items-center justify-center text-primary-a shrink-0 shadow-sm">
+            <ChatCircleText weight="fill" className="w-6 h-6 text-primary-a" />
           </div>
           <div>
-            <h4 className="font-heading text-lg font-bold text-white">Still have questions?</h4>
-            <p className="font-sans text-xs sm:text-sm text-slate-400">Our engineering leads are always open to discuss custom architecture requirements.</p>
+            <h4 className="font-heading text-lg font-bold text-text-black">Still have questions?</h4>
+            <p className="font-sans text-xs sm:text-sm text-text-black/80">Our engineering leads are always open to discuss custom architecture requirements.</p>
           </div>
         </div>
         <Link
           href="/contact-us"
-          className="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-button text-base font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-lg shadow-violet-600/30"
+          className="px-6 py-3 rounded-xl bg-primary-a hover:bg-primary-a/90 text-text-white font-button text-base font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-md"
         >
           Ask our experts
         </Link>
