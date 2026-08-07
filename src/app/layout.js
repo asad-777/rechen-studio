@@ -31,14 +31,14 @@ export const metadata = {
   title: "Rechen Studio | Digital Architecture & Bespoke Web Apps",
   description: "Rechen Studio engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/bglogo.png",
+    shortcut: "/bglogo.png",
+    apple: "/bglogo.png",
   },
   openGraph: {
     title: "Rechen Studio | Digital Architecture & Bespoke Web Apps",
     description: "Rechen Studio engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
-    images: [{ url: "/logo.png" }],
+    images: [{ url: "/bglogo.png" }],
   },
 };
 
@@ -47,7 +47,8 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${spaceMono.variable} ${smoochSans.variable} h-full antialiased`}
+      className={`${spaceMono.variable} ${smoochSans.variable} h-full antialiased dark`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-base-1a text-text-black selection:bg-primary-a selection:text-text-white transition-colors duration-300">
         <Navbar />
@@ -59,4 +60,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-

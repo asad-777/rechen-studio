@@ -7,85 +7,78 @@ import { usePathname } from 'next/navigation';
 import { 
   List, 
   X, 
-  CalendarCheck, 
-  EnvelopeSimple, 
-  Sparkle, 
-  ArrowRight,
   CaretDown
 } from '@phosphor-icons/react';
-import ThemeSwitch from '../ui/ThemeSwitch';
+import { AnimatedThemeToggler } from '../ui/animated-theme-toggler';
+import { InteractiveHoverButton } from '../ui/interactive-hover-button';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services', hasDropdown: true },
-    { name: 'Case Studies', href: '/case-studies' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Process', href: '/process' },
+    { name: 'WHAT WE DO', href: '/services', hasDropdown: true },
+    { name: 'WHO WE HELP', href: '/case-studies', hasDropdown: true },
+    { name: 'WHO WE ARE', href: '/about', hasDropdown: true },
+    { name: 'HOW WE DELIVER', href: '/process', hasDropdown: true },
   ];
 
   const serviceSubLinks = [
-    { name: 'Websites & Web-Apps', href: '/services/websites-and-web-apps' },
-    { name: 'SEO & Growth', href: '/services/seo' },
-    { name: 'Social Media', href: '/services/social-media' },
+    { name: 'Placeholder 1', href: '#' },
+    { name: 'Placeholder 2', href: '#' },
+    { name: 'Placeholder 3', href: '#' },
   ];
 
-  const isActive = (path) => pathname === path;
-
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-base-1a/90 border-b border-base-3a text-text-black transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header 
+      className="sticky top-0 z-50 w-full bg-[#E6D8C3] text-black transition-all duration-300"
+      style={{
+        '--background': '#F5F5F0',
+        '--foreground': '#000000',
+        '--primary-foreground': '#FFFFFF',
+      }}
+    >
+      <div className="w-full px-4 sm:px-6 lg:px-10 h-20 lg:h-24 flex items-center justify-between gap-4">
         
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <Image
-            src="/logo.png"
-            alt="Rechen Studio Logo"
-            width={44}
-            height={44}
-            className="w-11 h-11 object-contain group-hover:scale-105 transition-transform duration-300"
-            priority
-          />
-          <div className="flex flex-col">
-            <span className="font-heading text-2xl font-bold tracking-tight text-text-black">
-              Rechen
-            </span>
-            <span className="font-mono text-[10px] tracking-widest uppercase text-primary-a font-semibold">
-              Studio
-            </span>
-          </div>
-        </Link>
+        {/* Left: Logo */}
+        <div className="flex items-center gap-6 lg:gap-10 shrink-0">
+          <Link href="/" className="flex items-center gap-3 group">
+            <Image
+              src="/bglogo.png"
+              alt="Rechen Studio Logo"
+              width={200}
+              height={80}
+              className="w-auto h-12 md:h-14 lg:h-16 object-contain group-hover:opacity-90 transition-opacity duration-300"
+              priority
+            />
+              <span className="font-heading text-2xl font-bold tracking-tight text-black">
+                Rechen Studio
+              </span>
+          </Link>
+        </div>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2 bg-base-2a/60 p-1.5 rounded-full border border-base-3a shadow-inner">
+        {/* Center: Desktop Navigation Links */}
+        <nav className="hidden xl:flex items-center justify-center gap-12 2xl:gap-16 flex-1">
           {navLinks.map((link) => (
             <div key={link.name} className="relative group">
               <Link
                 href={link.href}
-                className={`px-4 py-2 rounded-full font-mono text-xs font-medium uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 ${
-                  isActive(link.href)
-                    ? 'bg-primary-a text-text-white shadow-sm'
-                    : 'text-text-black/80 hover:text-text-black hover:bg-base-3a/40'
-                }`}
+                className="font-mono text-base 2xl:text-lg font-medium transition-all duration-200 flex items-center gap-2 text-black/90 hover:text-black"
               >
                 {link.name}
-                {link.hasDropdown && <CaretDown weight="bold" className="w-3 h-3 group-hover:rotate-180 transition-transform duration-200" />}
+                {link.hasDropdown && <CaretDown weight="bold" className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />}
               </Link>
 
-              {/* Dropdown for Services */}
+              {/* Dropdown Placeholder */}
               {link.hasDropdown && (
-                <div className="absolute top-full left-0 mt-2 w-48 py-2 bg-base-2a border border-base-3a rounded-2xl shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                <div className="absolute top-full left-0 mt-8 w-56 py-2 bg-[#F5F5F0] border border-black/10 rounded-lg shadow-2xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
                   {serviceSubLinks.map((sub) => (
                     <Link
                       key={sub.name}
                       href={sub.href}
-                      className="flex items-center justify-between px-4 py-2 text-xs font-mono uppercase text-text-black/80 hover:text-text-black hover:bg-base-3a/50 transition-colors"
+                      className="block px-6 py-3 text-sm font-mono text-black/80 hover:text-black hover:bg-black/5 transition-colors"
                     >
-                      <span>{sub.name}</span>
-                      <ArrowRight className="w-3 h-3 text-primary-a opacity-0 group-hover:opacity-100 transition-opacity" />
+                      {sub.name}
                     </Link>
                   ))}
                 </div>
@@ -94,40 +87,37 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Action Buttons (CTAs) & Theme Switch */}
-        <div className="hidden lg:flex items-center gap-3">
-          <ThemeSwitch />
-
-          <Link
-            href="/contact-us"
-            className="group px-4 py-2.5 rounded-full font-button text-base font-semibold text-text-black border border-base-3a hover:bg-base-2a transition-all duration-200 flex items-center gap-2"
-          >
-            <EnvelopeSimple weight="duotone" className="w-4 h-4 text-primary-a group-hover:scale-110 transition-transform" />
-            <span>Get in Touch</span>
+        {/* Right: Action Buttons & Theme Switch */}
+        <div className="hidden lg:flex items-center gap-4 shrink-0">
+          <AnimatedThemeToggler />
+          
+          <Link href="/contact-us">
+            <InteractiveHoverButton>
+              Let&apos;s Talk Business
+            </InteractiveHoverButton>
           </Link>
-
-          <Link
-            href="/contact-us"
-            className="group px-5 py-2.5 rounded-full bg-primary-a hover:bg-primary-a/90 text-text-white font-button text-base font-semibold transition-transform active:scale-95 flex items-center gap-2 shadow-sm"
-          >
-            <CalendarCheck weight="fill" className="w-4 h-4 text-text-white" />
-            <span>Book a meeting</span>
+          <Link href="/socials">
+            <InteractiveHoverButton>
+              Follow Us
+            </InteractiveHoverButton>
           </Link>
         </div>
 
         {/* Mobile menu controls */}
-        <div className="flex items-center gap-2 md:hidden">
-          <ThemeSwitch />
+        <div className="flex items-center gap-4 lg:hidden shrink-0">
+          <div className="sm:hidden">
+            <AnimatedThemeToggler />
+          </div>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 rounded-xl bg-base-2a border border-base-3a text-text-black hover:bg-base-3a/40 focus:outline-none transition-colors"
+            className="p-2.5 rounded-xl bg-black/5 text-black hover:bg-black/10 transition-colors"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? (
-              <X weight="bold" className="w-6 h-6 text-primary-a" />
+              <X weight="bold" className="w-8 h-8" />
             ) : (
-              <List weight="bold" className="w-6 h-6" />
+              <List weight="bold" className="w-8 h-8" />
             )}
           </button>
         </div>
@@ -135,57 +125,31 @@ export default function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-base-1a/95 backdrop-blur-2xl border-b border-base-3a px-4 pt-4 pb-6 space-y-4 animate-in fade-in slide-in-from-top duration-300">
-          <nav className="flex flex-col space-y-2">
+        <div className="lg:hidden bg-[#E6D8C3] border-t border-black/10 px-4 pt-4 pb-8 space-y-6 shadow-xl absolute w-full">
+          <nav className="flex flex-col space-y-4">
             {navLinks.map((link) => (
               <div key={link.name} className="flex flex-col">
                 <Link
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-xl font-mono text-sm uppercase font-medium flex items-center justify-between ${
-                    isActive(link.href)
-                      ? 'bg-primary-a/20 text-text-black border border-primary-a/30 font-bold'
-                      : 'text-text-black/80 hover:bg-base-2a'
-                  }`}
+                  className="px-4 py-3 font-mono text-lg font-medium text-black flex items-center justify-between border-b border-black/10"
                 >
                   <span>{link.name}</span>
-                  <ArrowRight weight="bold" className="w-4 h-4 text-text-black/60" />
                 </Link>
-
-                {link.hasDropdown && (
-                  <div className="pl-4 mt-1 space-y-1 border-l border-base-3a ml-4">
-                    {serviceSubLinks.map((sub) => (
-                      <Link
-                        key={sub.name}
-                        href={sub.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block px-3 py-2 text-xs font-mono uppercase text-text-black/70 hover:text-text-black"
-                      >
-                        • {sub.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
           </nav>
 
-          <div className="pt-4 border-t border-base-3a grid grid-cols-1 gap-2.5">
-            <Link
-              href="/contact-us"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl font-button text-lg font-semibold text-center bg-base-2a text-text-black border border-base-3a flex items-center justify-center gap-2"
-            >
-              <EnvelopeSimple weight="duotone" className="w-5 h-5 text-primary-a" />
-              <span>Get in Touch</span>
+          <div className="flex flex-col gap-4 px-4 pt-4">
+            <Link href="/contact-us" onClick={() => setMobileMenuOpen(false)}>
+              <InteractiveHoverButton className="w-full text-lg flex justify-center">
+                Let's Talk Business
+              </InteractiveHoverButton>
             </Link>
-            <Link
-              href="/contact-us"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl font-button text-lg font-semibold text-center bg-primary-a text-text-white shadow-md flex items-center justify-center gap-2"
-            >
-              <CalendarCheck weight="fill" className="w-5 h-5 text-text-white" />
-              <span>Book a meeting</span>
+            <Link href="/socials" onClick={() => setMobileMenuOpen(false)}>
+              <InteractiveHoverButton className="w-full text-lg flex justify-center">
+                Follow Us
+              </InteractiveHoverButton>
             </Link>
           </div>
         </div>
