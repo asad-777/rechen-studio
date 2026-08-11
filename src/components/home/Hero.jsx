@@ -47,35 +47,36 @@ export default function Hero() {
             We engineer high-performance websites and data-driven SEO strategies to scale your business.
           </p>
 
+        </div>
+
+        {/* Right Content */}
+        <div className="flex flex-col w-full max-w-lg gap-10 mt-12 lg:mt-0 justify-center">
+          
           {/* Stats / Value Props */}
-          <div className="flex flex-row flex-wrap items-center gap-8 md:gap-12 pt-4">
-            <div className="flex flex-col w-24 md:w-28">
+          <div className="flex flex-row flex-wrap items-center justify-start lg:justify-end gap-6 md:gap-10">
+            <div className="flex flex-col w-20 md:w-24 text-left lg:text-right">
               <h3 className="font-sans text-lg md:text-xl font-medium pb-2 border-b border-white/30 mb-4">Projects</h3>
               <div className="font-mono text-2xl md:text-3xl text-white">5+</div>
             </div>
-            <div className="flex flex-col w-24 md:w-28">
+            <div className="flex flex-col w-20 md:w-24 text-left lg:text-right">
               <h3 className="font-sans text-lg md:text-xl font-medium pb-2 border-b border-white/30 mb-4">Clients</h3>
               <div className="font-mono text-2xl md:text-3xl text-white">3+</div>
             </div>
-            <div className="flex flex-col w-32 md:w-40">
+            <div className="flex flex-col w-28 md:w-32 text-left lg:text-right">
               <h3 className="font-sans text-lg md:text-xl font-medium pb-2 border-b border-white/30 mb-4">Case Studies</h3>
               <div className="font-mono text-2xl md:text-3xl text-white">25+</div>
             </div>
           </div>
-        </div>
 
-        {/* Right Content */}
-        <div className="flex flex-col w-full max-w-md gap-8 mt-12 lg:mt-0 justify-center">
-          
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 lg:justify-end">
             <Link href="/contact-us">
-              <InteractiveHoverButton className="w-full sm:w-auto bg-primary-a text-white border-primary-a hover:bg-primary-a/90 px-8 py-3">
+              <InteractiveHoverButton className="w-full sm:w-auto bg-primary-a text-white border-primary-a hover:bg-primary-a/90 px-10 py-4 text-lg">
                 Book a Call
               </InteractiveHoverButton>
             </Link>
             <Link href="/contact-us">
-              <InteractiveHoverButton className="w-full sm:w-auto bg-transparent text-primary-a border-primary-a hover:bg-primary-a/10 px-8 py-3">
+              <InteractiveHoverButton className="w-full sm:w-auto bg-transparent text-primary-a border-primary-a hover:bg-primary-a/10 px-10 py-4 text-lg">
                 Schedule a Meeting
               </InteractiveHoverButton>
             </Link>
