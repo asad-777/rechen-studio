@@ -28,6 +28,7 @@ const smoochSans = localFont({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://rechenstudio.vercel.app"),
   title: "Rechen Studio | Digital Architecture & Bespoke Web Apps",
   description: "Rechen Studio engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
   icons: {

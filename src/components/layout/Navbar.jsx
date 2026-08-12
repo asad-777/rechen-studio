@@ -10,7 +10,6 @@ import {
   CaretDown
 } from '@phosphor-icons/react';
 import { AnimatedThemeToggler } from '../ui/animated-theme-toggler';
-import { InteractiveHoverButton } from '../ui/interactive-hover-button';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -92,14 +91,14 @@ export default function Navbar() {
           <AnimatedThemeToggler />
           
           <Link href="/contact-us">
-            <InteractiveHoverButton>
+            <button className="btn btn-outline rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
               Let&apos;s Talk Business
-            </InteractiveHoverButton>
+            </button>
           </Link>
           <Link href="/socials">
-            <InteractiveHoverButton>
+            <button className="btn btn-outline rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
               Follow Us
-            </InteractiveHoverButton>
+            </button>
           </Link>
         </div>
 
@@ -142,14 +141,14 @@ export default function Navbar() {
 
           <div className="flex flex-col gap-4 px-4 pt-4">
             <Link href="/contact-us" onClick={() => setMobileMenuOpen(false)}>
-              <InteractiveHoverButton className="w-full text-lg flex justify-center">
+              <button className="btn btn-outline w-full rounded-full text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
                 Let's Talk Business
-              </InteractiveHoverButton>
+              </button>
             </Link>
             <Link href="/socials" onClick={() => setMobileMenuOpen(false)}>
-              <InteractiveHoverButton className="w-full text-lg flex justify-center">
+              <button className="btn btn-outline w-full rounded-full text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
                 Follow Us
-              </InteractiveHoverButton>
+              </button>
             </Link>
           </div>
         </div>
