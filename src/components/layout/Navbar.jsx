@@ -30,15 +30,10 @@ export default function Navbar() {
 
   return (
     <header 
-      className="sticky top-0 z-50 w-full bg-[#E6D8C3] dark:bg-black text-black dark:text-white transition-all duration-300"
-      style={{
-        '--background': '#F5F5F0',
-        '--foreground': '#000000',
-        '--primary-foreground': '#FFFFFF',
-      }}
+      className="sticky top-0 z-50 w-full bg-white dark:bg-black text-black dark:text-white transition-all duration-300"
       onMouseLeave={() => setActiveDropdown(null)}
     >
-      <div className="w-full px-4 sm:px-6 lg:px-10 h-20 lg:h-24 flex items-center justify-between gap-4">
+      <div className="w-full px-4 sm:px-6 lg:px-10 h-20 lg:h-20  border-b flex items-center justify-between gap-4">
         
         {/* Left: Logo */}
         <div className="flex items-center gap-6 lg:gap-10 shrink-0">
@@ -81,7 +76,7 @@ export default function Navbar() {
           <AnimatedThemeToggler />
           
           <Link href="/contact-us">
-            <button className="btn text-lg px-6 py-4 shadow-none bg-white text-black hover:bg-primary-a hover:text-white hover:border-primary-a hover:text-xl border border-black dark:border-white text-black dark:text-white rounded-full transition-all duration-300  hover:scale-[1.02]">
+            <button className="btn text-lg px-6 py-4 shadow-none bg-transparent text-black dark:text-white border-2 border-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 rounded-full transition-all duration-300 hover:scale-[1.02]">
               Let&apos;s Talk Business
             </button>
           </Link>
@@ -109,7 +104,7 @@ export default function Navbar() {
 
       {/* Mega Dropdown */}
       <div 
-        className={`absolute top-full left-0 w-full bg-base-2a/60 dark:bg-[#1A1A1A]/20 border-t backdrop-blur-2xl border-black/10 dark:border-white/10 shadow-2xl transition-all duration-300 overflow-hidden ${activeDropdown ? 'opacity-100 h-[40vh] pointer-events-auto' : 'opacity-0 h-0 pointer-events-none'}`}
+        className={`absolute top-full left-0 w-full bg-white/90 dark:bg-black/90 border-t backdrop-blur-2xl border-black/10 dark:border-white/10 shadow-2xl transition-all duration-300 overflow-hidden ${activeDropdown ? 'opacity-100 h-[40vh] pointer-events-auto' : 'opacity-0 h-0 pointer-events-none'}`}
       >
         <div className="w-full max-w-7xl mx-auto p-10 h-full">
           <div className="grid grid-cols-4 gap-6 h-full pb-6">
@@ -124,7 +119,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#E6D8C3] dark:bg-black border-t border-black/10 dark:border-white/10 px-4 pt-4 pb-8 space-y-6 shadow-xl absolute w-full">
+        <div className="lg:hidden bg-white dark:bg-black border-t border-black/10 dark:border-white/10 px-4 pt-4 pb-8 space-y-6 shadow-xl absolute w-full">
           <nav className="flex flex-col space-y-4">
             {navLinks.map((link) => (
               <div key={link.name} className="flex flex-col">
@@ -141,7 +136,7 @@ export default function Navbar() {
 
           <div className="flex flex-col gap-4 px-4 pt-4">
             <Link href="/contact-us" onClick={() => setMobileMenuOpen(false)}>
-              <button className="btn bg-transparent py-6 shadow-none text-black dark:text-white border hover:bg-transparent dark:border-white border-black w-full rounded-full text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
+              <button className="btn py-6 shadow-none bg-transparent text-blue-600 border-2 border-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 w-full rounded-full text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
                 Let&apos;s Talk Business
               </button>
             </Link>

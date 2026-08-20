@@ -57,22 +57,22 @@ export default function ImpactStats() {
             return (
               <div
                 key={idx}
-                className="group relative p-8 rounded-3xl bg-base-1a/80 border border-base-3a hover:border-primary-a transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between space-y-6"
+                className="group relative p-10 lg:p-12 rounded-3xl bg-base-1a/80 border border-base-3a hover:border-primary-a transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between space-y-8"
               >
                 <div className="space-y-4">
                   <div className="w-12 h-12 rounded-2xl bg-base-2a border border-base-3a flex items-center justify-center text-text-black group-hover:scale-110 group-hover:bg-primary-a group-hover:text-text-white transition-all duration-300">
                     <Icon weight="duotone" className="w-6 h-6 text-primary-a group-hover:text-text-white transition-colors" />
                   </div>
-                  <div className="font-heading text-4xl lg:text-5xl font-bold tracking-tight text-primary-a">
+                  <div className="font-heading text-5xl lg:text-6xl font-bold tracking-tight text-primary-a">
                     {stat.value}
                   </div>
                 </div>
 
                 <div className="space-y-2 pt-4 border-t border-base-3a">
-                  <h3 className="font-mono text-base font-bold text-text-black uppercase tracking-wide">
+                  <h3 className="font-mono text-lg font-bold text-text-black uppercase tracking-wide">
                     {stat.label}
                   </h3>
-                  <p className="font-sans text-xs text-text-black/80 leading-relaxed font-normal">
+                  <p className="font-sans text-sm text-text-black/80 leading-relaxed font-normal">
                     {stat.description}
                   </p>
                 </div>

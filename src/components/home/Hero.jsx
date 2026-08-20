@@ -42,7 +42,7 @@ export default function Hero() {
             Rechen Studio
           </h1>
           
-          <p className="text-xl  text-white/80 max-w-xl font-light leading-relaxed ">
+          <p className="text-2xl text-white/80 max-w-xl font-light leading-relaxed ">
             We engineer high-performance websites and data-driven SEO strategies to scale your business.
           </p>
 
@@ -54,16 +54,16 @@ export default function Hero() {
           {/* Stats / Value Props */}
           <div className="flex flex-row items-center justify-start lg:justify-end  sm:px-12 lg:px-2 gap-6 md:gap-10">
             <div className="flex flex-col flex-2 min-w-0">
-              <h3 className="text-lg md:text-2xl font-medium pb-2 border-b border-white/30 mb-4 whitespace-nowrap text-center">Projects</h3>
-              <div className="font-mono text-2xl md:text-3xl text-white text-center">5+</div>
+              <h3 className="text-xl md:text-3xl font-medium pb-2 border-b border-white/30 mb-4 whitespace-nowrap text-center">Projects</h3>
+              <div className="font-mono text-3xl md:text-4xl text-white text-center">5+</div>
             </div>
             <div className="flex flex-col flex-2 min-w-0">
-              <h3 className="text-lg md:text-2xl font-medium pb-2 border-b border-white/30 mb-4 whitespace-nowrap text-center">Clients</h3>
-              <div className="font-mono text-2xl md:text-3xl text-white text-center">3+</div>
+              <h3 className="text-xl md:text-3xl font-medium pb-2 border-b border-white/30 mb-4 whitespace-nowrap text-center">Clients</h3>
+              <div className="font-mono text-3xl md:text-4xl text-white text-center">3+</div>
             </div>
             <div className="flex flex-col flex-3 min-w-0">
-              <h3 className="text-lg md:text-2xl font-medium pb-2 border-b  border-white/30 mb-4 whitespace-nowrap text-center">Case Studies</h3>
-              <div className="font-mono text-2xl md:text-3xl text-white text-center">25+</div>
+              <h3 className="text-xl md:text-3xl font-medium pb-2 border-b  border-white/30 mb-4 whitespace-nowrap text-center">Case Studies</h3>
+              <div className="font-mono text-3xl md:text-4xl text-white text-center">25+</div>
             </div>
           </div>
 

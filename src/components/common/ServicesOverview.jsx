@@ -77,7 +77,7 @@ export default function ServicesOverview() {
             <Link
               key={idx}
               href={service.slug}
-              className={`group relative rounded-3xl bg-base-2a/70 hover:bg-base-2a p-8 sm:p-10 border border-base-3a hover:border-primary-a transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between overflow-hidden space-y-8 ${service.colSpan}`}
+              className={`group relative rounded-3xl bg-base-2a/70 hover:bg-base-2a p-10 sm:p-12 border border-base-3a hover:border-primary-a transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between overflow-hidden space-y-8 ${service.colSpan}`}
             >
               {/* Top Accent line */}
               <div className="absolute top-0 left-0 right-0 h-2 bg-primary-a opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -93,13 +93,13 @@ export default function ServicesOverview() {
                 </div>
 
                 <div className="space-y-2">
-                  <span className="font-mono text-xs uppercase tracking-widest text-primary-a font-bold block">
+                  <span className="font-mono text-sm uppercase tracking-widest text-primary-a font-bold block">
                     {service.tagline}
                   </span>
-                  <h3 className="font-heading text-2xl sm:text-3xl font-bold text-text-black group-hover:text-primary-a transition-colors">
+                  <h3 className="font-heading text-3xl sm:text-4xl font-bold text-text-black group-hover:text-primary-a transition-colors">
                     {service.title}
                   </h3>
-                  <p className="font-sans text-sm text-text-black/80 leading-relaxed pt-1">
+                  <p className="font-sans text-base text-text-black/80 leading-relaxed pt-1">
                     {service.description}
                   </p>
                 </div>
@@ -110,7 +110,7 @@ export default function ServicesOverview() {
                 <p className="font-mono text-[11px] uppercase tracking-wider text-text-black/70 font-bold">Key Capabilities:</p>
                 <ul className="space-y-2">
                   {service.highlights.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs font-sans text-text-black">
+                    <li key={i} className="flex items-center gap-2 text-sm font-sans text-text-black">
                       <CheckCircle weight="fill" className="w-4 h-4 text-primary-a shrink-0" />
                       <span>{item}</span>
                     </li>

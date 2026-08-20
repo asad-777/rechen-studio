@@ -72,7 +72,7 @@ export default function Awards() {
           return (
             <div
               key={idx}
-              className="group p-6 sm:p-8 rounded-3xl bg-base-2a/70 hover:bg-base-2a border border-base-3a transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm hover:shadow-md"
+              className="group p-8 sm:p-10 rounded-3xl bg-base-2a/70 hover:bg-base-2a border border-base-3a transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-8 shadow-sm hover:shadow-md"
             >
               <div className="flex items-center gap-5">
                 <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center ${award.badgeColor} shrink-0 group-hover:scale-110 transition-transform`}>
@@ -81,14 +81,14 @@ export default function Awards() {
 
                 <div className="space-y-1">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-bold text-text-black bg-base-1a px-2.5 py-0.5 rounded-full border border-base-3a">
+                    <span className="font-mono text-sm font-bold text-text-black bg-base-1a px-2.5 py-0.5 rounded-full border border-base-3a">
                       {award.year}
                     </span>
-                    <h3 className="font-heading text-xl sm:text-2xl font-bold text-text-black group-hover:text-primary-a transition-colors">
+                    <h3 className="font-heading text-2xl sm:text-3xl font-bold text-text-black group-hover:text-primary-a transition-colors">
                       {award.title}
                     </h3>
                   </div>
-                  <p className="font-sans text-xs sm:text-sm text-text-black/80">
+                  <p className="font-sans text-sm sm:text-base text-text-black/80">
                     Project: <span className="text-text-black font-bold">{award.project}</span>
                   </p>
                 </div>

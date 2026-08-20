@@ -59,11 +59,11 @@
 }
 
 :root {
-    --base-1a: #F5F5F0;
-    --base-2a: #E6D8C3;
-    --base-3a: #C2A68C;
-    --primary-a: #5D866C;
-    --text-white: #FFFFFF;
+    --base-1a: #ffffff;
+    --base-2a: #f3f4f6;
+    --base-3a: #e5e7eb;
+    --primary-a: #000000;
+    --text-white: #ffffff;
     --text-black: #000000;
     --background: var(--base-1a);
     --foreground: var(--text-black);
@@ -100,12 +100,12 @@
 }
 
 .dark {
-    --base-1a: #0f1412;
-    --base-2a: #18201d;
-    --base-3a: #2a3832;
-    --primary-a: #5D866C;
+    --base-1a: #000000;
+    --base-2a: #111827;
+    --base-3a: #1f2937;
+    --primary-a: #ffffff;
     --text-white: #000000;
-    --text-black: #F5F5F0;
+    --text-black: #ffffff;
     --background: var(--base-1a);
     --foreground: var(--text-black);
     --card: var(--base-2a);
@@ -144,7 +144,7 @@
     @apply border-border outline-ring/50;
     }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans text-lg;
     }
   html {
     @apply font-sans;

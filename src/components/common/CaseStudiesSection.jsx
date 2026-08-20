@@ -155,12 +155,12 @@ export default function CaseStudiesSection({ maxItems = 6, showHeader = true }) 
               </div>
 
               {/* Card content */}
-              <div className="p-7 flex flex-col justify-between flex-grow space-y-6">
+              <div className="p-10 flex flex-col justify-between flex-grow space-y-6">
                 <div className="space-y-3">
-                  <h3 className="font-heading text-xl font-bold text-text-black group-hover:text-primary-a transition-colors">
+                  <h3 className="font-heading text-2xl font-bold text-text-black group-hover:text-primary-a transition-colors">
                     {project.title}
                   </h3>
-                  <p className="font-sans text-xs sm:text-sm text-text-black/80 leading-relaxed line-clamp-3">
+                  <p className="font-sans text-sm sm:text-base text-text-black/80 leading-relaxed line-clamp-3">
                     {project.description}
                   </p>
                 </div>

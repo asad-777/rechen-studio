@@ -53,7 +53,7 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Main Feature Testimonial Carousel Box */}
-      <div className="relative rounded-3xl bg-base-2a/80 p-8 md:p-14 border border-base-3a shadow-sm overflow-hidden mb-12">
+      <div className="relative rounded-3xl bg-base-2a/80 p-10 md:p-16 border border-base-3a shadow-sm overflow-hidden mb-12">
         <div className="absolute -right-10 -bottom-10 opacity-15 text-base-3a pointer-events-none">
           <Quotes weight="fill" className="w-96 h-96" />
         </div>
@@ -66,23 +66,23 @@ export default function TestimonialsSection() {
               ))}
             </div>
 
-            <blockquote className="font-heading text-2xl sm:text-3xl lg:text-4xl text-text-black font-semibold leading-relaxed sm:leading-tight">
+            <blockquote className="font-heading text-3xl sm:text-4xl lg:text-5xl text-text-black font-semibold leading-relaxed sm:leading-tight">
               "{testimonials[activeTab].quote}"
             </blockquote>
 
             <div className="pt-4 flex items-center gap-4">
-              <div className={`w-14 h-14 rounded-2xl ${testimonials[activeTab].avatarBg} flex items-center justify-center font-mono text-xl font-bold uppercase shadow-sm`}>
+              <div className={`w-16 h-16 rounded-2xl ${testimonials[activeTab].avatarBg} flex items-center justify-center font-mono text-2xl font-bold uppercase shadow-sm`}>
                 {testimonials[activeTab].author.split(' ').map(n => n[0]).join('')}
               </div>
               <div>
-                <h4 className="font-heading text-lg font-bold text-text-black">
+                <h4 className="font-heading text-xl font-bold text-text-black">
                   {testimonials[activeTab].author}
                 </h4>
-                <p className="font-mono text-xs text-primary-a uppercase tracking-wider font-bold">
+                <p className="font-mono text-sm text-primary-a uppercase tracking-wider font-bold">
                   {testimonials[activeTab].role}
                 </p>
-                <p className="font-sans text-xs text-text-black/70 flex items-center gap-1 mt-0.5 font-medium">
-                  <Buildings weight="duotone" className="w-3.5 h-3.5 text-primary-a" />
+                <p className="font-sans text-sm text-text-black/70 flex items-center gap-1 mt-0.5 font-medium">
+                  <Buildings weight="duotone" className="w-4 h-4 text-primary-a" />
                   <span>{testimonials[activeTab].company}</span>
                 </p>
               </div>

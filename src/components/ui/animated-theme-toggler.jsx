@@ -241,7 +241,7 @@ export const AnimatedThemeToggler = ({
       onClick={toggleTheme}
       aria-label="Toggle Theme"
       className={cn(
-        "relative w-14 h-7 rounded-full bg-black/20 dark:bg-white/20 hover:scale-[1.2]   hover:w-20 backdrop-blur-2xl border  shadow-[inset_0_1px_4px_rgba(0,0,0,0.1)] flex items-center p-1 transition-all duration-300",
+        "relative w-14 h-7 rounded-full bg-black/20 dark:bg-white/20 backdrop-blur-2xl border shadow-[inset_0_1px_4px_rgba(0,0,0,0.1)] flex items-center p-1 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 active:scale-95",
         className
       )}
       {...props}>
