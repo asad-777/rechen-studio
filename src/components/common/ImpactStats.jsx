@@ -13,13 +13,13 @@ export default function ImpactStats() {
     },
     {
       icon: Trophy,
-      value: "$120M+",
+      value: "$1M+",
       label: "Client Revenue Generated",
       description: "Direct transactional volume captured by high-converting custom platforms."
     },
     {
       icon: Users,
-      value: "150+",
+      value: "15+",
       label: "Completed Digital Products",
       description: "Websites, complex web applications, and enterprise design systems delivered."
     },
@@ -34,15 +34,12 @@ export default function ImpactStats() {
   return (
     <section className="py-20 relative overflow-hidden bg-base-2a/60 border-y border-base-3a transition-colors duration-300">
       {/* Subtly illuminated background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#C2A68C15_1px,transparent_1px),linear-gradient(to_bottom,#C2A68C15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#C2A68C15_1px,transparent_1px),linear-gradient(to_bottom,#C2A68C15_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span className="font-mono text-xs uppercase tracking-widest font-semibold text-primary-a flex items-center justify-center gap-1.5">
-            <Sparkle weight="fill" className="w-4 h-4 text-primary-a" />
-            <span>Studio Performance Metrics</span>
-          </span>
+          
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-black tracking-tight">
             Proven Impact at Enterprise Scale
           </h2>

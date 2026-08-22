@@ -33,14 +33,14 @@ export const metadata = {
   title: "Rechen Studio | Digital Architecture & Bespoke Web Apps",
   description: "Rechen Studio engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
   icons: {
-    icon: "/hehelogo.png",
-    shortcut: "/hehelogo.png",
-    apple: "/hehelogo.png",
+    icon: "/bglogo.png",
+    shortcut: "/bglogo.png",
+    apple: "/bglogo.png",
   },
   openGraph: {
     title: "Rechen Studio | Digital Architecture & Bespoke Web Apps",
     description: "Rechen Studio engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
-    images: [{ url: "/hehelogo.png" }],
+    images: [{ url: "/bglogo.png" }],
   },
 };
 

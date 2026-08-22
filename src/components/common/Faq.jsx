@@ -39,10 +39,7 @@ export default function Faq({ title = "Frequently Asked Questions", subtitle = "
       
       {/* Header section */}
       <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-base-2a border border-base-3a text-text-black font-mono text-xs uppercase tracking-wider font-bold shadow-sm">
-          <Question weight="bold" className="w-4 h-4 text-primary-a" />
-          <span>Knowledge & Clarity</span>
-        </div>
+        
         <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-text-black">
           {title}
         </h2>

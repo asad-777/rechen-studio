@@ -8,7 +8,7 @@ export default function Newsletter() {
   const [status, setStatus] = useState('idle'); // idle | submitting | success | error
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !email.includes('@')) {
       setStatus('error');
@@ -16,10 +16,31 @@ export default function Newsletter() {
       return;
     }
     setStatus('submitting');
-    setTimeout(() => {
-      setStatus('success');
-      setEmail('');
-    }, 1000);
+    
+    try {
+      const response = await fetch('https://formspree.io/f/xnpawlgd', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ email })
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        const data = await response.json();
+        setStatus('error');
+        setErrorMessage(
+          data.errors ? data.errors.map(err => err.message).join(', ') : 'Oops! There was a problem submitting your form'
+        );
+      }
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('Oops! There was a problem submitting your form');
+    }
   };
 
   return (
@@ -29,13 +50,9 @@ export default function Newsletter() {
       <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-base-3a/20 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-base-2a border border-base-3a text-text-black font-mono text-xs font-bold uppercase tracking-wider shadow-sm">
-          <Sparkle weight="fill" className="w-3.5 h-3.5 text-primary-a" />
-          <span>Stay Ahead of the Curve</span>
-        </div>
 
         <h3 className="font-heading text-3xl sm:text-4xl font-bold text-text-black tracking-tight">
-          Subscribe to our <span className="text-primary-a">Studio Newsletter</span>
+          Subscribe to our Studio Newsletter
         </h3>
 
         <p className="font-sans text-sm sm:text-base text-text-black/80 leading-relaxed">
@@ -43,7 +60,7 @@ export default function Newsletter() {
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
-          <div className="relative flex-grow">
+          <div className="relative grow">
             <input
               type="email"
               value={email}
@@ -52,8 +69,8 @@ export default function Newsletter() {
                 if (status === 'error') setStatus('idle');
               }}
               disabled={status === 'submitting' || status === 'success'}
-              placeholder="Enter your professional email..."
-              className="w-full px-5 py-3.5 rounded-2xl bg-base-2a text-text-black placeholder-text-black/50 font-mono text-sm border border-base-3a focus:outline-none focus:ring-2 focus:ring-primary-a focus:border-transparent transition-all disabled:opacity-50"
+              placeholder="Enter your email..."
+              className="w-full  px-5 py-3.5 rounded-2xl bg-base-2a text-text-black placeholder-text-black/50 font-mono text-sm border border-base-3a focus:outline-none focus:ring-2 focus:ring-primary-a focus:border-transparent transition-all disabled:opacity-50"
             />
           </div>
 
@@ -93,9 +110,6 @@ export default function Newsletter() {
           </div>
         )}
 
-        <p className="text-[11px] font-mono text-text-black/60 uppercase tracking-widest pt-2 font-semibold">
-          Zero spam. Unsubscribe anytime with one click.
-        </p>
       </div>
     </div>
   );

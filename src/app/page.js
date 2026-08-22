@@ -12,31 +12,14 @@ import Faq from "../components/common/Faq";
 export default function Home() {
   return (
     <div className="space-y-4">
-      {/* 1. Hero Section */}
       <Hero />
-
-      {/* 2. Affiliation Carousel */}
-      <AffiliationCarousel />
-
-      {/* 3. Case Studies */}
-      <CaseStudiesSection maxItems={3} showHeader={true} />
-
-      {/* 4. Impact / Stats */}
       <ImpactStats />
-
-      {/* 5. Awards */}
-      <Awards />
-
-      {/* 6. Insights / Testimonials */}
-      <TestimonialsSection />
-
-      {/* 7. Services Overview */}
+      <CaseStudiesSection maxItems={3} showHeader={true} />
+      <AffiliationCarousel />
+      {/* <Awards /> */}
       <ServicesOverview />
-
-      {/* 8. Contact Us CTA */}
+      <TestimonialsSection />
       <ContactCta />
-
-      {/* 9. FAQ Section */}
       <Faq />
     </div>
   );
