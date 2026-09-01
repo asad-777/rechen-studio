@@ -69,7 +69,7 @@ export default function Footer() {
                 alt="Rechen Studio Logo"
                 width={48}
                 height={48}
-                className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-300"
+                className="w-12 h-12 invert object-contain group-hover:scale-105 transition-transform duration-300"
               />
               <div className="flex flex-col">
                 <span className="font-heading text-3xl font-bold tracking-tight text-text-black">

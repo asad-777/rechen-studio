@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center  overflow-hidden bg-black text-white transition-colors duration-300">
+    <section className="relative min-h-screen flex items-center  overflow-hidden bg-black text-white transition-colors duration-300">
       {/* Background Videos */}
       <div className="absolute inset-0 z-0">
         {/* Desktop Video */}
@@ -34,7 +34,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:flex-row items-center justify-between gap-12">
+      <div className="relative z-10 w-full lg:min-h-screen py-12 lg:px-26 px-12  flex flex-col lg:flex-row items-center justify-between gap-12">
         
         {/* Left Content */}
         <div className="flex flex-col space-y-8 lg:space-y-10">
