@@ -1,26 +1,35 @@
 import React from "react";
 import Hero from "../components/home/Hero";
+import BrandsMarquee from "../components/home/BrandsMarquee";
 import AffiliationCarousel from "../components/home/AffiliationCarousel";
-import CaseStudiesSection from "../components/common/CaseStudiesSection";
 import ImpactStats from "../components/common/ImpactStats";
-import Awards from "../components/home/Awards";
-import TestimonialsSection from "../components/common/TestimonialsSection";
+import ProblemStatement from "../components/home/ProblemStatement";
+import WhoWeHelp from "../components/home/WhoWeHelp";
 import ServicesOverview from "../components/common/ServicesOverview";
-import ContactCta from "../components/common/ContactCta";
+import ProcessSteps from "../components/process/ProcessSteps";
 import Faq from "../components/common/Faq";
+import ContactCta from "../components/common/ContactCta";
 
 export default function Home() {
   return (
-    <div className="space-y-4">
+    <div className="w-full flex flex-col">
       <Hero />
+
+
+      {/* <AffiliationCarousel /> */}
       <ImpactStats />
-      <CaseStudiesSection maxItems={3} showHeader={true} />
-      <AffiliationCarousel />
-      {/* <Awards /> */}
+      <ProblemStatement />
+      <BrandsMarquee />
+
+
+      <WhoWeHelp />
       <ServicesOverview />
-      <TestimonialsSection />
-      <ContactCta />
+
+      <ProcessSteps />
+
       <Faq />
+
+      <ContactCta />
     </div>
   );
 }

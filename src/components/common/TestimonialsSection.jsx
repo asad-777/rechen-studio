@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Star, Quotes, ArrowLeft, ArrowRight, Sparkle, Buildings, Hexagon, Triangle, Circle, Square, Diamond, Drop } from '@phosphor-icons/react';
+import { Star, Quotes, ArrowLeft, ArrowRight, Buildings, Hexagon, Triangle, Circle, Square, Diamond, Drop } from '@phosphor-icons/react';
 
 export default function TestimonialsSection() {
   const [activeTab, setActiveTab] = useState(0);

@@ -1,32 +1,35 @@
 'use client';
 
 import React, { useState } from 'react';
-import { CaretDown, Question, Sparkle, ChatCircleText } from '@phosphor-icons/react';
+import { CaretDown, ChatCircleText } from '@phosphor-icons/react';
 import Link from 'next/link';
 
-export default function Faq({ title = "Frequently Asked Questions", subtitle = "Got questions about working with Rechen Studio? We have answers." }) {
+export default function Faq({ 
+  title = "Frequently Asked Questions", 
+  subtitle = "Clear answers for contractors, trades, and service business owners." 
+}) {
   const [openIndex, setOpenIndex] = useState(0);
 
   const faqs = [
     {
-      question: "How does Rechen Studio approach custom web design and application architecture?",
-      answer: "We blend human-centered design with rigorous engineering standards. Before writing a single line of code, we analyze your business metrics, target audience, and architectural constraints. Our applications use robust frameworks like Next.js, reactive micro-animations, and modular component architectures to guarantee scalability."
+      question: "Why should I choose custom Next.js engineering over Lovable, Wix, or WordPress?",
+      answer: "Platforms like Wix and WordPress or generic Lovable AI templates are bloated, load slowly on mobile phones (5-8 seconds), and constantly break when plugins conflict. We engineer custom Next.js web applications that load in under 1 second, rank significantly higher on Google Local Search, and never crash."
     },
     {
-      question: "What is the typical timeline and investment for a complete digital project?",
-      answer: "A standard corporate website or branding refresh generally requires 4 to 6 weeks. For custom full-stack web applications or SaaS platforms, timelines range between 8 and 14 weeks depending on database complexity and API integrations. We provide transparent, fixed-price or dedicated milestone scoping during our initial consultation."
+      question: "How do new customer quote requests and phone calls reach me?",
+      answer: "Directly to your phone! Every quote form and booking trigger connects instantly to your SMS number, WhatsApp, and email with full customer details (name, phone, address, project type). You can also sync directly with ServiceTitan, Housecall Pro, Jobber, or Google Calendar."
     },
     {
-      question: "Do you offer post-launch technical support, maintenance, and SEO growth services?",
-      answer: "Yes, absolutely. We consider launch day just day one of our collaboration. We provide tailored Service Level Agreements (SLAs), continuous uptime monitoring, core web vitals speed optimization, and ongoing SEO content execution to ensure continuous organic growth."
+      question: "How long does a complete website build and deployment take?",
+      answer: "Most contractor builds launch in just 7 to 14 business days. Because we operate with dedicated sprint teams and zero bureaucratic fluff, we handle design, copywriting, lead capture integration, and domain setup rapidly without taking up your valuable time."
     },
     {
-      question: "Can Rechen Studio integrate with our existing engineering or internal marketing teams?",
-      answer: "Yes! We frequently function as an embedded specialized sprint team working in tandem with in-house product leads, CTOs, and designers. We operate within your existing Slack, GitHub, Jira, and Figma environments with transparent weekly sprints."
+      question: "What if I already own a domain name and an existing website?",
+      answer: "We handle 100% of the technical heavy lifting. We safely migrate your existing domain, set up proper 301 redirects so you don't lose any existing SEO rankings, and deploy your new platform with zero downtime for your business."
     },
     {
-      question: "How do we get started and what takes place during the introductory booking meeting?",
-      answer: "Getting started is seamless. Once you schedule a consultation through our website, our principal architects will evaluate your briefs, discuss core user outcomes, and formulate an immediate preliminary scoping timeline and high-level architectural proposal—at zero obligation."
+      question: "Do I own my code, website, and digital assets 100%?",
+      answer: "Yes, completely. Unlike predatory marketing agencies that lock your website behind monthly hostage fees, you retain 100% full intellectual property and code ownership of your digital assets upon completion."
     }
   ];
 
@@ -35,15 +38,14 @@ export default function Faq({ title = "Frequently Asked Questions", subtitle = "
   };
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10 transition-colors duration-300">
+    <section id="faq" className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
       
       {/* Header section */}
       <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-        
-        <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-text-black">
+        <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-text-content leading-tight">
           {title}
         </h2>
-        <p className="font-sans text-sm sm:text-base text-text-black/80">
+        <p className="font-sans text-base sm:text-lg text-text-content/70">
           {subtitle}
         </p>
       </div>
@@ -57,23 +59,23 @@ export default function Faq({ title = "Frequently Asked Questions", subtitle = "
               key={idx}
               className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                 isOpen
-                  ? 'bg-base-2a border-primary-a shadow-md'
-                  : 'bg-base-1a/80 border-base-3a hover:border-text-black/40'
+                  ? 'bg-base-b border-primary-color shadow-lg'
+                  : 'bg-base-b/60 border-base-c hover:border-text-content/40'
               }`}
             >
               <button
                 type="button"
                 onClick={() => toggleFaq(idx)}
                 aria-expanded={isOpen}
-                className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left focus:outline-none focus:ring-2 focus:ring-primary-a"
+                className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left focus:outline-none cursor-pointer"
               >
-                <span className={`font-mono text-sm sm:text-base font-bold transition-colors duration-200 ${
-                  isOpen ? 'text-primary-a' : 'text-text-black hover:text-primary-a'
+                <span className={`font-mono text-base sm:text-lg font-bold transition-colors duration-200 ${
+                  isOpen ? 'text-primary-color' : 'text-text-content hover:text-primary-color'
                 }`}>
-                  {idx + 1}. {faq.question}
+                  0{idx + 1}. {faq.question}
                 </span>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-base-3a transition-transform duration-300 ${
-                  isOpen ? 'bg-primary-a rotate-180 text-text-white border-primary-a' : 'bg-base-2a text-text-black'
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-base-c transition-transform duration-300 ${
+                  isOpen ? 'bg-primary-color rotate-180 text-base-a border-primary-color' : 'bg-base-a text-text-content'
                 }`}>
                   <CaretDown weight="bold" className="w-4 h-4" />
                 </div>
@@ -84,7 +86,7 @@ export default function Faq({ title = "Frequently Asked Questions", subtitle = "
                   isOpen ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 pb-0 opacity-0'
                 }`}
               >
-                <div className="pt-4 border-t border-base-3a text-text-black/80 font-sans text-sm sm:text-base leading-relaxed">
+                <div className="pt-4 border-t border-base-c text-text-content/80 font-sans text-sm sm:text-base leading-relaxed">
                   {faq.answer}
                 </div>
               </div>
@@ -94,21 +96,21 @@ export default function Faq({ title = "Frequently Asked Questions", subtitle = "
       </div>
 
       {/* Footer Support Prompt */}
-      <div className="mt-12 p-8 rounded-3xl bg-base-2a border border-base-3a text-center flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+      <div className="mt-12 p-8 rounded-3xl bg-base-b border border-base-c text-center flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
         <div className="flex items-center gap-4 text-left">
-          <div className="w-12 h-12 rounded-2xl bg-base-1a border border-base-3a flex items-center justify-center text-primary-a shrink-0 shadow-sm">
-            <ChatCircleText weight="fill" className="w-6 h-6 text-primary-a" />
+          <div className="w-12 h-12 rounded-2xl bg-base-a border border-base-c flex items-center justify-center text-primary-color shrink-0 shadow-sm">
+            <ChatCircleText weight="duotone" className="w-6 h-6 text-primary-color" />
           </div>
           <div>
-            <h4 className="font-heading text-lg font-bold text-text-black">Still have questions?</h4>
-            <p className="font-sans text-xs sm:text-sm text-text-black/80">Our engineering leads are always open to discuss custom architecture requirements.</p>
+            <h4 className="font-heading text-lg font-bold text-text-content">Have a specific question about your trade?</h4>
+            <p className="font-sans text-xs sm:text-sm text-text-content/70">Talk directly with our lead architects. No pushy sales reps.</p>
           </div>
         </div>
         <Link
           href="/contact-us"
-          className="px-6 py-3 rounded-xl bg-primary-a hover:bg-primary-a/90 text-text-white font-button text-base font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-md"
+          className="px-6 py-3 rounded-full bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-md hover:scale-105 cursor-pointer"
         >
-          Ask our experts
+          Book A 15-Min Call
         </Link>
       </div>
     </section>

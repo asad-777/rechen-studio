@@ -3,14 +3,9 @@ export default function sitemap() {
 
   const routes = [
     '',
-    '/about',
-    '/case-studies',
-    '/contact-us',
-    '/process',
     '/services',
-    '/services/seo',
-    '/services/social-media',
-    '/services/websites-and-web-apps',
+    '/about',
+    '/contact-us',
   ];
 
   return routes.map((route) => ({

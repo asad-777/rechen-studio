@@ -8,27 +8,49 @@ import {
   List, 
   X, 
   CaretDown,
-  ArrowUpRight
+  ArrowUpRight,
+  PhoneCall,
+  VideoCamera,
+  Code,
+  ChartBar,
+  ShareNetwork,
+  Hammer,
+  HouseLine,
+  Lightning,
+  Buildings,
+  Compass,
+  ShieldCheck,
+  Question,
+  UserFocus
 } from '@phosphor-icons/react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [mobileExpanded, setMobileExpanded] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const closeTimeoutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
-    // Trigger on mount in case we start scrolled
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const closeTimeoutRef = useRef(null);
+  // Lock scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   const handleMouseEnter = (name) => {
     if (closeTimeoutRef.current) {
@@ -40,302 +62,468 @@ export default function Navbar() {
   const handleMouseLeave = () => {
     closeTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 500);
+    }, 250);
   };
+
+  const isHomePage = pathname === '/';
 
   const navLinks = [
-    { name: 'WHAT WE DO', href: '/services', hasDropdown: true },
-    { name: 'WHO WE HELP', href: '/case-studies', hasDropdown: true },
-    { name: 'HOW WE DELIVER', href: '/process', hasDropdown: true },
+    ...(!isHomePage ? [{ name: 'HOME', href: '/', hasDropdown: false }] : []),
+    { name: 'SERVICES', href: '/services', hasDropdown: true },
+    { name: 'WHO WE HELP', href: '/#niches', hasDropdown: true },
+    { name: 'WHO WE ARE', href: '/about', hasDropdown: true },
+    { name: 'CONTACT', href: '/contact-us', hasDropdown: false },
   ];
-
-  const mobileDropdownData = {
-    'WHAT WE DO': [
-      { name: 'Websites & Web Apps', href: '/services/websites-and-web-apps' },
-      { name: 'Social Media Strategy', href: '/services/social-media' },
-      { name: 'Technical SEO', href: '/services/seo' },
-      { name: 'All Services Overview', href: '/services' },
-    ],
-    'WHO WE HELP': [
-      { name: 'Startups & Scale-ups', href: '/case-studies#startups' },
-      { name: 'Enterprise & B2B', href: '/case-studies#enterprise' },
-      { name: 'E-commerce & Retail', href: '/case-studies#ecommerce' },
-      { name: 'All Case Studies', href: '/case-studies' },
-    ],
-    'HOW WE DELIVER': [
-      { name: 'Our Process', href: '/process' },
-      { name: 'About Rechen Studio', href: '/about' },
-      { name: 'FAQ & Support', href: '/#faq' },
-      { name: 'Contact Us', href: '/contact-us' },
-    ]
-  };
-
-  const handleMobileNavClick = (name, hasDropdown, e) => {
-    if (hasDropdown) {
-      e.preventDefault();
-      setMobileExpanded(mobileExpanded === name ? null : name);
-    } else {
-      setMobileMenuOpen(false);
-    }
-  };
 
   const isHeaderSolid = isScrolled || activeDropdown !== null;
 
   return (
-    <header 
-      className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 bg-base-a border-b border-base-c ${
-        !isHeaderSolid 
-          ? 'lg:bg-transparent lg:border-b-transparent'
-          : ''
-      }`}
-      onMouseLeave={handleMouseLeave}
-      onMouseEnter={() => {
-        if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-      }}
-    >
-      <div className="w-full px-4 sm:px-6 lg:px-10 h-20 lg:h-20 flex items-center justify-between gap-4">
-        
-        {/* Left: Logo */}
-        <div className={`flex items-center gap-6 lg:gap-10 shrink-0 transition-colors duration-300 ${!isHeaderSolid ? 'lg:mix-blend-difference lg:text-white' : 'text-text-content'}`}>
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/bglogo.png"
-              alt="Rechen Studio Logo"
-              width={200}
-              height={80}
-              className="w-auto h-12 md:h-14 lg:h-16 object-contain group-hover:opacity-90 transition-all duration-300 brightness-0 invert"
-              priority
-            />
-              <span className="font-heading text-3xl font-bold tracking-tight">
-                Rechen Studio
-              </span>
-          </Link>
-        </div>
-
-        {/* Center: Desktop Navigation Links */}
-        <nav className={`hidden xl:flex items-center justify-center gap-12 2xl:gap-16 flex-1 h-full transition-colors duration-300 ${!isHeaderSolid ? 'lg:mix-blend-difference lg:text-white' : 'text-text-content'}`}>
-          {navLinks.map((link) => (
-            <div 
-              key={link.name} 
-              className="relative h-full flex items-center"
-              onMouseEnter={() => link.hasDropdown ? handleMouseEnter(link.name) : handleMouseEnter(null)}
-            >
-              <Link
-                href={link.href}
-                className={`font-mono text-lg 2xl:text-xl font-medium transition-all duration-200 flex items-center gap-2 hover:opacity-70 ${activeDropdown === link.name ? 'opacity-70' : 'opacity-100'}`}
-              >
-                {link.name}
-                {link.hasDropdown && <CaretDown weight="bold" className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />}
-              </Link>
-            </div>
-          ))}
-        </nav>
-
-        {/* Right: Action Buttons */}
-        <div className="hidden lg:flex items-center gap-4 shrink-0">
-          <Link href="/contact-us">
-            <button className="btn text-xl px-8 py-4 shadow-none bg-base-a text-primary-color font-bold border-2 border-primary-color hover:bg-primary-color hover:text-base-a rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
-              Let&apos;s Talk Business
-            </button>
-          </Link>
-        </div>
-
-        {/* Mobile menu controls */}
-        <div className="flex items-center gap-4 lg:hidden shrink-0">
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className="p-2.5 rounded-xl bg-transparent text-text-content hover:bg-base-b transition-colors"
-            aria-label="Open navigation menu"
-          >
-            <List weight="bold" className="w-8 h-8" />
-          </button>
-        </div>
-      </div>
-
-      {/* Floating Mega Dropdown Container */}
-      <div 
-        className={`absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-[95%] max-w-7xl bg-base-a/95 backdrop-blur-2xl border border-base-c rounded-3xl shadow-2xl transition-all duration-300 ease-out origin-top text-text-content overflow-hidden mix-blend-normal ${
-          activeDropdown 
-            ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' 
-            : 'opacity-0 -translate-y-4 scale-[0.98] pointer-events-none'
+    <>
+      <header 
+        className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 border-b ${
+          !isHeaderSolid 
+            ? 'bg-base-a/80 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border-b-base-c lg:border-b-transparent'
+            : 'bg-base-a/95 backdrop-blur-xl border-b-base-c shadow-xl'
         }`}
+        onMouseLeave={handleMouseLeave}
         onMouseEnter={() => {
           if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
         }}
       >
-        <div className="w-full p-10 flex flex-col justify-center transition-all duration-300">
+        <div className="w-full px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between gap-4">
           
-          {activeDropdown === 'WHAT WE DO' && (
-            <div className="grid grid-cols-12 gap-10 items-center">
-              <div className="col-span-5 flex flex-col justify-center gap-6 border-r border-base-c pr-10">
-                <Link href="/services/websites-and-web-apps" className="group inline-flex items-center gap-2 text-2xl font-heading font-bold text-text-content hover:text-primary-color transition-colors w-max">
-                  <span>Websites & Web Apps</span>
-                  <ArrowUpRight weight="bold" className="w-5 h-5 shrink-0 text-primary-color" />
-                </Link>
-                <Link href="/services/social-media" className="group inline-flex items-center gap-2 text-2xl font-heading font-bold text-text-content hover:text-primary-color transition-colors w-max">
-                  <span>Social Media Strategy</span>
-                  <ArrowUpRight weight="bold" className="w-5 h-5 shrink-0 text-primary-color" />
-                </Link>
-                <Link href="/services/seo" className="group inline-flex items-center gap-2 text-2xl font-heading font-bold text-text-content hover:text-primary-color transition-colors w-max">
-                  <span>Technical SEO</span>
-                  <ArrowUpRight weight="bold" className="w-5 h-5 shrink-0 text-primary-color" />
-                </Link>
-                <Link href="/services" className="group inline-flex items-center gap-2 text-lg font-mono font-bold text-primary-color hover:text-text-content transition-colors mt-2 w-max">
-                  <span>View All Services</span>
-                  <ArrowUpRight weight="bold" className="w-4 h-4" />
-                </Link>
-              </div>
-              <div className="col-span-7 grid grid-cols-2 gap-6 py-4">
-                <Link href="/services" className="group relative block w-full h-[180px] rounded-2xl overflow-hidden shadow-md">
-                  <img src="/services-1.jpg" alt="Web Apps" className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors" />
-                  <span className="absolute bottom-6 left-6 text-xl font-heading font-bold text-white drop-shadow-md">View Services</span>
-                </Link>
-                <Link href="/case-studies" className="group relative block w-full h-[180px] rounded-2xl overflow-hidden shadow-md">
-                  <img src="/services-2.jpg" alt="Data Strategy" className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors" />
-                  <span className="absolute bottom-6 left-6 text-xl font-heading font-bold text-white drop-shadow-md">Case Studies</span>
-                </Link>
-              </div>
-            </div>
-          )}
+          {/* Left: Logo */}
+          <div className="flex items-center gap-4 shrink-0">
+            <Link href="/" className="flex items-center gap-3 group">
+              <Image
+                src="/bglogo.png"
+                alt="Rechen Studio Logo"
+                width={180}
+                height={60}
+                className="w-auto h-10 md:h-12 object-contain group-hover:opacity-90 transition-all duration-300 brightness-0 invert"
+                priority
+              />
+              <span className="font-heading text-2xl md:text-3xl font-bold tracking-tight text-text-content">
+                Rechen Studio
+              </span>
+            </Link>
+          </div>
 
-          {activeDropdown === 'WHO WE HELP' && (
-            <div className="flex flex-col gap-6 w-full">
-              <div className="grid grid-cols-3 gap-8 py-4">
-                <Link href="/case-studies#startups" className="group relative rounded-2xl overflow-hidden h-[200px] shadow-md">
-                  <img src="/startups.jpg" alt="Startups" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:via-black/40 transition-colors" />
-                  <div className="absolute inset-0 p-6 flex flex-col justify-end items-start">
-                    <span className="inline-flex items-center gap-2 text-2xl font-heading font-bold text-white group-hover:text-primary-color transition-colors drop-shadow-md">
-                      <span>Startups & Scale-ups</span>
-                      <ArrowUpRight weight="bold" className="w-5 h-5 shrink-0 text-primary-color" />
-                    </span>
-                  </div>
-                </Link>
-                <Link href="/case-studies#enterprise" className="group relative rounded-2xl overflow-hidden h-[200px] shadow-md">
-                  <img src="/enterprise.jpg" alt="Enterprise" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:via-black/40 transition-colors" />
-                  <div className="absolute inset-0 p-6 flex flex-col justify-end items-start">
-                    <span className="inline-flex items-center gap-2 text-2xl font-heading font-bold text-white group-hover:text-primary-color transition-colors drop-shadow-md">
-                      <span>Enterprise & B2B</span>
-                      <ArrowUpRight weight="bold" className="w-5 h-5 shrink-0 text-primary-color" />
-                    </span>
-                  </div>
-                </Link>
-                <Link href="/case-studies#ecommerce" className="group relative rounded-2xl overflow-hidden h-[200px] shadow-md">
-                  <img src="/ecommerce.jpg" alt="E-commerce" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:via-black/40 transition-colors" />
-                  <div className="absolute inset-0 p-6 flex flex-col justify-end items-start">
-                    <span className="inline-flex items-center gap-2 text-2xl font-heading font-bold text-white group-hover:text-primary-color transition-colors drop-shadow-md">
-                      <span>E-commerce & Retail</span>
-                      <ArrowUpRight weight="bold" className="w-5 h-5 shrink-0 text-primary-color" />
-                    </span>
-                  </div>
+          {/* Center: Desktop Navigation Links */}
+          <nav className="hidden xl:flex items-center justify-center gap-8 2xl:gap-12 flex-1 h-full">
+            {navLinks.map((link) => (
+              <div
+                key={link.name}
+                className="relative h-full flex items-center"
+                onMouseEnter={() => link.hasDropdown ? handleMouseEnter(link.name) : setActiveDropdown(null)}
+              >
+                <Link
+                  href={link.href}
+                  className={`font-mono text-sm 2xl:text-base font-semibold transition-colors flex items-center gap-1.5 py-2 ${
+                    activeDropdown === link.name ? 'text-primary-color' : 'text-text-content/80 hover:text-primary-color'
+                  }`}
+                >
+                  <span>{link.name}</span>
+                  {link.hasDropdown && (
+                    <CaretDown 
+                      weight="bold" 
+                      className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                        activeDropdown === link.name ? 'rotate-180 text-primary-color' : 'text-text-content/50'
+                      }`} 
+                    />
+                  )}
                 </Link>
               </div>
-              <div className="flex justify-end px-2">
-                <Link href="/case-studies" className="group inline-flex items-center gap-2 text-lg font-mono font-bold text-primary-color hover:text-text-content transition-colors w-max">
-                  <span>View All Case Studies</span>
-                  <ArrowUpRight weight="bold" className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          )}
+            ))}
+          </nav>
 
-          {activeDropdown === 'HOW WE DELIVER' && (
-            <div className="grid grid-cols-12 gap-10 items-center">
-              <div className="col-span-5 flex flex-col justify-center gap-6 border-r border-base-c/50 pr-10">
-                <Link href="/process" className="group inline-flex items-center gap-2 text-2xl font-heading font-bold text-text-content hover:text-primary-color transition-colors w-max">
-                  <span>Our Process</span>
-                  <ArrowUpRight weight="bold" className="w-5 h-5 shrink-0 text-primary-color" />
-                </Link>
-                <Link href="/about" className="group inline-flex items-center gap-2 text-2xl font-heading font-bold text-text-content hover:text-primary-color transition-colors w-max">
-                  <span>About Us</span>
-                  <ArrowUpRight weight="bold" className="w-5 h-5 shrink-0 text-primary-color" />
-                </Link>
-                <Link href="/contact-us" className="group inline-flex items-center gap-2 text-2xl font-heading font-bold text-text-content hover:text-primary-color transition-colors w-max">
-                  <span>Contact</span>
-                  <ArrowUpRight weight="bold" className="w-5 h-5 shrink-0 text-primary-color" />
-                </Link>
-              </div>
-              <div className="col-span-7 py-4">
-                <Link href="/#faq" className="group relative block w-full h-[200px] rounded-2xl overflow-hidden shadow-md">
-                  <img src="/faq.jpg" alt="FAQ" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:via-black/40 transition-colors" />
-                  <div className="absolute inset-0 p-6 flex flex-col justify-end items-start">
-                    <span className="inline-flex items-center gap-2 text-2xl font-heading font-bold text-white group-hover:text-primary-color transition-colors drop-shadow-md">
-                      <span>Frequently Asked Questions</span>
-                      <ArrowUpRight weight="bold" className="w-5 h-5 shrink-0 text-primary-color" />
-                    </span>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          )}
+          {/* Right: Action Buttons */}
+          <div className="hidden lg:flex items-center gap-4 shrink-0">
+            <Link href="/contact-us">
+              <button className="px-5 py-2.5 bg-primary-color hover:bg-primary-color/90 text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full shadow-md shadow-primary-color/20 flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer">
+                <span className="flex items-center gap-1.5 text-black">
+                  <PhoneCall weight="fill" className="w-4 h-4" />
+                  <span className="opacity-50 font-mono text-xs">/</span>
+                  <VideoCamera weight="fill" className="w-4 h-4" />
+                </span>
+                <span>Get In Touch</span>
+              </button>
+            </Link>
+          </div>
 
+          {/* Mobile menu toggle button */}
+          <div className="flex items-center gap-4 lg:hidden shrink-0">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className="p-2.5 rounded-xl bg-base-b text-text-content hover:bg-base-c transition-colors cursor-pointer"
+              aria-label="Open navigation menu"
+            >
+              <List weight="bold" className="w-7 h-7" />
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* Mobile Full Screen Menu */}
+        {/* Mega Dropdown Panel */}
+        <div 
+          className={`hidden lg:block absolute top-full left-0 w-full bg-base-a/95 backdrop-blur-2xl border-t border-b border-base-c shadow-2xl transition-all duration-300 overflow-hidden ${
+            activeDropdown 
+              ? 'opacity-100 max-h-[500px] py-8 pointer-events-auto' 
+              : 'opacity-0 max-h-0 py-0 pointer-events-none'
+          }`}
+          onMouseEnter={() => {
+            if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+          }}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            
+            {/* Dropdown: SERVICES */}
+            {activeDropdown === 'SERVICES' && (
+              <div className="space-y-6 animate-in fade-in duration-200">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <Link 
+                    href="/services" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-6 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-3"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <Code weight="bold" className="w-5 h-5" />
+                    </div>
+                    <h4 className="font-heading text-lg font-bold text-text-content group-hover:text-primary-color transition-colors flex items-center justify-between">
+                      <span>High-Converting Web Apps</span>
+                      <ArrowUpRight weight="bold" className="w-4 h-4 text-primary-color opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      Sub-second Next.js builds with instant SMS/email lead dispatch and custom project portfolios.
+                    </p>
+                  </Link>
+
+                  <Link 
+                    href="/services" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-6 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-3"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <ChartBar weight="bold" className="w-5 h-5" />
+                    </div>
+                    <h4 className="font-heading text-lg font-bold text-text-content group-hover:text-primary-color transition-colors flex items-center justify-between">
+                      <span>Google Local SEO Domination</span>
+                      <ArrowUpRight weight="bold" className="w-4 h-4 text-primary-color opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      Rank #1 in your service territory on Google Map Pack and capture high-margin local inquiries.
+                    </p>
+                  </Link>
+
+                  <Link 
+                    href="/services" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-6 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-3"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <ShareNetwork weight="bold" className="w-5 h-5" />
+                    </div>
+                    <h4 className="font-heading text-lg font-bold text-text-content group-hover:text-primary-color transition-colors flex items-center justify-between">
+                      <span>Brand Authority & Social Growth</span>
+                      <ArrowUpRight weight="bold" className="w-4 h-4 text-primary-color opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      High-trust branding assets, vehicle wraps, and automated Google review funnels.
+                    </p>
+                  </Link>
+                </div>
+
+                <div className="pt-2 border-t border-base-c/60 flex items-center justify-between text-xs font-mono">
+                  <span className="text-text-content/60">Bespoke technical execution for contractors & local trades.</span>
+                  <Link 
+                    href="/services" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="text-primary-color font-bold hover:underline flex items-center gap-1.5"
+                  >
+                    <span>Explore All Service Capabilities</span>
+                    <ArrowUpRight weight="bold" className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {/* Dropdown: WHO WE HELP */}
+            {activeDropdown === 'WHO WE HELP' && (
+              <div className="space-y-6 animate-in fade-in duration-200">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+                  <Link 
+                    href="/#niches" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-5 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-2.5"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <Hammer weight="bold" className="w-4 h-4" />
+                    </div>
+                    <h4 className="font-heading text-base font-bold text-text-content group-hover:text-primary-color transition-colors">
+                      Construction & Trades
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      General contractors, custom home builders, remodeling & framing specialists.
+                    </p>
+                  </Link>
+
+                  <Link 
+                    href="/#niches" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-5 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-2.5"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <HouseLine weight="bold" className="w-4 h-4" />
+                    </div>
+                    <h4 className="font-heading text-base font-bold text-text-content group-hover:text-primary-color transition-colors">
+                      Roofing & Siding
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      Storm restoration, residential roof replacements & commercial coating.
+                    </p>
+                  </Link>
+
+                  <Link 
+                    href="/#niches" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-5 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-2.5"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <Lightning weight="bold" className="w-4 h-4" />
+                    </div>
+                    <h4 className="font-heading text-base font-bold text-text-content group-hover:text-primary-color transition-colors">
+                      HVAC & Plumbing
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      Urgent service dispatch, scheduled maintenance plans & high-margin installs.
+                    </p>
+                  </Link>
+
+                  <Link 
+                    href="/#niches" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-5 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-2.5"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <Buildings weight="bold" className="w-4 h-4" />
+                    </div>
+                    <h4 className="font-heading text-base font-bold text-text-content group-hover:text-primary-color transition-colors">
+                      Commercial Contractors
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      Large-scale commercial maintenance, industrial subcontracting & enterprise tenders.
+                    </p>
+                  </Link>
+                </div>
+
+                <div className="pt-2 border-t border-base-c/60 flex items-center justify-between text-xs font-mono">
+                  <span className="text-text-content/60">Every system tailored specifically to your trade sales mechanics.</span>
+                  <Link 
+                    href="/#niches" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="text-primary-color font-bold hover:underline flex items-center gap-1.5"
+                  >
+                    <span>View All Industry Blueprints</span>
+                    <ArrowUpRight weight="bold" className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {/* Dropdown: WHO WE ARE */}
+            {activeDropdown === 'WHO WE ARE' && (
+              <div className="space-y-6 animate-in fade-in duration-200">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+                  <Link 
+                    href="/about" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-5 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-2.5"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <UserFocus weight="bold" className="w-4 h-4" />
+                    </div>
+                    <h4 className="font-heading text-base font-bold text-text-content group-hover:text-primary-color transition-colors">
+                      About Rechen Studio
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      Our story, zero-bloat philosophy & direct 100% client code ownership.
+                    </p>
+                  </Link>
+
+                  <Link 
+                    href="/#process" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-5 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-2.5"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <Compass weight="bold" className="w-4 h-4" />
+                    </div>
+                    <h4 className="font-heading text-base font-bold text-text-content group-hover:text-primary-color transition-colors">
+                      4-Step Process
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      Predictable 7-14 day deployment pipeline with zero downtime or fluff.
+                    </p>
+                  </Link>
+
+                  <Link 
+                    href="/about#terms" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-5 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-2.5"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <ShieldCheck weight="bold" className="w-4 h-4" />
+                    </div>
+                    <h4 className="font-heading text-base font-bold text-text-content group-hover:text-primary-color transition-colors">
+                      Terms & SLAs
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      Transparent client rights, uptime guarantees, security SLAs & policies.
+                    </p>
+                  </Link>
+
+                  <Link 
+                    href="/#faq" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="group p-5 rounded-2xl bg-base-b/80 hover:bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-md space-y-2.5"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
+                      <Question weight="bold" className="w-4 h-4" />
+                    </div>
+                    <h4 className="font-heading text-base font-bold text-text-content group-hover:text-primary-color transition-colors">
+                      Studio FAQ
+                    </h4>
+                    <p className="font-sans text-xs text-text-content/70 leading-relaxed">
+                      Clear answers on pricing, integrations, timelines, and maintenance.
+                    </p>
+                  </Link>
+                </div>
+
+                <div className="pt-2 border-t border-base-c/60 flex items-center justify-between text-xs font-mono">
+                  <span className="text-text-content/60">Engineering standards built on accountability and performance.</span>
+                  <Link 
+                    href="/about" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="text-primary-color font-bold hover:underline flex items-center gap-1.5"
+                  >
+                    <span>Read Our Full Studio Overview</span>
+                    <ArrowUpRight weight="bold" className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            )}
+
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Full Screen Menu Drawer (Outside Header for proper viewport stacking context) */}
       <div 
-        className={`lg:hidden fixed inset-0 z-[70] bg-black flex flex-col pt-6 px-6 pb-12 overflow-y-auto transition-transform duration-500 ease-in-out ${
-          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`lg:hidden fixed inset-0 z-[100] w-screen h-screen bg-black flex flex-col pt-6 px-6 pb-10 transition-all duration-300 ease-in-out ${
+          mobileMenuOpen 
+            ? 'opacity-100 translate-x-0 pointer-events-auto visible' 
+            : 'opacity-0 translate-x-full pointer-events-none invisible'
         }`}
       >
         {/* Mobile Menu Header */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-base-c shrink-0">
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
             <Image
               src="/bglogo.png"
               alt="Rechen Studio Logo"
-              width={160}
-              height={60}
-              className="w-auto h-12 object-contain brightness-0 invert"
+              width={140}
+              height={50}
+              className="w-auto h-10 object-contain brightness-0 invert"
               priority
             />
-            <span className="font-heading text-2xl font-bold tracking-tight text-text-content">
+            <span className="font-heading text-xl font-bold tracking-tight text-white">
               Rechen Studio
             </span>
           </Link>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(false)}
-            className="p-2.5 rounded-xl bg-base-b text-text-content hover:bg-base-c transition-colors"
+            className="p-2.5 rounded-xl bg-base-b text-white hover:bg-base-c transition-colors cursor-pointer"
+            aria-label="Close menu"
           >
-            <X weight="bold" className="w-8 h-8" />
+            <X weight="bold" className="w-7 h-7" />
           </button>
         </div>
 
-        {/* Mobile Navigation Links (Compact List) */}
-        <nav className="flex flex-col justify-center items-center text-center gap-8 pb-10 flex-1 mt-8">
-          <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="font-heading text-3xl font-bold text-text-content hover:text-primary-color transition-colors">
-            Services
+        {/* Mobile Navigation Links */}
+        <nav className="flex flex-col space-y-4 pb-8 flex-1 overflow-y-auto">
+          {!isHomePage && (
+            <Link 
+              href="/" 
+              onClick={() => setMobileMenuOpen(false)} 
+              className="font-heading text-2xl font-bold text-white hover:text-primary-color transition-colors flex items-center justify-between py-2.5 border-b border-base-c/50"
+            >
+              <span>Home</span>
+              <ArrowUpRight weight="bold" className="w-5 h-5 text-primary-color" />
+            </Link>
+          )}
+
+          <Link 
+            href="/services" 
+            onClick={() => setMobileMenuOpen(false)} 
+            className="font-heading text-2xl font-bold text-white hover:text-primary-color transition-colors flex items-center justify-between py-2.5 border-b border-base-c/50"
+          >
+            <span>Services</span>
+            <ArrowUpRight weight="bold" className="w-5 h-5 text-primary-color" />
           </Link>
-          <Link href="/case-studies" onClick={() => setMobileMenuOpen(false)} className="font-heading text-3xl font-bold text-text-content hover:text-primary-color transition-colors">
-            Case Studies
+
+          <Link 
+            href="/#niches" 
+            onClick={() => setMobileMenuOpen(false)} 
+            className="font-heading text-2xl font-bold text-white hover:text-primary-color transition-colors flex items-center justify-between py-2.5 border-b border-base-c/50"
+          >
+            <span>Who We Help</span>
+            <ArrowUpRight weight="bold" className="w-5 h-5 text-primary-color" />
           </Link>
-          <Link href="/process" onClick={() => setMobileMenuOpen(false)} className="font-heading text-3xl font-bold text-text-content hover:text-primary-color transition-colors">
-            Our Process
+
+          <Link 
+            href="/about" 
+            onClick={() => setMobileMenuOpen(false)} 
+            className="font-heading text-2xl font-bold text-white hover:text-primary-color transition-colors flex items-center justify-between py-2.5 border-b border-base-c/50"
+          >
+            <span>Who We Are</span>
+            <ArrowUpRight weight="bold" className="w-5 h-5 text-primary-color" />
           </Link>
-          <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="font-heading text-3xl font-bold text-text-content hover:text-primary-color transition-colors">
-            About Us
+
+          <Link 
+            href="/#process" 
+            onClick={() => setMobileMenuOpen(false)} 
+            className="font-heading text-2xl font-bold text-white hover:text-primary-color transition-colors flex items-center justify-between py-2.5 border-b border-base-c/50"
+          >
+            <span>Our Process</span>
+            <ArrowUpRight weight="bold" className="w-5 h-5 text-primary-color" />
           </Link>
-          <Link href="/#faq" onClick={() => setMobileMenuOpen(false)} className="font-heading text-3xl font-bold text-text-content hover:text-primary-color transition-colors">
-            FAQ
+
+          <Link 
+            href="/#faq" 
+            onClick={() => setMobileMenuOpen(false)} 
+            className="font-heading text-2xl font-bold text-white hover:text-primary-color transition-colors flex items-center justify-between py-2.5 border-b border-base-c/50"
+          >
+            <span>FAQ</span>
+            <ArrowUpRight weight="bold" className="w-5 h-5 text-primary-color" />
           </Link>
         </nav>
 
         {/* Mobile CTA */}
-        <div className="mt-auto pt-6 border-t border-base-c">
+        <div className="mt-auto pt-6 border-t border-base-c shrink-0">
           <Link href="/contact-us" onClick={() => setMobileMenuOpen(false)}>
-            <button className="btn py-5 bg-primary-color text-base-a font-bold border-none w-full rounded-full text-xl transition-all duration-300 hover:bg-primary-color/90 hover:-translate-y-1">
-              Let&apos;s Talk Business
+            <button className="w-full py-3.5 bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center justify-center gap-2.5 cursor-pointer">
+              <span className="flex items-center gap-1.5 text-black">
+                <PhoneCall weight="fill" className="w-4 h-4" />
+                <span className="opacity-50 font-mono text-xs">/</span>
+                <VideoCamera weight="fill" className="w-4 h-4" />
+              </span>
+              <span>Get In Touch</span>
             </button>
           </Link>
         </div>
       </div>
-    </header>
+    </>
   );
 }

@@ -6,30 +6,28 @@ import Newsletter from "../../components/common/Newsletter";
 import Faq from "../../components/common/Faq";
 
 export const metadata = {
-  title: "Contact Us | Schedule an Engineering Scoping Meeting with Rechen Studio",
-  description: "Connect with Rechen Studio principals to scope your custom website, fullstack web app, or SEO growth platform."
+  title: "Contact Us | Get In Touch with Rechen Studio",
+  description: "Connect with Rechen Studio leads to scope your custom website, lead booking engine, or local SEO growth strategy."
 };
 
 export default function ContactPage() {
   return (
-    <div className="space-y-16 pb-20 transition-colors duration-300">
+    <div className="space-y-16 pb-20">
       
       {/* Contact Intro & Booking Form Layout */}
-      <section className="pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="pt-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="font-mono text-xs uppercase tracking-widest text-text-black font-bold bg-base-2a border border-base-3a px-4 py-1.5 rounded-full shadow-sm inline-block">
-            Start Your Architecture Journey
-          </span>
-          <h1 className="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight text-text-black">
-            Get In Touch & Book Scoping
+          <h1 className="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight text-text-content leading-tight">
+            Get In Touch <br />
+            <span className="text-primary-color">Discovery & Strategy Call</span>
           </h1>
-          <p className="font-sans text-base text-text-black/80">
-            Choose your communication channel below, explore consultative service deliverables, or lock in an immediate 30-minute kickoff video consultation with our principal architects.
+          <p className="font-sans text-base text-text-content/70 max-w-2xl mx-auto leading-relaxed">
+            Tell us about your trade, current bottlenecks, and target service area. We will analyze your local competitors and formulate an actionable blueprint in under 24 hours.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Column: Social Links component */}
+          {/* Left Column: Social / Direct Info */}
           <div className="lg:col-span-5">
             <SocialLinks />
           </div>
@@ -41,18 +39,16 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Consultation Selector Component (leading to Social Media, Websites, SEO, WebApps) */}
-      <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-base-3a pt-8">
+      {/* Consultation Selector Component */}
+      <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-base-c pt-12">
         <Consultation />
       </div>
 
-      {/* Newsletter Section */}
-      <div className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-4">
-        <Newsletter />
-      </div>
-
       {/* FAQ Section */}
-      <Faq title="Scoping & Onboarding FAQ" subtitle="Common questions regarding project initiation, NDA procedures, and communication channels." />
+      <Faq 
+        title="Scoping & Onboarding FAQ" 
+        subtitle="Common questions regarding kickoff timelines, pricing models, and lead setup." 
+      />
     </div>
   );
 }

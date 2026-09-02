@@ -3,70 +3,63 @@
 import React from 'react';
 import Link from 'next/link';
 import { 
-  Desktop, 
   Code, 
   ChartBar, 
   ShareNetwork, 
   ArrowUpRight, 
-  Sparkle,
   CheckCircle,
-  Lightning
+  Lightning,
+  PhoneCall
 } from '@phosphor-icons/react';
 
 export default function ServicesOverview() {
   const services = [
     {
-      title: "Websites & Web-Apps",
-      slug: "/services/websites-and-web-apps",
+      title: "High-Converting Web Apps",
       icon: Code,
-      tagline: "Flagship Digital Architecture",
-      description: "From aesthetic luxury marketing destinations to production-grade Next.js SaaS web applications, we engineer transcendent frontends and reactive edge database backends.",
-      highlights: ["Next.js 15 & React 19 Ecosystems", "Sub-Second Rendering & Custom UI", "Realtime WebSockets & Edge Security"],
+      tagline: "Speed, Prestige & Conversion",
+      description: "Custom-engineered Next.js platforms that load under 1 second. Built with interactive project galleries, mobile-first design, and instant phone call triggers.",
+      highlights: ["Sub-Second Mobile Load Times", "Custom Before/After Job Portfolios", "Instant SMS & Email Lead Routing"],
       colSpan: "md:col-span-2 lg:col-span-1"
     },
     {
-      title: "SEO & Growth",
-      slug: "/services/seo",
+      title: "Google Local SEO Domination",
       icon: ChartBar,
-      tagline: "Dominate Search Authority",
-      description: "Technical search engine optimization, programmatic content scaling, structural JSON-LD schemas, and Lighthouse performance tuning to drive organic acquisition.",
-      highlights: ["Technical Core Web Vitals Auditing", "Programmatic SEO Architecture", "High-Authority Digital Visibility"],
+      tagline: "Rank #1 in Your Service Area",
+      description: "Local SEO architecture, Google Business Profile optimization, zip-code service area pages, and schema data designed to capture high-margin inbound searches.",
+      highlights: ["Google Map Pack Optimization", "Targeted City & Zip-Code Landing Pages", "Rich Review & Star Schema Markup"],
       colSpan: "md:col-span-1"
     },
     {
-      title: "Social Media Strategy",
-      slug: "/services/social-media",
+      title: "Brand Authority & Social Growth",
       icon: ShareNetwork,
-      tagline: "Viral Digital Brand Resonance",
-      description: "Comprehensive content curation, digital narrative branding, design assets, and strategic distribution campaigns designed to capture developer and executive attention.",
-      highlights: ["High-Impact Video & Motion Assets", "Targeted Founder & Enterprise Branding", "Omnichannel Growth Mechanics"],
+      tagline: "Establish Market Authority",
+      description: "Professional brand assets, vehicle wrap/card mockups, social media profiles, and review generation systems that turn first-time viewers into loyal clients.",
+      highlights: ["High-Impact Social Media Profiles", "Automated Google Review Funnels", "Complete Brand & Uniform Assets"],
       colSpan: "md:col-span-1"
     }
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative transition-colors duration-300">
+    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
       
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
         <div className="space-y-4 max-w-2xl">
-          <span className="font-mono text-xs uppercase tracking-widest font-semibold text-primary-a flex items-center gap-2">
-            <Sparkle weight="fill" className="w-4 h-4 text-primary-a" />
-            <span>Studio Core Expertise</span>
-          </span>
-          <h2 className="font-heading text-3xl sm:text-5xl font-bold text-text-black tracking-tight">
-            Services Engineered for Growth
+          <h2 className="font-heading text-3xl sm:text-5xl font-bold text-text-content tracking-tight leading-tight">
+            Digital Architecture That <br className="hidden sm:inline" />
+            <span className="text-primary-color">Signs High-Ticket Contracts</span>
           </h2>
-          <p className="font-sans text-sm sm:text-base text-text-black/80 leading-relaxed">
-            We provide full-lifecycle digital consultancy—from initial interactive prototypes and custom backend architectures to aggressive organic distribution strategies.
+          <p className="font-sans text-base sm:text-lg text-text-content/70 leading-relaxed">
+            Everything you need to eliminate lead waste, outrank local competitors, and scale your trade business profitably.
           </p>
         </div>
 
         <Link
           href="/services"
-          className="w-fit inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-base-2a hover:bg-base-3a/40 border border-base-3a text-text-black font-button text-base font-bold uppercase tracking-wider transition-all shadow-sm shrink-0"
+          className="w-fit inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-base-b hover:bg-base-c border border-base-c text-text-content font-mono text-sm font-bold uppercase tracking-wider transition-all shadow-md shrink-0 cursor-pointer"
         >
-          <span>Explore All Studio Services</span>
-          <ArrowUpRight weight="bold" className="w-4 h-4 text-primary-a" />
+          <span>View All Service Specs</span>
+          <ArrowUpRight weight="bold" className="w-4 h-4 text-primary-color" />
         </Link>
       </div>
 
@@ -74,50 +67,49 @@ export default function ServicesOverview() {
         {services.map((service, idx) => {
           const Icon = service.icon;
           return (
-            <Link
+            <div
               key={idx}
-              href={service.slug}
-              className={`group relative rounded-3xl bg-base-2a/70 hover:bg-base-2a p-10 sm:p-12 border border-base-3a hover:border-primary-a transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between overflow-hidden space-y-8 ${service.colSpan}`}
+              className={`group relative rounded-3xl bg-base-b p-8 sm:p-10 border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-xl flex flex-col justify-between overflow-hidden space-y-8 ${service.colSpan}`}
             >
               {/* Top Accent line */}
-              <div className="absolute top-0 left-0 right-0 h-2 bg-primary-a opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-primary-color opacity-80 group-hover:opacity-100 transition-opacity" />
               
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <div className="w-14 h-14 rounded-2xl bg-base-1a border border-base-3a flex items-center justify-center text-text-black group-hover:scale-110 group-hover:border-primary-a transition-all duration-300 shadow-sm">
-                    <Icon weight="duotone" className="w-7 h-7 text-primary-a" />
+                  <div className="w-14 h-14 rounded-2xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-all duration-300 shadow-sm">
+                    <Icon weight="duotone" className="w-7 h-7" />
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-base-1a border border-base-3a flex items-center justify-center text-text-black/70 group-hover:text-text-white group-hover:bg-primary-a group-hover:border-primary-a transition-all duration-300">
-                    <ArrowUpRight weight="bold" className="w-5 h-5" />
-                  </div>
+                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-text-content/40 bg-base-a px-3 py-1 rounded-full border border-base-c">
+                    0{idx + 1}
+                  </span>
                 </div>
 
                 <div className="space-y-2">
-                  <span className="font-mono text-sm uppercase tracking-widest text-primary-a font-bold block">
+                  <span className="font-mono text-xs uppercase tracking-widest text-primary-color font-bold block">
                     {service.tagline}
                   </span>
-                  <h3 className="font-heading text-3xl sm:text-4xl font-bold text-text-black group-hover:text-primary-a transition-colors">
+                  <h3 className="font-heading text-2xl sm:text-3xl font-bold text-text-content group-hover:text-primary-color transition-colors">
                     {service.title}
                   </h3>
-                  <p className="font-sans text-base text-text-black/80 leading-relaxed pt-1">
+                  <p className="font-sans text-sm sm:text-base text-text-content/70 leading-relaxed pt-1">
                     {service.description}
                   </p>
                 </div>
               </div>
 
               {/* Bullet highlights */}
-              <div className="pt-6 border-t border-base-3a space-y-3">
-                <p className="font-mono text-[11px] uppercase tracking-wider text-text-black/70 font-bold">Key Capabilities:</p>
-                <ul className="space-y-2">
+              <div className="pt-6 border-t border-base-c/60 space-y-3">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-text-content/50 font-bold">Included Capabilities:</p>
+                <ul className="space-y-2.5">
                   {service.highlights.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm font-sans text-text-black">
-                      <CheckCircle weight="fill" className="w-4 h-4 text-primary-a shrink-0" />
+                    <li key={i} className="flex items-center gap-2.5 text-xs sm:text-sm font-sans text-text-content/90">
+                      <CheckCircle weight="fill" className="w-4 h-4 text-special-text shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>

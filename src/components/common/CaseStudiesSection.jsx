@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, Sparkle, Globe, Code, ChartBar, Desktop } from '@phosphor-icons/react';
+import { ArrowUpRight, Globe, Code, ChartBar, Desktop } from '@phosphor-icons/react';
 
 export default function CaseStudiesSection({ maxItems = 6, showHeader = true }) {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -88,10 +88,6 @@ export default function CaseStudiesSection({ maxItems = 6, showHeader = true }) 
       {showHeader && (
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="space-y-3 max-w-2xl">
-            <span className="font-mono text-xs uppercase tracking-widest font-semibold text-primary-a flex items-center gap-2">
-              <Sparkle weight="fill" className="w-4 h-4 text-primary-a" />
-              <span>Studio Case Studies & Past Impact</span>
-            </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-text-black tracking-tight">
               Selected Digital Accomplishments
             </h2>

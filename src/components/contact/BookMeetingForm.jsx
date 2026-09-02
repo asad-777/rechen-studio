@@ -9,8 +9,7 @@ import {
   Buildings, 
   ChatCircleText, 
   CheckCircle, 
-  WarningCircle,
-  Sparkle
+  WarningCircle
 } from '@phosphor-icons/react';
 
 export default function BookMeetingForm() {
@@ -206,13 +205,13 @@ export default function BookMeetingForm() {
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="w-full py-4 rounded-2xl bg-primary-a hover:bg-primary-a/90 text-text-white font-button text-lg font-bold uppercase tracking-wider shadow-md transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2.5"
+            className="w-full py-3.5 px-6 rounded-full bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm sm:text-base font-bold uppercase tracking-wider shadow-lg shadow-primary-color/20 transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
           >
             {status === 'loading' ? (
               <span className="animate-pulse">Configuring Calendar Invite...</span>
             ) : (
               <>
-                <CalendarCheck weight="fill" className="w-5 h-5 text-text-white" />
+                <CalendarCheck weight="fill" className="w-5 h-5 text-black" />
                 <span>Schedule Discovery Call</span>
               </>
             )}

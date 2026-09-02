@@ -8,8 +8,7 @@ import {
   InstagramLogo, 
   EnvelopeSimple, 
   DiscordLogo, 
-  ArrowUpRight,
-  Sparkle
+  ArrowUpRight
 } from '@phosphor-icons/react';
 
 export default function SocialLinks() {
@@ -51,10 +50,6 @@ export default function SocialLinks() {
   return (
     <div className="space-y-6 transition-colors duration-300">
       <div className="space-y-2">
-        <span className="font-mono text-xs uppercase tracking-widest font-semibold text-primary-a flex items-center gap-2">
-          <Sparkle weight="fill" className="w-4 h-4 text-primary-a" />
-          <span>Connect Across Ecosystems</span>
-        </span>
         <h3 className="font-heading text-2xl sm:text-3xl font-bold text-text-black tracking-tight">
           Our Official Social Channels
         </h3>

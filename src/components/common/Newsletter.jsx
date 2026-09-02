@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PaperPlaneRight, CheckCircle, WarningCircle, Sparkle } from '@phosphor-icons/react';
+import { PaperPlaneRight, CheckCircle, WarningCircle } from '@phosphor-icons/react';
 
 export default function Newsletter() {
   const [email, setEmail] = useState('');
@@ -77,19 +77,19 @@ export default function Newsletter() {
           <button
             type="submit"
             disabled={status === 'submitting' || status === 'success'}
-            className="px-6 py-3.5 rounded-2xl font-button text-lg font-bold uppercase tracking-wide bg-primary-a hover:bg-primary-a/90 text-text-white shadow-md transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-75"
+            className="px-6 py-3 rounded-full font-mono text-sm font-bold uppercase tracking-wider bg-primary-color hover:bg-primary-color/90 text-black shadow-md transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-75 cursor-pointer shrink-0"
           >
             {status === 'submitting' ? (
               <span>Joining...</span>
             ) : status === 'success' ? (
               <>
-                <CheckCircle weight="fill" className="w-5 h-5 text-text-white" />
+                <CheckCircle weight="fill" className="w-5 h-5 text-black" />
                 <span>Subscribed</span>
               </>
             ) : (
               <>
-                <span>Subscribe</span>
-                <PaperPlaneRight weight="bold" className="w-4 h-4 text-text-white" />
+                <span>Get Updates</span>
+                <PaperPlaneRight weight="bold" className="w-4 h-4 text-black" />
               </>
             )}
           </button>

@@ -8,9 +8,7 @@ import {
   ChartBar, 
   ShareNetwork, 
   ArrowRight, 
-  CheckCircle, 
-  Sparkle,
-  Target
+  CheckCircle
 } from '@phosphor-icons/react';
 
 export default function Consultation() {
@@ -68,10 +66,6 @@ export default function Consultation() {
     <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto transition-colors duration-300">
       
       <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-        <span className="font-mono text-xs uppercase tracking-widest font-bold text-text-black inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-2a border border-base-3a shadow-sm">
-          <Target weight="duotone" className="w-4 h-4 text-primary-a" />
-          <span>Consultative Scoping Domains</span>
-        </span>
         <h2 className="font-heading text-3xl sm:text-5xl font-bold text-text-black tracking-tight">
           Tailor Your Architecture Scoping
         </h2>

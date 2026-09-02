@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Trophy, Medal, Star, Crown, Sparkle, Certificate } from '@phosphor-icons/react';
+import { Trophy, Medal, Star, Crown, Certificate } from '@phosphor-icons/react';
 
 const ClutchBadge = ({ top1, top2, bottom1, bottom2 }) => (
   <div className="relative w-36 h-40 flex flex-col items-center justify-center text-center p-2 group-hover:scale-105 transition-transform duration-300">

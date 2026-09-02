@@ -2,10 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { PhoneCall, VideoCamera } from '@phosphor-icons/react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center  overflow-hidden bg-black text-white transition-colors duration-300">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-black text-white transition-colors duration-300">
       {/* Background Videos */}
       <div className="absolute inset-0 z-0">
         {/* Desktop Video */}
@@ -31,54 +32,64 @@ export default function Hero() {
         </video>
 
         {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      <div className="relative z-10 w-full lg:min-h-screen py-12 lg:px-26 px-12  flex flex-col lg:flex-row items-center justify-between gap-12">
+      <div className="relative z-10 w-full min-h-screen py-48 lg:px-16 px-6 sm:px-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 max-screen mx-auto">
         
         {/* Left Content */}
-        <div className="flex flex-col space-y-8 lg:space-y-10">
-          <h1 className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-medium tracking-tight leading-[1.05]">
-            Rechen Studio
+        <div className="flex flex-col space-y-6 lg:space-y-8 max-w-2xl">
+          <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05]">
+            Rechen <br />
+            <span className="text-primary-color">Studio</span>
           </h1>
           
-          <p className="text-2xl text-white/80 max-w-xl font-light leading-relaxed ">
-            We engineer high-performance websites and data-driven SEO strategies to scale your business.
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-sans leading-relaxed">
+            We engineer high-converting digital platforms, automated lead capture, and Google local SEO dominance for contractors and trade leaders.
           </p>
 
+          {/* Mobile Only Single CTA Button (Hidden on Desktop) */}
+          <div className="pt-2 md:hidden">
+            <Link href="/contact-us">
+              <button className="w-full sm:w-auto px-6 py-3 bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm font-bold uppercase tracking-wider rounded-full shadow-lg shadow-primary-color/20 flex items-center justify-center gap-2.5 transition-all duration-300 active:scale-95 cursor-pointer">
+                <span className="flex items-center gap-1.5">
+                  <PhoneCall weight="fill" className="w-4 h-4 text-black" />
+                  <span className="text-black/50 font-mono text-xs">/</span>
+                  <VideoCamera weight="fill" className="w-4 h-4 text-black" />
+                </span>
+                <span>Get In Touch</span>
+              </button>
+            </Link>
+          </div>
         </div>
 
-        {/* Right Content */}
-        <div className="flex flex-col w-full max-w-lg gap-10 mt-12  lg:mt-0 justify-center">
-          
-          {/* Stats / Value Props */}
-          <div className="flex flex-row items-center justify-start lg:justify-end  sm:px-12 lg:px-2 gap-6 md:gap-10">
-            <div className="flex flex-col flex-2 min-w-0">
-              <h3 className="text-xl md:text-3xl font-medium pb-2 border-b border-white/30 mb-4 whitespace-nowrap text-center">Projects</h3>
-              <div className="font-mono text-3xl md:text-4xl text-white text-center">5+</div>
-            </div>
-            <div className="flex flex-col flex-2 min-w-0">
-              <h3 className="text-xl md:text-3xl font-medium pb-2 border-b border-white/30 mb-4 whitespace-nowrap text-center">Clients</h3>
-              <div className="font-mono text-3xl md:text-4xl text-white text-center">3+</div>
-            </div>
-            <div className="flex flex-col flex-3 min-w-0">
-              <h3 className="text-xl md:text-3xl font-medium pb-2 border-b  border-white/30 mb-4 whitespace-nowrap text-center">Case Studies</h3>
-              <div className="font-mono text-3xl md:text-4xl text-white text-center">25+</div>
-            </div>
+        {/* Right Stats (Clean Minimal Typography matching design) */}
+        <div className="flex items-center gap-8 sm:gap-12 lg:gap-14 pt-4 lg:pt-0 shrink-0">
+          <div className="flex flex-col items-center justify-center text-center space-y-2.5">
+            <span className="font-mono text-sm sm:text-base text-white/90 border-b border-white/30 pb-1.5 tracking-wide inline-block text-center">
+              Niches
+            </span>
+            <span className="font-mono text-2xl sm:text-3xl font-bold text-white text-center">
+              10+
+            </span>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex lg:hidden flex-row gap-6 justify-center ">
-            <Link href="/contact-us">
-              <button className="btn bg-primary-a border-none  w-48 min-w-48 rounded-full px-10 py-6 text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
-                Book a Call
-              </button>
-            </Link>
-            <Link href="/contact-us">
-              <button className="btn hover:bg-primary-a bg-transparent border  border-white hover:border-none w-48 min-w-48  rounded-full px-2 py-6 text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
-                Schedule a Meeting
-              </button>
-            </Link>
+          <div className="flex flex-col items-center justify-center text-center space-y-2.5">
+            <span className="font-mono text-sm sm:text-base text-white/90 border-b border-white/30 pb-1.5 tracking-wide inline-block text-center">
+              Businesses Helped
+            </span>
+            <span className="font-mono text-2xl sm:text-3xl font-bold text-white text-center">
+              10+
+            </span>
+          </div>
+
+          <div className="flex flex-col items-center justify-center text-center space-y-2.5">
+            <span className="font-mono text-sm sm:text-base text-white/90 border-b border-white/30 pb-1.5 tracking-wide inline-block text-center">
+              Satisfied Clients
+            </span>
+            <span className="font-mono text-2xl sm:text-3xl font-bold text-white text-center">
+              10+
+            </span>
           </div>
         </div>
 
