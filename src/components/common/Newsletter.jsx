@@ -44,23 +44,22 @@ export default function Newsletter() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-base-1a p-8 md:p-12 border border-base-3a shadow-sm transition-colors duration-300">
-      {/* Decorative background glow */}
-      <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-base-3a/30 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-base-3a/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div className="relative overflow-hidden rounded-2xl bg-base-b/70 p-5 sm:p-6 border border-base-c/80 shadow-md">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-5 relative z-10">
+        
+        {/* Left info */}
+        <div className="text-left space-y-1 w-full lg:w-auto">
+          <h3 className="font-heading text-lg sm:text-xl font-bold text-text-content">
+            Subscribe to our Studio Newsletter
+          </h3>
+          <p className="font-sans text-xs sm:text-sm text-text-content/70">
+            SEO mechanics, conversion funnels, and modern tech updates delivered monthly.
+          </p>
+        </div>
 
-      <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
-
-        <h3 className="font-heading text-3xl sm:text-4xl font-bold text-text-black tracking-tight">
-          Subscribe to our Studio Newsletter
-        </h3>
-
-        <p className="font-sans text-sm sm:text-base text-text-black/80 leading-relaxed">
-          Get insider breakdowns of our latest digital products, SEO growth mechanics, custom web app architectures, and UI/UX design trends delivered monthly.
-        </p>
-
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
-          <div className="relative grow">
+        {/* Right input form */}
+        <div className="w-full lg:w-auto">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5 w-full lg:w-auto">
             <input
               type="email"
               value={email}
@@ -70,45 +69,44 @@ export default function Newsletter() {
               }}
               disabled={status === 'submitting' || status === 'success'}
               placeholder="Enter your email..."
-              className="w-full  px-5 py-3.5 rounded-2xl bg-base-2a text-text-black placeholder-text-black/50 font-mono text-sm border border-base-3a focus:outline-none focus:ring-2 focus:ring-primary-a focus:border-transparent transition-all disabled:opacity-50"
+              className="px-4 py-2.5 rounded-xl bg-base-a text-text-content placeholder-text-content/40 font-mono text-xs sm:text-sm border border-base-c focus:outline-none focus:border-primary-color transition-all w-full sm:w-64"
             />
-          </div>
 
-          <button
-            type="submit"
-            disabled={status === 'submitting' || status === 'success'}
-            className="px-6 py-3 rounded-full font-mono text-sm font-bold uppercase tracking-wider bg-primary-color hover:bg-primary-color/90 text-black shadow-md transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-75 cursor-pointer shrink-0"
-          >
-            {status === 'submitting' ? (
-              <span>Joining...</span>
-            ) : status === 'success' ? (
-              <>
-                <CheckCircle weight="fill" className="w-5 h-5 text-black" />
-                <span>Subscribed</span>
-              </>
-            ) : (
-              <>
-                <span>Get Updates</span>
-                <PaperPlaneRight weight="bold" className="w-4 h-4 text-black" />
-              </>
-            )}
-          </button>
-        </form>
+            <button
+              type="submit"
+              disabled={status === 'submitting' || status === 'success'}
+              className="px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-primary-color hover:bg-primary-color/90 text-black shadow-sm transition-all flex items-center justify-center gap-1.5 disabled:opacity-75 cursor-pointer shrink-0"
+            >
+              {status === 'submitting' ? (
+                <span>Joining...</span>
+              ) : status === 'success' ? (
+                <>
+                  <CheckCircle weight="fill" className="w-4 h-4 text-black" />
+                  <span>Subscribed</span>
+                </>
+              ) : (
+                <>
+                  <span>Join</span>
+                  <PaperPlaneRight weight="bold" className="w-3.5 h-3.5 text-black" />
+                </>
+              )}
+            </button>
+          </form>
 
-        {/* Feedback states */}
-        {status === 'success' && (
-          <div className="p-3 rounded-xl bg-primary-a/20 border border-primary-a text-text-black font-mono text-xs inline-flex items-center gap-2 animate-in fade-in zoom-in duration-300">
-            <CheckCircle weight="fill" className="w-4 h-4 text-primary-a" />
-            <span>Welcome aboard! Check your inbox for your confirmation link.</span>
-          </div>
-        )}
-
-        {status === 'error' && (
-          <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-600 font-mono text-xs inline-flex items-center gap-2 animate-in fade-in zoom-in duration-300">
-            <WarningCircle weight="fill" className="w-4 h-4" />
-            <span>{errorMessage}</span>
-          </div>
-        )}
+          {/* Inline Feedback */}
+          {status === 'success' && (
+            <div className="mt-2 text-special-text font-mono text-xs flex items-center gap-1.5">
+              <CheckCircle weight="fill" className="w-3.5 h-3.5 text-special-text" />
+              <span>Subscribed! Check your inbox for confirmation.</span>
+            </div>
+          )}
+          {status === 'error' && (
+            <div className="mt-2 text-red-400 font-mono text-xs flex items-center gap-1.5">
+              <WarningCircle weight="fill" className="w-3.5 h-3.5 text-red-400" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+        </div>
 
       </div>
     </div>

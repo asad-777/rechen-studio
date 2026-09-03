@@ -1,39 +1,39 @@
 'use client';
 
 import React from 'react';
-import { ChartLineUp, Trophy, Users, ShieldCheck } from '@phosphor-icons/react';
+import { Stack, Trophy, ShieldCheck, Sparkle } from '@phosphor-icons/react';
 
 export default function ImpactStats() {
   const stats = [
     {
-      icon: ChartLineUp,
-      value: "<1.0s",
-      label: "Sub-Second Load Time",
-      description: "Edge-rendered performance ensuring zero mobile lead bounce."
+      icon: Stack,
+      value: "All-in-1",
+      label: "Web, Social & GBP Under One Roof",
+      description: "Complete custom web development, active social media management, and Google Business Profile optimization fully handled under one roof."
     },
     {
       icon: Trophy,
-      value: "3.4x",
+      value: "10x boost",
       label: "Average Conversion Boost",
-      description: "More calls and quote submissions compared to legacy/Wix templates."
-    },
-    {
-      icon: Users,
-      value: "100%",
-      label: "Code & Asset Ownership",
-      description: "Zero vendor lock-in or recurring hostage fees. You own everything."
+      description: "High-performance lead funnels engineered to generate up to 10x more phone calls, inquiries, and booked jobs."
     },
     {
       icon: ShieldCheck,
-      value: "7-14",
-      label: "Day Turnkey Delivery",
-      description: "Rapid sprint turnaround so your new sales engine is live fast."
+      value: "100% ownership",
+      label: "Code & Asset Ownership",
+      description: "Zero vendor lock-in or recurring hostage fees. You own all code, domains, content, and creative assets outright."
+    },
+    {
+      icon: Sparkle,
+      value: "#1 on search",
+      label: "Rank #1 on Google & AI Search",
+      description: "Dominant local SEO and Generative Engine Optimization so you rank #1 on Google and appear at the top of AI search results."
     }
   ];
 
   return (
     <section className="py-20 relative overflow-hidden bg-base-b/50 border-b border-base-c">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-content tracking-tight">
@@ -53,7 +53,7 @@ export default function ImpactStats() {
                 className="group relative p-8 rounded-3xl bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-lg flex flex-col justify-between space-y-6"
               >
                 <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-2xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-all duration-300">
+                  <div className="w-12 h-fit min-h-12 rounded-2xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-all duration-300">
                     <Icon weight="duotone" className="w-6 h-6 text-primary-color" />
                   </div>
                   <div className="font-heading text-4xl lg:text-5xl font-bold tracking-tight text-primary-color">

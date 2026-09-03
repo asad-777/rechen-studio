@@ -1,45 +1,189 @@
 'use client';
 
-import React from 'react';
-import { 
-  XCircle, 
-  CheckCircle, 
-  TrendDown, 
-  DeviceMobileCamera, 
-  GlobeSimple,
-  ArrowRight,
-  PhoneCall,
-  VideoCamera
-} from '@phosphor-icons/react';
-import Link from 'next/link';
+import React, { useRef, useState, useEffect } from 'react';
+
+function FlowingProblemItem({ item, index }) {
+  const ref = useRef(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let ticking = false;
+    const updateProgress = () => {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      const start = windowHeight * 0.88;
+      const end = windowHeight * 0.40;
+      const rawProgress = (start - rect.top) / (start - end);
+      const clamped = Math.min(Math.max(rawProgress, 0), 1);
+      
+      setProgress(clamped);
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+
+  const isRight = index % 2 === 1;
+  const bodyWords = item.description.split(' ');
+
+  return (
+    <div 
+      ref={ref}
+      className={`grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 py-12 sm:py-20 relative z-10 items-center`}
+    >
+      {/* Left Column Container */}
+      <div className={`space-y-4 ${isRight ? 'md:order-2 md:pl-8 lg:pl-14' : 'md:order-1 md:pr-8 lg:pr-14'}`}>
+        {/* Headline with Orange Keywords */}
+        <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+          {item.headlineSegments.map((segment, sIdx) => {
+            const words = segment.text.split(' ');
+            return words.map((word, wIdx) => {
+              const active = progress > 0.3;
+              const opacity = Math.min(Math.max(progress * 1.5 + 0.25, 0.25), 1);
+              
+              if (segment.highlight) {
+                return (
+                  <span
+                    key={`${sIdx}-${wIdx}`}
+                    className="inline-block mr-[0.3em] transition-all duration-300 font-bold"
+                    style={{
+                      color: active ? 'var(--primary-color)' : 'rgba(249, 115, 22, 0.35)',
+                      opacity: opacity,
+                      textShadow: active && progress > 0.5 ? '0 0 24px rgba(249, 115, 22, 0.45)' : 'none'
+                    }}
+                  >
+                    {word}
+                  </span>
+                );
+              }
+
+              return (
+                <span
+                  key={`${sIdx}-${wIdx}`}
+                  className="inline-block mr-[0.3em] transition-all duration-300"
+                  style={{
+                    color: active ? '#ffffff' : 'rgba(238, 238, 238, 0.25)',
+                    opacity: opacity,
+                    textShadow: active && progress > 0.6 ? '0 0 24px rgba(255, 255, 255, 0.25)' : 'none'
+                  }}
+                >
+                  {word}
+                </span>
+              );
+            });
+          })}
+        </h3>
+
+        {/* Flowing Body Text */}
+        <p className="font-sans text-base sm:text-lg md:text-xl text-text-content leading-relaxed pt-2">
+          {bodyWords.map((word, idx) => {
+            const wordThreshold = (idx / bodyWords.length) * 0.8;
+            const active = progress >= wordThreshold;
+            const opacity = Math.min(Math.max((progress - wordThreshold) * 5 + 0.25, 0.25), 1);
+
+            return (
+              <span
+                key={idx}
+                className="inline-block mr-[0.3em] transition-all duration-200 font-normal"
+                style={{
+                  color: active ? 'rgba(238, 238, 238, 0.95)' : 'rgba(238, 238, 238, 0.25)',
+                  opacity: opacity
+                }}
+              >
+                {word}
+              </span>
+            );
+          })}
+        </p>
+      </div>
+
+      {/* Empty Column for Opposite Side (Ensures text never crosses into or touches the path) */}
+      <div className={`hidden md:block ${isRight ? 'md:order-1' : 'md:order-2'}`} aria-hidden="true" />
+    </div>
+  );
+}
 
 export default function ProblemStatement() {
+  const containerRef = useRef(null);
+  const [pathProgress, setPathProgress] = useState(0);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      const start = windowHeight * 0.85;
+      const totalScrollable = rect.height + windowHeight * 0.35;
+      const current = start - rect.top;
+      const progress = Math.min(Math.max(current / totalScrollable, 0), 1);
+      
+      setPathProgress(progress);
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(handleScroll);
+        ticking = true;
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+
   const problems = [
     {
-      icon: GlobeSimple,
-      badge: "The Missing Presence Trap",
-      title: "Zero Web Presence or Dead Socials",
+      headlineSegments: [
+        { text: "Zero Web Presence", highlight: true },
+        { text: " or ", highlight: false },
+        { text: "Dead Socials.", highlight: true }
+      ],
       description: "Relying strictly on an abandoned Facebook page or word-of-mouth. When high-ticket homeowners search for you on Google, your competitors take the call simply because they look legitimate."
     },
     {
-      icon: DeviceMobileCamera,
-      badge: "The AI / DIY Template Trap",
-      title: "Broken Lovable & Wix Single-Pagers",
+      headlineSegments: [
+        { text: "Broken Lovable & Wix", highlight: true },
+        { text: " Single-Pagers.", highlight: false }
+      ],
       description: "Buggy single-page websites that load in 5+ seconds, break on mobile devices, and have broken contact forms where submitted quote requests vanish into thin air."
     },
     {
-      icon: TrendDown,
-      badge: "The Revenue Leak",
-      title: "Losing $10,000+ High-Ticket Jobs",
+      headlineSegments: [
+        { text: "Losing ", highlight: false },
+        { text: "$10,000+ High-Ticket Jobs.", highlight: true }
+      ],
       description: "When commercial clients or homeowners want roofing, remodeling, or electrical work, an amateur digital presence instantly destroys trust before you even quote."
     }
   ];
 
   return (
-    <section id="problem" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+    <section id="problem" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 overflow-hidden">
       
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-24 space-y-4">
         <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-text-content leading-tight">
           Why Most Contractors Are <br className="hidden sm:inline" />
           <span className="text-primary-color">Leaking High-Ticket Jobs</span>
@@ -50,130 +194,69 @@ export default function ProblemStatement() {
         </p>
       </div>
 
-      {/* 3 Core Problem Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        {problems.map((item, idx) => {
-          const IconComponent = item.icon;
-          return (
-            <div 
-              key={idx}
-              className="group relative p-8 rounded-3xl bg-base-b border border-base-c hover:border-primary-color/60 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg"
-            >
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div className="w-14 h-14 rounded-2xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-transform">
-                    <IconComponent weight="duotone" className="w-7 h-7" />
-                  </div>
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-text-content/50 bg-base-a px-3 py-1 rounded-full border border-base-c">
-                    0{idx + 1}
-                  </span>
-                </div>
-
-                <div className="space-y-3">
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-primary-color">
-                    {item.badge}
-                  </span>
-                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-text-content">
-                    {item.title}
-                  </h3>
-                  <p className="font-sans text-sm text-text-content/70 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="pt-6 mt-6 border-t border-base-c/60 flex items-center gap-2 text-xs font-mono text-text-content/50">
-                <XCircle weight="fill" className="w-4 h-4 text-red-500 shrink-0" />
-                <span>Zero conversion & wasted leads</span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Before vs After Comparison Grid */}
-      <div className="p-8 sm:p-12 rounded-3xl bg-base-b border border-base-c relative overflow-hidden shadow-2xl">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-color/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Dotted Curved Pathway & Staggered Items Container */}
+      <div ref={containerRef} className="relative">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-text-content">
-              Stop settling for broken systems. Start dominating your local market.
-            </h3>
-            <p className="font-sans text-sm text-text-content/70 leading-relaxed">
-              We replace amateur templates with engineered digital engines that capture leads, book phone calls, and establish undisputed market authority.
-            </p>
-            <div className="pt-2">
-              <Link href="/contact-us">
-                <button className="px-6 py-3 bg-primary-color text-black font-mono text-sm sm:text-base font-bold uppercase tracking-wider rounded-full flex items-center gap-2.5 hover:bg-primary-color/90 hover:scale-105 transition-all shadow-lg cursor-pointer">
-                  <span className="flex items-center gap-1.5 text-black">
-                    <PhoneCall weight="fill" className="w-4 h-4" />
-                    <span className="opacity-50 font-mono text-xs">/</span>
-                    <VideoCamera weight="fill" className="w-4 h-4" />
-                  </span>
-                  <span>Get In Touch</span>
-                </button>
-              </Link>
-            </div>
-          </div>
+        {/* Central Dotted Curved SVG Path (Runs down the center corridor between left and right items) */}
+        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-28 lg:w-36 pointer-events-none z-0">
+          <svg 
+            className="w-full h-full"
+            viewBox="0 0 100 900" 
+            fill="none" 
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <filter id="dot-glow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
 
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            
-            {/* The Old Way */}
-            <div className="p-6 rounded-2xl bg-base-a/80 border border-red-500/20 space-y-4">
-              <div className="flex items-center gap-2 text-red-400 font-mono text-xs font-bold uppercase tracking-wider">
-                <XCircle weight="fill" className="w-5 h-5 text-red-500" />
-                <span>The Amateur Way</span>
-              </div>
-              <ul className="space-y-3 font-sans text-xs text-text-content/70">
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-0.5">✕</span>
-                  <span>Slow 5+ second load times on mobile</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-0.5">✕</span>
-                  <span>Buggy Lovable/v0 code that breaks</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-0.5">✕</span>
-                  <span>Forms that don&apos;t notify your phone</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-0.5">✕</span>
-                  <span>Invisible on Google Local Maps</span>
-                </li>
-              </ul>
-            </div>
+              {/* Reveal Mask for Dotted Path */}
+              <mask id="dotted-reveal-mask">
+                <path 
+                  d="M 50 10 C 20 220, 80 360, 50 520 C 20 680, 80 780, 50 900"
+                  stroke="white" 
+                  strokeWidth="30"
+                  fill="none"
+                  pathLength="1"
+                  strokeDasharray="1"
+                  strokeDashoffset={Math.max(1 - pathProgress * 1.12, 0)}
+                  className="transition-all duration-100 ease-out"
+                />
+              </mask>
+            </defs>
 
-            {/* The Rechen Studio Way */}
-            <div className="p-6 rounded-2xl bg-base-a border border-primary-color/40 space-y-4 shadow-md">
-              <div className="flex items-center gap-2 text-special-text font-mono text-xs font-bold uppercase tracking-wider">
-                <CheckCircle weight="fill" className="w-5 h-5 text-special-text" />
-                <span>The Rechen Studio Way</span>
-              </div>
-              <ul className="space-y-3 font-sans text-xs text-text-content">
-                <li className="flex items-start gap-2">
-                  <span className="text-special-text mt-0.5">✓</span>
-                  <span>Instant 0.8s load speed (Next.js Edge)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-special-text mt-0.5">✓</span>
-                  <span>Bespoke, premium UI tailored to your trade</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-special-text mt-0.5">✓</span>
-                  <span>Instant SMS & Email lead alerts</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-special-text mt-0.5">✓</span>
-                  <span>Local SEO optimized to rank #1 locally</span>
-                </li>
-              </ul>
-            </div>
+            {/* Dim Dotted Base Track */}
+            <path 
+              d="M 50 10 C 20 220, 80 360, 50 520 C 20 680, 80 780, 50 900"
+              stroke="var(--primary-color)" 
+              strokeOpacity="0.2"
+              strokeWidth="4" 
+              strokeLinecap="round"
+              strokeDasharray="4 14"
+              fill="none"
+            />
 
-          </div>
+            {/* Active Glowing Dotted Track (Lights up with Scroll Progress) */}
+            <g mask="url(#dotted-reveal-mask)">
+              <path 
+                d="M 50 10 C 20 220, 80 360, 50 520 C 20 680, 80 780, 50 900"
+                stroke="var(--primary-color)" 
+                strokeWidth="5" 
+                strokeLinecap="round"
+                strokeDasharray="4 14"
+                fill="none"
+                filter="url(#dot-glow)"
+              />
+            </g>
+          </svg>
+        </div>
 
+        {/* Alternating Items: Each completely sits on one side of the central path */}
+        <div className="space-y-4 sm:space-y-6 relative z-10">
+          {problems.map((item, idx) => (
+            <FlowingProblemItem key={idx} item={item} index={idx} />
+          ))}
         </div>
       </div>
 
