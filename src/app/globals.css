@@ -76,7 +76,7 @@
     --base-b: #1a1a1a;
     --base-c: #333333;
     --text-content: #eeeeee;
-    --primary-color: #FF8400; /* Orange */
+    --primary-color: #14C38E; /* Emerald Jade */
     --secondary-color: #15803d; /* Parrot dark green */
     --special-text: #86efac; /* Light shade of green */
 
@@ -172,7 +172,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ea580c; /* Tailwind orange-600 */
+  background: #0ea778; /* Emerald hover */
 }
 
 /* Firefox support */

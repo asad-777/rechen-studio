@@ -52,7 +52,7 @@ function FlowingProcessStep({ step, index }) {
         
        
 
-        {/* Headline with Orange Highlights */}
+        {/* Headline with Highlights */}
         <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold tracking-tight leading-snug">
           {step.headlineSegments.map((segment, sIdx) => {
             const words = segment.text.split(' ');
@@ -66,9 +66,9 @@ function FlowingProcessStep({ step, index }) {
                     key={`${sIdx}-${wIdx}`}
                     className="inline-block mr-[0.3em] transition-all duration-300 font-bold"
                     style={{
-                      color: active ? 'var(--primary-color)' : 'rgba(249, 115, 22, 0.35)',
+                      color: active ? 'var(--primary-color)' : 'rgba(20, 195, 142, 0.35)',
                       opacity: opacity,
-                      textShadow: active && progress > 0.5 ? '0 0 20px rgba(249, 115, 22, 0.4)' : 'none'
+                      textShadow: active && progress > 0.5 ? '0 0 20px rgba(20, 195, 142, 0.4)' : 'none'
                     }}
                   >
                     {word}
@@ -280,7 +280,7 @@ export default function ProcessSteps() {
               fill="none" 
             />
 
-            {/* Glowing Illuminated Orange Dotted Path Revealed on Scroll */}
+            {/* Glowing Illuminated Dotted Path Revealed on Scroll */}
             <path 
               d="M 50 10 C 25 180, 75 320, 50 480 C 25 640, 75 780, 50 940 C 30 1020, 60 1070, 50 1100"
               stroke="var(--primary-color)" 
