@@ -72,7 +72,6 @@ export default function Navbar() {
     { name: 'SERVICES', href: '/services', hasDropdown: true },
     { name: 'WHO WE HELP', href: '/#niches', hasDropdown: true },
     { name: 'WHO WE ARE', href: '/about', hasDropdown: true },
-    { name: 'CONTACT', href: '/contact-us', hasDropdown: false },
   ];
 
   const isHeaderSolid = isScrolled || activeDropdown !== null;
@@ -119,8 +118,8 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className={`font-mono text-sm 2xl:text-base font-semibold transition-colors flex items-center gap-1.5 py-2 ${
-                    activeDropdown === link.name ? 'text-primary-color' : 'text-text-content/80 hover:text-primary-color'
+                  className={`font-mono text-sm 2xl:text-base lg:text-lg font-semibold transition-colors flex items-center gap-1.5 py-2 ${
+                    activeDropdown === link.name ? 'text-primary-color' : 'text-text-content/90 hover:text-primary-color'
                   }`}
                 >
                   <span>{link.name}</span>
@@ -139,12 +138,12 @@ export default function Navbar() {
 
           {/* Right: Action Buttons */}
           <div className="hidden lg:flex items-center gap-4 shrink-0">
-            <Link href="/contact-us">
-              <button className="px-5 py-2.5 bg-primary-color hover:bg-primary-color/90 text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full shadow-md shadow-primary-color/20 flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer">
-                <span className="flex items-center gap-1.5 text-black">
-                  <PhoneCall weight="fill" className="w-4 h-4" />
-                  <span className="opacity-50 font-mono text-xs">/</span>
-                  <VideoCamera weight="fill" className="w-4 h-4" />
+            <Link href="/contact-us" className='group'>
+              <button className="px-5 py-2.5 bg-base-1a/50 backdrop-blur-2xl  hover:bg-primary-color/90 hover:text-black text-primary-color border-2 border-primary-color font-mono text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer">
+                <span className="flex items-center  gap-1.5 text-black">
+                  <PhoneCall weight="fill" className="w-4 h-4 text-primary-color group-hover:text-black" />
+                  <span className="opacity-50 font-mono text-xs text-primary-color group-hover:text-black">/</span>
+                  <VideoCamera weight="fill" className="w-4 h-4 text-primary-color group-hover:text-black" />
                 </span>
                 <span>Get In Touch</span>
               </button>

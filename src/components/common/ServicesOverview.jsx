@@ -13,7 +13,7 @@ import {
 export default function ServicesOverview() {
   const services = [
     {
-      title: "High-Converting Web Apps",
+      title: "Custom Coded Websites",
       icon: Code,
       svg: "/svgs/undraw_system-interface_jffo.svg",
       tagline: "Speed, Prestige & Conversion",
@@ -22,7 +22,7 @@ export default function ServicesOverview() {
       colSpan: "md:col-span-2 lg:col-span-1"
     },
     {
-      title: "Google Local SEO Domination",
+      title: "Local & Ai SEO ",
       icon: ChartBar,
       svg: "/svgs/undraw_growth-analytics_vzjz.svg",
       tagline: "Rank #1 in Your Service Area",
@@ -31,7 +31,7 @@ export default function ServicesOverview() {
       colSpan: "md:col-span-1"
     },
     {
-      title: "Brand Authority & Social Growth",
+      title: "Social Growth",
       icon: ShareNetwork,
       svg: "/svgs/undraw_social-media-post_tg7l.svg",
       tagline: "Establish Market Authority",
@@ -45,10 +45,10 @@ export default function ServicesOverview() {
     <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
       
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
-        <div className="space-y-4 max-w-2xl">
+        <div className="space-y-4 max-w-3xl">
           <h2 className="font-heading text-3xl sm:text-5xl font-bold text-text-content tracking-tight leading-tight">
-            Digital Architecture That <br className="hidden sm:inline" />
-            <span className="text-primary-color">Signs High-Ticket Contracts</span>
+            Digital Architecture That 
+            <span className="text-primary-color"> Signs High-Ticket Contracts</span>
           </h2>
           <p className="font-sans text-base sm:text-lg text-text-content/70 leading-relaxed">
             Everything you need to eliminate lead waste, outrank local competitors, and scale your trade business profitably.
@@ -59,7 +59,7 @@ export default function ServicesOverview() {
           href="/services"
           className="w-fit inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-base-b hover:bg-base-c border border-base-c text-text-content font-mono text-sm font-bold uppercase tracking-wider transition-all shadow-md shrink-0 cursor-pointer"
         >
-          <span>View All Service Specs</span>
+          <span>See All Service</span>
           <ArrowUpRight weight="bold" className="w-4 h-4 text-primary-color" />
         </Link>
       </div>
@@ -77,15 +77,7 @@ export default function ServicesOverview() {
               
               <div className="space-y-5">
                 
-                {/* Header Icon + Counter */}
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-base-a border border-base-c flex items-center justify-center text-primary-color group-hover:scale-110 transition-all duration-300 shadow-sm">
-                    <Icon weight="duotone" className="w-6 h-6" />
-                  </div>
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-text-content/40 bg-base-a px-3 py-1 rounded-full border border-base-c">
-                    0{idx + 1}
-                  </span>
-                </div>
+               
 
                 {/* Frameless Vector SVG Illustration */}
                 <div className="h-36 w-full flex items-center justify-center overflow-hidden">
@@ -99,13 +91,10 @@ export default function ServicesOverview() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <span className="font-mono text-xs uppercase tracking-widest text-primary-color font-bold block">
-                    {service.tagline}
-                  </span>
-                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-text-content group-hover:text-primary-color transition-colors">
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-text-content group-hover:text-primary-color mt-6 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="font-sans text-xs sm:text-sm text-text-content/70 leading-relaxed pt-1">
+                  <p className="font-sans text-xs sm:text-sm text-text-content/70 leading-relaxed pt-2">
                     {service.description}
                   </p>
                 </div>

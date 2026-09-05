@@ -42,10 +42,7 @@ export default function BrandsMarquee() {
         
         {/* Prominent Impact Header */}
         <div className="max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-base-b border border-primary-color/40 text-primary-color font-mono text-xs sm:text-sm font-bold uppercase tracking-wider shadow-sm">
-            <Sparkle weight="fill" className="w-4 h-4 text-primary-color animate-pulse" />
-            <span>Powered By Modern AI & Enterprise Cloud Infrastructure</span>
-          </div>
+          
           
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-text-content leading-tight">
             Integrated With <span className="text-primary-color">World-Class AI</span> & Tech Platforms

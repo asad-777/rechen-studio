@@ -2,10 +2,6 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  VideoCamera, 
-  CheckCircle 
-} from '@phosphor-icons/react';
 
 function FlowingProcessStep({ step, index }) {
   const ref = useRef(null);
@@ -54,21 +50,7 @@ function FlowingProcessStep({ step, index }) {
       {/* Content Column */}
       <div className={`space-y-3.5 ${isRight ? 'md:order-2 md:pl-8 lg:pl-12' : 'md:order-1 md:pr-8 lg:pr-12'}`}>
         
-        {/* Step Badge & Timeline */}
-        <div 
-          className="flex items-center gap-2.5 transition-opacity duration-300"
-          style={{
-            opacity: 0.35 + 0.65 * Math.min(progress * 2, 1)
-          }}
-        >
-          <span className="font-mono text-xs font-bold text-primary-color uppercase tracking-widest">
-            Step {step.number}
-          </span>
-          <span className="text-text-content/30">•</span>
-          <span className="font-mono text-[11px] font-semibold text-text-content/60 bg-base-b px-2.5 py-0.5 rounded-full border border-base-c/60">
-            {step.timeline}
-          </span>
-        </div>
+       
 
         {/* Headline with Orange Highlights */}
         <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold tracking-tight leading-snug">
@@ -133,21 +115,7 @@ function FlowingProcessStep({ step, index }) {
           })}
         </p>
 
-        {/* Compact Deliverable Pills */}
-        <div 
-          className="pt-2 flex flex-wrap gap-1.5 transition-opacity duration-300"
-          style={{ opacity: 0.3 + 0.7 * Math.min(progress * 1.5, 1) }}
-        >
-          {step.deliverables.map((pill, pIdx) => (
-            <span 
-              key={pIdx}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-base-b border border-base-c/60 text-text-content/80 font-mono text-[10px] sm:text-xs font-medium"
-            >
-              <CheckCircle weight="fill" className="w-3 h-3 text-special-text shrink-0" />
-              <span>{pill}</span>
-            </span>
-          ))}
-        </div>
+        
       </div>
 
       {/* Opposite Side Frameless Floating Illustration */}
@@ -340,16 +308,29 @@ export default function ProcessSteps() {
       </div>
 
       {/* Discovery Prompt */}
-      <div className="mt-20 p-8 sm:p-10 rounded-3xl bg-base-b border border-base-c text-center flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl relative z-10">
-        <div className="flex items-center gap-4 text-left">
-          <div className="w-12 h-12 rounded-2xl bg-base-a border border-base-c flex items-center justify-center text-primary-color shrink-0 shadow-sm">
-            <VideoCamera weight="duotone" className="w-6 h-6 text-primary-color" />
-          </div>
-          <div>
-            <h4 className="font-heading text-lg font-bold text-text-content">Prefer a quick walkthrough before committing?</h4>
-            <p className="font-sans text-xs sm:text-sm text-text-content/70">We&apos;ll show you live client results and our exact sprint schedule in 15 minutes.</p>
-          </div>
+      <div className="mt-20 p-8 sm:p-10 rounded-3xl bg-base-b border border-base-c flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 shadow-xl relative z-10">
+        {/* Text */}
+        <div className="space-y-1.5 text-center lg:text-left max-w-xl">
+          <h4 className="font-heading text-lg sm:text-xl font-bold text-text-content">
+            Prefer a quick walkthrough before committing?
+          </h4>
+          <p className="font-sans text-xs sm:text-sm text-text-content/70">
+            We&apos;ll show you live client results and our exact sprint schedule in 15 minutes.
+          </p>
         </div>
+
+        {/* SVG Illustration (Between text and button) */}
+        <div className="w-28 h-28 sm:w-32 sm:h-32 shrink-0 flex items-center justify-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src="/svgs/undraw_visual-explanation_vd4l.svg" 
+            alt="Walkthrough demonstration illustration" 
+            className="max-h-full max-w-full object-contain filter drop-shadow-sm scale-140 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+
+        {/* Action Button */}
         <Link
           href="/contact-us"
           className="px-6 py-3.5 rounded-full bg-primary-color hover:bg-primary-color/90 text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-md hover:scale-105 cursor-pointer"

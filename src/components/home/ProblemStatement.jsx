@@ -172,7 +172,7 @@ export default function ProblemStatement() {
 
   const problems = [
     {
-      svg: "/svgs/undraw_no-signal_nqfa.svg",
+      svg: "/svgs/undraw_fast-changing-world_3ee6.svg",
       headlineSegments: [
         { text: "Zero Web Presence", highlight: true },
         { text: " or ", highlight: false },
@@ -181,10 +181,10 @@ export default function ProblemStatement() {
       description: "Relying strictly on an abandoned Facebook page or word-of-mouth. When high-ticket homeowners search for you on Google, your competitors take the call simply because they look legitimate."
     },
     {
-      svg: "/svgs/undraw_document-warning_2es6.svg",
+      svg: "/svgs/undraw_throw-away_aaho.svg",
       headlineSegments: [
-        { text: "Broken Lovable & Wix", highlight: true },
-        { text: " Single-Pagers.", highlight: false }
+        { text: "Broken Lovable & Wordpress", highlight: true },
+        { text: "Pages.", highlight: false }
       ],
       description: "Buggy single-page websites that load in 5+ seconds, break on mobile devices, and have broken contact forms where submitted quote requests vanish into thin air."
     },
@@ -192,7 +192,7 @@ export default function ProblemStatement() {
       svg: "/svgs/undraw_fall_zh0m.svg",
       headlineSegments: [
         { text: "Losing ", highlight: false },
-        { text: "$10,000+ High-Ticket Jobs.", highlight: true }
+        { text: "$1000+ High-Ticket Jobs.", highlight: true }
       ],
       description: "When commercial clients or homeowners want roofing, remodeling, or electrical work, an amateur digital presence instantly destroys trust before you even quote."
     }
