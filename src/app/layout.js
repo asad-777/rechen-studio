@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import { Analytics } from "@vercel/analytics/next"
 
 const spaceMono = localFont({
   src: [
@@ -57,11 +58,12 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-full flex flex-col bg-base-1a text-text-black selection:bg-primary-a selection:text-text-white transition-colors duration-300">
         <Navbar />
-        <main className="flex-grow">
+        <main className="grow">
           {children}
         </main>
         <Footer />
       </body>
+      <Analytics />
     </html>
   );
 }
