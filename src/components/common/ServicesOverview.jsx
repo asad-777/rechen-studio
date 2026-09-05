@@ -9,6 +9,7 @@ import {
   ArrowUpRight, 
   CheckCircle,
 } from '@phosphor-icons/react';
+import { trackEvent } from '../../lib/analytics';
 
 export default function ServicesOverview() {
   const services = [
@@ -57,6 +58,7 @@ export default function ServicesOverview() {
 
         <Link
           href="/services"
+          onClick={() => trackEvent('services_overview_click', { action: 'see_all_services' })}
           className="w-fit inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-base-b hover:bg-base-c border border-base-c text-text-content font-mono text-sm font-bold uppercase tracking-wider transition-all shadow-md shrink-0 cursor-pointer"
         >
           <span>See All Service</span>

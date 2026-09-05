@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { CalendarCheck, ArrowRight, ShieldCheck } from '@phosphor-icons/react';
+import { trackEvent } from '../../lib/analytics';
 
 export default function ContactCta() {
   return (
@@ -39,6 +40,7 @@ export default function ContactCta() {
             <div className="flex flex-col sm:flex-row items-center gap-3.5 pt-2">
               <Link
                 href="/contact-us"
+                onClick={() => trackEvent('bottom_cta_click', { cta_label: 'Book A 15-Min Discovery Call' })}
                 className="w-full sm:w-auto px-7 py-3.5 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-primary-color hover:bg-primary-color/90 text-black shadow-lg shadow-primary-color/20 flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-105 cursor-pointer"
               >
                 <CalendarCheck weight="fill" className="w-5 h-5 text-black" />
@@ -47,6 +49,7 @@ export default function ContactCta() {
 
               <Link
                 href="/services"
+                onClick={() => trackEvent('bottom_cta_click', { cta_label: 'Explore All Services' })}
                 className="w-full sm:w-auto px-6 py-3.5 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-base-a hover:bg-base-c/50 border border-base-c text-text-content flex items-center justify-center gap-2 transition-all duration-300 shadow-sm"
               >
                 <span>Explore All Services</span>

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { CaretDown, ChatCircleText } from '@phosphor-icons/react';
 import Link from 'next/link';
+import { trackEvent } from '../../lib/analytics';
 
 export default function Faq({ 
   title = "Frequently Asked Questions", 
@@ -34,7 +35,14 @@ export default function Faq({
   ];
 
   const toggleFaq = (index) => {
+    const isOpening = openIndex !== index;
     setOpenIndex(openIndex === index ? null : index);
+    if (isOpening) {
+      trackEvent('faq_expand', {
+        question_index: index + 1,
+        question_text: faqs[index]?.question,
+      });
+    }
   };
 
   return (
@@ -120,6 +128,7 @@ export default function Faq({
 
           <Link
             href="/contact-us"
+            onClick={() => trackEvent('faq_cta_click', { cta_label: 'Book A 15-Min Call' })}
             className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-primary-color hover:bg-primary-color/90 text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-md hover:scale-105 cursor-pointer text-center"
           >
             Book A 15-Min Call

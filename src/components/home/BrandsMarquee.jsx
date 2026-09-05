@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Sparkle, Cpu, Cloud, ShieldCheck } from '@phosphor-icons/react';
+import { trackEvent } from '../../lib/analytics';
 
 export default function BrandsMarquee() {
   // Row 1: Famous AI & Generative Intelligence Tools
@@ -86,6 +87,7 @@ export default function BrandsMarquee() {
               {[...aiTools, ...aiTools, ...aiTools].map((tool, idx) => (
                 <div 
                   key={`ai-${idx}`} 
+                  onClick={() => trackEvent('brand_badge_click', { brand_name: tool.name, category: 'AI Tools', tag: tool.tag })}
                   className="flex items-center gap-3.5 sm:gap-4 px-5 sm:px-7 py-3.5 sm:py-4.5 rounded-2xl bg-base-b/90 border border-base-c hover:border-primary-color/70 hover:bg-base-b transition-all duration-300 group/item cursor-pointer shrink-0 shadow-md hover:shadow-primary-color/10 hover:-translate-y-1"
                 >
                   <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-base-a border border-base-c flex items-center justify-center p-1.5 shrink-0 group-hover/item:border-primary-color/50 transition-colors">
@@ -116,6 +118,7 @@ export default function BrandsMarquee() {
               {[...techStack, ...techStack, ...techStack].map((tool, idx) => (
                 <div 
                   key={`tech-${idx}`} 
+                  onClick={() => trackEvent('brand_badge_click', { brand_name: tool.name, category: 'Tech Stack', tag: tool.tag })}
                   className="flex items-center gap-3.5 sm:gap-4 px-5 sm:px-7 py-3.5 sm:py-4.5 rounded-2xl bg-base-b/90 border border-base-c hover:border-primary-color/70 hover:bg-base-b transition-all duration-300 group/item cursor-pointer shrink-0 shadow-md hover:shadow-primary-color/10 hover:-translate-y-1"
                 >
                   <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-base-a border border-base-c flex items-center justify-center p-1.5 shrink-0 group-hover/item:border-primary-color/50 transition-colors">

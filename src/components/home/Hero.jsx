@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { PhoneCall, VideoCamera } from '@phosphor-icons/react';
+import { trackEvent } from '../../lib/analytics';
 
 export default function Hero() {
   return (
@@ -50,7 +51,10 @@ export default function Hero() {
           {/* Mobile Only Single CTA Button (Hidden on Desktop) */}
           <div className="pt-2 md:hidden">
             <Link href="/contact-us">
-              <button className="w-full sm:w-auto px-6 py-3 bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm font-bold uppercase tracking-wider rounded-full shadow-lg shadow-primary-color/20 flex items-center justify-center gap-2.5 transition-all duration-300 active:scale-95 cursor-pointer">
+              <button 
+                onClick={() => trackEvent('hero_cta_click', { label: 'Get In Touch', device: 'mobile' })}
+                className="w-full sm:w-auto px-6 py-3 bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm font-bold uppercase tracking-wider rounded-full shadow-lg shadow-primary-color/20 flex items-center justify-center gap-2.5 transition-all duration-300 active:scale-95 cursor-pointer"
+              >
                 <span className="flex items-center gap-1.5">
                   <PhoneCall weight="fill" className="w-4 h-4 text-black" />
                   <span className="text-black/50 font-mono text-xs">/</span>
