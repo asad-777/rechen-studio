@@ -95,23 +95,36 @@ export default function Faq({
         })}
       </div>
 
-      {/* Footer Support Prompt */}
-      <div className="mt-12 p-8 rounded-3xl bg-base-b border border-base-c text-center flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
-        <div className="flex items-center gap-4 text-left">
-          <div className="w-12 h-12 rounded-2xl bg-base-a border border-base-c flex items-center justify-center text-primary-color shrink-0 shadow-sm">
-            <ChatCircleText weight="duotone" className="w-6 h-6 text-primary-color" />
+      {/* Footer Support Prompt with Integrated Themed FAQ Vector Illustration */}
+      <div className="mt-14 p-8 sm:p-10 rounded-3xl bg-base-b border border-base-c flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
+        <div className="flex items-center gap-5 text-left z-10">
+          <div className="w-14 h-14 rounded-2xl bg-base-a border border-base-c flex items-center justify-center text-primary-color shrink-0 shadow-sm">
+            <ChatCircleText weight="duotone" className="w-7 h-7 text-primary-color" />
           </div>
-          <div>
-            <h4 className="font-heading text-lg font-bold text-text-content">Have a specific question about your trade?</h4>
+          <div className="space-y-1 max-w-md">
+            <h4 className="font-heading text-lg sm:text-xl font-bold text-text-content">Have a specific question about your trade?</h4>
             <p className="font-sans text-xs sm:text-sm text-text-content/70">Talk directly with our lead architects. No pushy sales reps.</p>
           </div>
         </div>
-        <Link
-          href="/contact-us"
-          className="px-6 py-3 rounded-full bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-md hover:scale-105 cursor-pointer"
-        >
-          Book A 15-Min Call
-        </Link>
+
+        <div className="flex items-center gap-6 z-10 w-full md:w-auto justify-between md:justify-end">
+          <div className="hidden sm:block w-28 h-20 shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/svgs/undraw_faq_pgxi.svg"
+              alt="FAQ Support Graphic"
+              className="w-full h-full object-contain filter drop-shadow-xs opacity-90"
+              loading="lazy"
+            />
+          </div>
+
+          <Link
+            href="/contact-us"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-primary-color hover:bg-primary-color/90 text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-md hover:scale-105 cursor-pointer text-center"
+          >
+            Book A 15-Min Call
+          </Link>
+        </div>
       </div>
     </section>
   );

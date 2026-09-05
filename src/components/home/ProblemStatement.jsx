@@ -44,9 +44,9 @@ function FlowingProblemItem({ item, index }) {
   return (
     <div 
       ref={ref}
-      className={`grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 py-12 sm:py-20 relative z-10 items-center`}
+      className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 py-12 sm:py-20 relative z-10 items-center"
     >
-      {/* Left Column Container */}
+      {/* Text Column Container */}
       <div className={`space-y-4 ${isRight ? 'md:order-2 md:pl-8 lg:pl-14' : 'md:order-1 md:pr-8 lg:pr-14'}`}>
         {/* Headline with Orange Keywords */}
         <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
@@ -112,8 +112,24 @@ function FlowingProblemItem({ item, index }) {
         </p>
       </div>
 
-      {/* Empty Column for Opposite Side (Ensures text never crosses into or touches the path) */}
-      <div className={`hidden md:block ${isRight ? 'md:order-1' : 'md:order-2'}`} aria-hidden="true" />
+      {/* Opposite Side Frameless Floating Illustration */}
+      <div className={`hidden md:flex items-center justify-center ${isRight ? 'md:order-1 md:pr-8 lg:pr-14' : 'md:order-2 md:pl-8 lg:pl-14'}`}>
+        <div 
+          className="w-full max-w-xs lg:max-w-sm h-52 lg:h-64 flex items-center justify-center transition-all duration-500 overflow-hidden"
+          style={{
+            opacity: 0.25 + 0.75 * progress,
+            transform: `scale(${0.92 + 0.08 * progress})`
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={item.svg}
+            alt="Problem Illustration"
+            className="max-h-full max-w-full object-contain filter drop-shadow-sm transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+      </div>
     </div>
   );
 }
@@ -156,6 +172,7 @@ export default function ProblemStatement() {
 
   const problems = [
     {
+      svg: "/svgs/undraw_no-signal_nqfa.svg",
       headlineSegments: [
         { text: "Zero Web Presence", highlight: true },
         { text: " or ", highlight: false },
@@ -164,6 +181,7 @@ export default function ProblemStatement() {
       description: "Relying strictly on an abandoned Facebook page or word-of-mouth. When high-ticket homeowners search for you on Google, your competitors take the call simply because they look legitimate."
     },
     {
+      svg: "/svgs/undraw_document-warning_2es6.svg",
       headlineSegments: [
         { text: "Broken Lovable & Wix", highlight: true },
         { text: " Single-Pagers.", highlight: false }
@@ -171,6 +189,7 @@ export default function ProblemStatement() {
       description: "Buggy single-page websites that load in 5+ seconds, break on mobile devices, and have broken contact forms where submitted quote requests vanish into thin air."
     },
     {
+      svg: "/svgs/undraw_fall_zh0m.svg",
       headlineSegments: [
         { text: "Losing ", highlight: false },
         { text: "$10,000+ High-Ticket Jobs.", highlight: true }
@@ -229,35 +248,38 @@ export default function ProblemStatement() {
             {/* Dim Dotted Base Track */}
             <path 
               d="M 50 10 C 20 220, 80 360, 50 520 C 20 680, 80 780, 50 900"
-              stroke="var(--primary-color)" 
-              strokeOpacity="0.2"
-              strokeWidth="4" 
-              strokeLinecap="round"
+              stroke="rgba(255, 255, 255, 0.12)" 
+              strokeWidth="2.5" 
               strokeDasharray="4 14"
-              fill="none"
+              strokeLinecap="round"
+              fill="none" 
             />
 
-            {/* Active Glowing Dotted Track (Lights up with Scroll Progress) */}
-            <g mask="url(#dotted-reveal-mask)">
-              <path 
-                d="M 50 10 C 20 220, 80 360, 50 520 C 20 680, 80 780, 50 900"
-                stroke="var(--primary-color)" 
-                strokeWidth="5" 
-                strokeLinecap="round"
-                strokeDasharray="4 14"
-                fill="none"
-                filter="url(#dot-glow)"
-              />
-            </g>
+            {/* Glowing Illuminated Orange Dotted Path Revealed on Scroll */}
+            <path 
+              d="M 50 10 C 20 220, 80 360, 50 520 C 20 680, 80 780, 50 900"
+              stroke="var(--primary-color)" 
+              strokeWidth="3.5" 
+              strokeDasharray="4 14"
+              strokeLinecap="round"
+              fill="none" 
+              mask="url(#dotted-reveal-mask)"
+              filter="url(#dot-glow)"
+            />
           </svg>
         </div>
 
-        {/* Alternating Items: Each completely sits on one side of the central path */}
-        <div className="space-y-4 sm:space-y-6 relative z-10">
-          {problems.map((item, idx) => (
-            <FlowingProblemItem key={idx} item={item} index={idx} />
+        {/* Staggered Content Rows */}
+        <div className="space-y-6 sm:space-y-12">
+          {problems.map((problem, idx) => (
+            <FlowingProblemItem 
+              key={idx} 
+              item={problem} 
+              index={idx} 
+            />
           ))}
         </div>
+
       </div>
 
     </section>
