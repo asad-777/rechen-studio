@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { List, X, ArrowUpRight, PhoneCall } from '@phosphor-icons/react';
+import { List, X, ArrowUpRight, PhoneCall, VideoCamera } from '@phosphor-icons/react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -88,13 +88,16 @@ export default function Navbar() {
 
           {/* Right Action Button */}
           <div className="hidden md:flex items-center shrink-0">
-            <div>
-            <Link
-              href="/contact-us"
-              className="px-5 py-2.5 rounded-full bg-base-1a/50 backdrop-blur-2xl hover:bg-primary-color  font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300  hover:scale-105 flex items-center gap-2 cursor-pointer"
-            >
-              <PhoneCall weight="bold" className="w-3.5 h-3.5 text-primary-color group-hover:text-black" />
-              <span>Get In Touch</span>
+            <div className='border-2 border-primary-a group rounded-full p-1 hover:scale-105 transition-all duration-300  cursor-pointer'>
+            <Link href="/contact-us">
+              <button className="px-4 py-1.5 font-mono text-xs sm:text-sm  bg-primary-a text-black rounded-full backdrop-blur-2xl  font-bold uppercase tracking-wider flex items-center gap-2 ">
+                <span className="flex items-center gap-1.5 text-black">
+                  <PhoneCall weight="fill" className="w-4 h-4 text-black" />
+                  <span className="opacity-50 font-mono text-xs text-black">/</span>
+                  <VideoCamera weight="fill" className="w-4 h-4 text-black" />
+                </span>
+                <span>Get In Touch</span>
+              </button>
             </Link>
             </div>
           </div>
@@ -164,8 +167,12 @@ export default function Navbar() {
         {/* Mobile CTA */}
         <div className="pt-4 border-t border-base-c shrink-0">
           <Link href="/contact-us" onClick={() => setMobileMenuOpen(false)}>
-            <button className="w-full py-3.5 bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-transform hover:scale-[1.02]">
-              <PhoneCall weight="bold" className="w-4 h-4" />
+            <button className="w-full py-3.5 bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center justify-center gap-2.5 cursor-pointer transition-transform hover:scale-[1.02]">
+              <span className="flex items-center gap-1.5 text-black">
+                <PhoneCall weight="fill" className="w-4 h-4" />
+                <span className="opacity-50 font-mono text-xs">/</span>
+                <VideoCamera weight="fill" className="w-4 h-4" />
+              </span>
               <span>Get In Touch</span>
             </button>
           </Link>
