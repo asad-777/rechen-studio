@@ -15,7 +15,7 @@ export default function SocialLinks() {
   const socials = [
     {
       platform: "LinkedIn",
-      handle: "@rechen-studio",
+      handle: "@araa-soft",
       description: "Connect with our engineering principals, discover career opportunities, and read deep technical breakdowns.",
       icon: LinkedinLogo,
       href: "https://linkedin.com",
@@ -23,7 +23,7 @@ export default function SocialLinks() {
     },
     {
       platform: "Twitter / X",
-      handle: "@rechen_dev",
+      handle: "@araa_dev",
       description: "Daily UI/UX inspiration, micro-animation snippets, Next.js architecture tips, and real-time studio updates.",
       icon: TwitterLogo,
       href: "https://twitter.com",
@@ -31,7 +31,7 @@ export default function SocialLinks() {
     },
     {
       platform: "GitHub",
-      handle: "github.com/rechen-studio",
+      handle: "github.com/araa-soft",
       description: "Explore our open-source design systems, Tailwind animation libraries, and starter React configurations.",
       icon: GithubLogo,
       href: "https://github.com",
@@ -39,7 +39,7 @@ export default function SocialLinks() {
     },
     {
       platform: "Instagram & Dribbble",
-      handle: "@rechen.studio",
+      handle: "@araa.soft",
       description: "Curated visual gallery of high-fidelity mockups, glassmorphic prototypes, and Behind-the-Scenes studio culture.",
       icon: InstagramLogo,
       href: "https://instagram.com",

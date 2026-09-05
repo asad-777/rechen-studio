@@ -63,14 +63,14 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3.5 group w-fit">
               <Image
                 src="/bglogo.png"
-                alt="Rechen Studio Logo"
+                alt="Araa Soft Logo"
                 width={48}
                 height={48}
                 className="w-11 h-11 invert object-contain group-hover:scale-105 transition-transform"
               />
               <div className="flex flex-col">
                 <span className="font-heading text-2xl font-bold tracking-tight text-text-content">
-                  Rechen Studio
+                  Araa Soft
                 </span>
                 <span className="font-mono text-xs tracking-widest uppercase text-primary-color font-semibold">
                   Engineering & Growth
@@ -152,7 +152,7 @@ export default function Footer() {
 
         {/* Bottom: Copyrights & Legal Links */}
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-text-content/60">
-          <p>© {new Date().getFullYear()} Rechen Studio. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Araa Soft. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/about#privacy" className="hover:text-primary-color transition-colors">
               Privacy Policy

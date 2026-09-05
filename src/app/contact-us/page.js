@@ -6,8 +6,8 @@ import Newsletter from "../../components/common/Newsletter";
 import Faq from "../../components/common/Faq";
 
 export const metadata = {
-  title: "Contact Us | Get In Touch with Rechen Studio",
-  description: "Connect with Rechen Studio leads to scope your custom website, lead booking engine, or local SEO growth strategy."
+  title: "Contact Us | Get In Touch with Araa Soft",
+  description: "Connect with Araa Soft leads to scope your custom website, lead booking engine, or local SEO growth strategy."
 };
 
 export default function ContactPage() {

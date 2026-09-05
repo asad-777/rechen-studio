@@ -7,7 +7,7 @@ import Faq from "../../components/common/Faq";
 
 export const metadata = {
   title: "Services & Capabilities | High-Converting Web Apps, Local SEO & Lead Systems",
-  description: "Explore Rechen Studio's engineering capabilities: bespoke high-converting web apps, Google local SEO domination, and automated lead booking systems for contractors."
+  description: "Explore Araa Soft's engineering capabilities: bespoke high-converting web apps, Google local SEO domination, and automated lead booking systems for contractors."
 };
 
 export default function ServicesHubPage() {

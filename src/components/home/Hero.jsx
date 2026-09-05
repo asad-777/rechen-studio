@@ -40,8 +40,7 @@ export default function Hero() {
         {/* Left Content */}
         <div className="flex flex-col space-y-6 lg:space-y-8 max-w-2xl">
           <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05]">
-            Rechen <br />
-            <span className="text-primary-color">Studio</span>
+            Araa<span className="text-primary-color ml-3">Soft</span>
           </h1>
           
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-sans leading-relaxed">

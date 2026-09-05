@@ -29,17 +29,17 @@ const smoochSans = localFont({
 
 export const metadata = {
   
-  metadataBase: new URL("https://rechenstudio.vercel.app"),
-  title: "Rechen Studio | Digital Architecture & Bespoke Web Apps",
-  description: "Rechen Studio engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
+  metadataBase: new URL("https://araasoft.com"),
+  title: "Araa Soft | Digital Architecture & Bespoke Web Apps",
+  description: "Araa Soft engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
   icons: {
     icon: "/hehelogo.png",
     shortcut: "/hehelogo.png",
     apple: "/hehelogo.png",
   },
   openGraph: {
-    title: "Rechen Studio | Digital Architecture & Bespoke Web Apps",
-    description: "Rechen Studio engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
+    title: "Araa Soft | Digital Architecture & Bespoke Web Apps",
+    description: "Araa Soft engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
     images: [{ url: "/hehelogo.png" }],
   },
 };

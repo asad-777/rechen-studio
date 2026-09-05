@@ -8,7 +8,7 @@ export default function TestimonialsSection() {
 
   const testimonials = [
     {
-      quote: "Rechen Studio didn't just rebuild our frontend—they completely re-architected our mental model of state management. By migrating us to a distributed Edge-native micro-frontend topology, our TTI (Time to Interactive) dropped to sub-10ms. Our Series C lead investor literally wept during the product demo.",
+      quote: "Araa Soft didn't just rebuild our frontend—they completely re-architected our mental model of state management. By migrating us to a distributed Edge-native micro-frontend topology, our TTI (Time to Interactive) dropped to sub-10ms. Our Series C lead investor literally wept during the product demo.",
       author: "Jasper 'Jaz' Hawthorne",
       role: "VP of Zero-Trust Architecture",
       company: "QuantumScale AI (Y-Combinator W26)",
@@ -24,7 +24,7 @@ export default function TestimonialsSection() {
       avatarBg: "bg-base-3a text-text-black"
     },
     {
-      quote: "Our bespoke decentralized LLM orchestration protocol was drowning in cold-start latency. Rechen Studio parachuted in, containerized our entire monolith into a serverless Kubernetes mesh, and implemented an optimistic-UI caching layer that practically predicts the user's intent before they click. Absolute chads.",
+      quote: "Our bespoke decentralized LLM orchestration protocol was drowning in cold-start latency. Araa Soft parachuted in, containerized our entire monolith into a serverless Kubernetes mesh, and implemented an optimistic-UI caching layer that practically predicts the user's intent before they click. Absolute chads.",
       author: "Xavier 'X' Muskrat",
       role: "Chief Decentralization Officer",
       company: "NeuralDoge Web3 Solutions",

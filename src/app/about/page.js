@@ -25,7 +25,7 @@ export default function AboutPage() {
       id: "ownership",
       title: "1. 100% Intellectual Property & Code Ownership",
       icon: Code,
-      content: "Upon final milestone settlement, 100% of all intellectual property, bespoke Next.js source code, custom design assets, and database architecture transfer completely and unconditionally to you. Rechen Studio retains zero proprietary hold or hostage claims over your digital assets. You own everything outright."
+      content: "Upon final milestone settlement, 100% of all intellectual property, bespoke Next.js source code, custom design assets, and database architecture transfer completely and unconditionally to you. Araa Soft retains zero proprietary hold or hostage claims over your digital assets. You own everything outright."
     },
     {
       id: "scope",
@@ -49,7 +49,7 @@ export default function AboutPage() {
       id: "privacy",
       title: "5. Privacy, Confidentiality & Lead Data Security",
       icon: Lock,
-      content: "Rechen Studio treats all proprietary business metrics, customer lead inquiries, API keys, and client communications with strict enterprise-grade confidentiality. We do not sell, scrape, or share your customer data with any third parties."
+      content: "Araa Soft treats all proprietary business metrics, customer lead inquiries, API keys, and client communications with strict enterprise-grade confidentiality. We do not sell, scrape, or share your customer data with any third parties."
     },
     {
       id: "revisions",
@@ -71,7 +71,7 @@ export default function AboutPage() {
           </h1>
           
           <p className="font-sans text-base sm:text-lg text-text-content/80 leading-relaxed">
-            Rechen Studio was founded to bridge the gap between heavy, dependable trade businesses and elite digital architecture. We replace broken DIY templates and empty promises with fast, revenue-generating web systems that actually close contracts.
+            Araa Soft was founded to bridge the gap between heavy, dependable trade businesses and elite digital architecture. We replace broken DIY templates and empty promises with fast, revenue-generating web systems that actually close contracts.
           </p>
         </div>
 

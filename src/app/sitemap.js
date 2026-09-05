@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = 'https://rechenstudio.vercel.app';
+  const baseUrl = 'https://araasoft.com';
 
   const routes = [
     '',
