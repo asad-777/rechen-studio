@@ -33,12 +33,53 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
+    ...(pathname !== '/' ? [{ name: 'Home', href: '/' }] : []),
     { name: 'Services', href: '/services' },
     { name: 'Who We Help', href: '/#niches' },
     { name: 'Process', href: '/#process' },
     { name: 'About', href: '/about' },
-    { name: 'FAQ', href: '/#faq' },
   ];
+
+  const handleNavClick = (e, href) => {
+    if (href.includes('#')) {
+      const [targetPath, hash] = href.split('#');
+      const isCurrentPage = pathname === (targetPath || '/') || (pathname === '/' && targetPath === '');
+      if (isCurrentPage && hash) {
+        e.preventDefault();
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          window.history.pushState(null, '', `#${hash}`);
+        }
+      }
+    }
+  };
+
+  const handleLogoClick = (e) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', '/');
+    }
+  };
+
+  const handleMobileNavClick = (e, href) => {
+    setMobileMenuOpen(false);
+    if (href.includes('#')) {
+      const [targetPath, hash] = href.split('#');
+      const isCurrentPage = pathname === (targetPath || '/') || (pathname === '/' && targetPath === '');
+      if (isCurrentPage && hash) {
+        e.preventDefault();
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.history.pushState(null, '', `#${hash}`);
+          }
+        }, 150);
+      }
+    }
+  };
 
   return (
     <>
@@ -52,7 +93,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-6">
           
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 group">
+          <Link href="/" onClick={handleLogoClick} className="flex items-center gap-3 shrink-0 group">
             <Image
               src="/bglogo.png"
               alt="Araa Soft Logo"
@@ -74,6 +115,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`font-mono text-sm font-semibold transition-colors duration-200 ${
                     isActive
                       ? 'text-primary-color'
@@ -126,7 +168,14 @@ export default function Navbar() {
       >
         {/* Mobile Header */}
         <div className="flex items-center justify-between pb-5 border-b border-base-c shrink-0">
-          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
+          <Link
+            href="/"
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              handleLogoClick(e);
+            }}
+            className="flex items-center gap-3"
+          >
             <Image
               src="/bglogo.png"
               alt="Araa Soft Logo"
@@ -155,7 +204,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleMobileNavClick(e, link.href)}
               className="font-heading text-xl font-bold text-text-content hover:text-primary-color transition-colors flex items-center justify-between py-3.5 border-b border-base-c/40"
             >
               <span>{link.name}</span>

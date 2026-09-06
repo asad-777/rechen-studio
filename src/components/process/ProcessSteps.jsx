@@ -250,22 +250,34 @@ export default function ProcessSteps() {
             preserveAspectRatio="none"
           >
             <defs>
-              <filter id="process-dot-glow" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="2.5" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              <filter id="process-dot-glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
               </filter>
 
               {/* Reveal Mask for Process Path */}
-              <mask id="process-reveal-mask">
+              <mask 
+                id="process-reveal-mask"
+                maskUnits="userSpaceOnUse"
+                maskContentUnits="userSpaceOnUse"
+                x="-50"
+                y="-50"
+                width="200"
+                height="1200"
+              >
                 <path 
                   d="M 50 10 C 25 180, 75 320, 50 480 C 25 640, 75 780, 50 940 C 30 1020, 60 1070, 50 1100"
-                  stroke="white" 
-                  strokeWidth="24"
-                  fill="none"
-                  pathLength="1"
-                  strokeDasharray="1"
-                  strokeDashoffset={Math.max(1 - pathProgress * 1.1, 0)}
-                  className="transition-all duration-100 ease-out"
+                  stroke="#ffffff" 
+                  strokeWidth="35"
+                  strokeLinecap="round"
+                  fill="none" 
+                  pathLength="1200"
+                  strokeDasharray="1200"
+                  strokeDashoffset={Math.max(1200 - pathProgress * 1350, 0)}
+                  style={{ transition: 'stroke-dashoffset 0.1s ease-out' }}
                 />
               </mask>
             </defs>
@@ -273,8 +285,8 @@ export default function ProcessSteps() {
             {/* Dim Dotted Base Track */}
             <path 
               d="M 50 10 C 25 180, 75 320, 50 480 C 25 640, 75 780, 50 940 C 30 1020, 60 1070, 50 1100"
-              stroke="rgba(255, 255, 255, 0.10)" 
-              strokeWidth="2" 
+              stroke="rgba(255, 255, 255, 0.12)" 
+              strokeWidth="2.5" 
               strokeDasharray="3 12"
               strokeLinecap="round"
               fill="none" 
@@ -283,8 +295,8 @@ export default function ProcessSteps() {
             {/* Glowing Illuminated Dotted Path Revealed on Scroll */}
             <path 
               d="M 50 10 C 25 180, 75 320, 50 480 C 25 640, 75 780, 50 940 C 30 1020, 60 1070, 50 1100"
-              stroke="var(--primary-color)" 
-              strokeWidth="2.5" 
+              stroke="#14C38E" 
+              strokeWidth="3" 
               strokeDasharray="3 12"
               strokeLinecap="round"
               fill="none" 

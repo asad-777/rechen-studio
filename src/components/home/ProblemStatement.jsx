@@ -225,22 +225,34 @@ export default function ProblemStatement() {
             preserveAspectRatio="none"
           >
             <defs>
-              <filter id="dot-glow" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="3" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              <filter id="dot-glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3.5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
               </filter>
 
               {/* Reveal Mask for Dotted Path */}
-              <mask id="dotted-reveal-mask">
+              <mask 
+                id="dotted-reveal-mask" 
+                maskUnits="userSpaceOnUse" 
+                maskContentUnits="userSpaceOnUse"
+                x="-50" 
+                y="-50" 
+                width="200" 
+                height="1000"
+              >
                 <path 
                   d="M 50 10 C 20 220, 80 360, 50 520 C 20 680, 80 780, 50 900"
-                  stroke="white" 
-                  strokeWidth="30"
-                  fill="none"
-                  pathLength="1"
-                  strokeDasharray="1"
-                  strokeDashoffset={Math.max(1 - pathProgress * 1.12, 0)}
-                  className="transition-all duration-100 ease-out"
+                  stroke="#ffffff" 
+                  strokeWidth="40"
+                  strokeLinecap="round"
+                  fill="none" 
+                  pathLength="1000"
+                  strokeDasharray="1000"
+                  strokeDashoffset={Math.max(1000 - pathProgress * 1150, 0)}
+                  style={{ transition: 'stroke-dashoffset 0.1s ease-out' }}
                 />
               </mask>
             </defs>
@@ -248,9 +260,9 @@ export default function ProblemStatement() {
             {/* Dim Dotted Base Track */}
             <path 
               d="M 50 10 C 20 220, 80 360, 50 520 C 20 680, 80 780, 50 900"
-              stroke="rgba(255, 255, 255, 0.12)" 
+              stroke="rgba(255, 255, 255, 0.15)" 
               strokeWidth="2.5" 
-              strokeDasharray="4 14"
+              strokeDasharray="4 12"
               strokeLinecap="round"
               fill="none" 
             />
@@ -258,9 +270,9 @@ export default function ProblemStatement() {
             {/* Glowing Illuminated Dotted Path Revealed on Scroll */}
             <path 
               d="M 50 10 C 20 220, 80 360, 50 520 C 20 680, 80 780, 50 900"
-              stroke="var(--primary-a)" 
+              stroke="#14C38E" 
               strokeWidth="3.5" 
-              strokeDasharray="4 14"
+              strokeDasharray="4 12"
               strokeLinecap="round"
               fill="none" 
               mask="url(#dotted-reveal-mask)"

@@ -29,18 +29,21 @@ const smoochSans = localFont({
 });
 
 export const metadata = {
-  
+
   metadataBase: new URL("https://araasoft.com"),
-  title: "Araa Soft | Digital Architecture & Bespoke Web Apps",
-  description: "Araa Soft engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
+  title: "Araa Soft | Custom Websites, Google Business Profile & SEO Optimization with Ai integrations",
+  description: "At AraaSoft we design and engineer custom websites, landing pages, automated lead capture funnels and Google local SEO & AI systems for businesses, brands and private individuals.",
   icons: {
     icon: "/hehelogo.png",
     shortcut: "/hehelogo.png",
     apple: "/hehelogo.png",
   },
+  verification: {
+    google: "P2-zTB2CZK9jhHpma5PWMzgzXNuN5YSbdQ6cyfQB8MU",
+  },
   openGraph: {
-    title: "Araa Soft | Digital Architecture & Bespoke Web Apps",
-    description: "Araa Soft engineers high-performance web applications, custom websites, technical SEO architecture, and strategic branding for leading enterprises.",
+    title: "Araa Soft | Custom Websites, Google Business Profile & SEO Optimization with Ai integrations",
+    description: "At AraaSoft we design and engineer custom websites, landing pages, automated lead capture funnels and Google local SEO & AI systems for businesses, brands and private individuals.",
     images: [{ url: "/hehelogo.png" }],
   },
 };
@@ -50,12 +53,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${spaceMono.variable} ${smoochSans.variable} h-full antialiased `}
+      className={`${spaceMono.variable} ${smoochSans.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
-      <head>
-        <meta name="google-site-verification" content="P2-zTB2CZK9jhHpma5PWMzgzXNuN5YSbdQ6cyfQB8MU" />
-      </head>
       <body className="min-h-full flex flex-col bg-base-1a text-text-black selection:bg-primary-a selection:text-text-white transition-colors duration-300">
         <Navbar />
         <main className="grow">

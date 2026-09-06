@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import Newsletter from '../common/Newsletter';
 import { 
   ArrowUp, 
@@ -13,9 +14,33 @@ import {
 } from '@phosphor-icons/react';
 
 export default function Footer() {
+  const pathname = usePathname();
+
   const scrollToTop = () => {
     if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+      if (window.location.hash) {
+        window.history.pushState(null, '', window.location.pathname);
+      }
+    }
+  };
+
+  const handleLinkClick = (e, href) => {
+    if (href.includes('#')) {
+      const [targetPath, hash] = href.split('#');
+      const isCurrentPage = pathname === (targetPath || '/') || (pathname === '/' && targetPath === '') || targetPath === '';
+      if (isCurrentPage && hash) {
+        e.preventDefault();
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          window.history.pushState(null, '', `#${hash}`);
+        }
+      }
     }
   };
 
@@ -108,6 +133,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
                     className="text-text-content/70 hover:text-primary-color hover:translate-x-1.5 transition-all inline-block"
                   >
                     {link.name}
@@ -127,6 +153,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
                     className="text-text-content/70 hover:text-primary-color hover:translate-x-1.5 transition-all inline-block"
                   >
                     {link.name}
