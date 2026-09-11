@@ -12,12 +12,13 @@ import FoundersSection from "../components/home/FoundersSection";
 import Faq from "../components/common/Faq";
 import ContactCta from "../components/common/ContactCta";
 import HomeInteractionTracker from "../components/analytics/HomeInteractionTracker";
+import HomeClientWrapper from "../components/home/HomeClientWrapper";
 
 export default function Home() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <div className="w-full flex flex-col">
+    <HomeClientWrapper>
       <HomeInteractionTracker />
       {gaId && (
         <>
@@ -54,6 +55,6 @@ export default function Home() {
       <Faq />
 
       <ContactCta />
-    </div>
+    </HomeClientWrapper>
   );
 }
