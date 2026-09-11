@@ -29,10 +29,33 @@ const smoochSans = localFont({
 });
 
 export const metadata = {
-
   metadataBase: new URL("https://araasoft.com"),
-  title: "Araa Soft | Custom Websites, Google Business Profile & SEO Optimization with Ai integrations",
-  description: "At AraaSoft we design and engineer custom websites, landing pages, automated lead capture funnels and Google local SEO & AI systems for businesses, brands and private individuals.",
+  title: {
+    default: "Araa Soft | Custom Web Development, Local SEO & AI Automation",
+    template: "Araa Soft | Custom Web Development, Local SEO & AI Automation / %s",
+  },
+  description: "At Araa Soft, we design and engineer custom high-speed websites, Google Local SEO Map Pack ranking systems, and automated lead capture engines for businesses and contractors.",
+  keywords: [
+    "custom web development",
+    "local SEO agency",
+    "Google Map Pack optimization",
+    "lead capture automation",
+    "Next.js web apps",
+    "trade business websites",
+    "contractor marketing system",
+    "Araa Soft"
+  ],
+  authors: [{ name: "Araa Soft" }],
+  creator: "Araa Soft",
+  publisher: "Araa Soft",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/hehelogo.png",
     shortcut: "/hehelogo.png",
@@ -42,9 +65,37 @@ export const metadata = {
     google: "P2-zTB2CZK9jhHpma5PWMzgzXNuN5YSbdQ6cyfQB8MU",
   },
   openGraph: {
-    title: "Araa Soft | Custom Websites, Google Business Profile & SEO Optimization with Ai integrations",
-    description: "At AraaSoft we design and engineer custom websites, landing pages, automated lead capture funnels and Google local SEO & AI systems for businesses, brands and private individuals.",
-    images: [{ url: "/hehelogo.png" }],
+    title: "Araa Soft | Custom Web Development, Local SEO & AI Automation",
+    description: "At Araa Soft, we design and engineer custom high-speed websites, Google Local SEO Map Pack ranking systems, and automated lead capture engines for businesses and contractors.",
+    url: "https://araasoft.com",
+    siteName: "Araa Soft",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/hehelogo.png",
+        width: 1200,
+        height: 630,
+        alt: "Araa Soft - Custom Web Development & Local SEO",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Araa Soft | Custom Web Development, Local SEO & AI Automation",
+    description: "High-performance custom web applications, Google Local SEO rankings, and automated lead generation systems.",
+    images: ["/hehelogo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

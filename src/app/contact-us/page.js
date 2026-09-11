@@ -6,8 +6,20 @@ import Newsletter from "../../components/common/Newsletter";
 import Faq from "../../components/common/Faq";
 
 export const metadata = {
-  title: "Contact Us | Get In Touch with Araa Soft",
-  description: "Connect with Araa Soft leads to scope your custom website, lead booking engine, or local SEO growth strategy."
+  title: "Contact",
+  description: "Get in touch with Araa Soft. Book a strategy discovery call to audit your trade business website, discuss custom web application engineering, and boost local Google rankings.",
+  alternates: {
+    canonical: "/contact-us",
+  },
+  openGraph: {
+    title: "Araa Soft | Custom Web Development, Local SEO & AI Automation / Contact",
+    description: "Book a strategy discovery call to audit your website, discuss custom web app engineering, local SEO rankings, and automated lead workflows.",
+    url: "https://araasoft.com/contact-us",
+  },
+  twitter: {
+    title: "Araa Soft | Custom Web Development, Local SEO & AI Automation / Contact",
+    description: "Get in touch with Araa Soft. Book a discovery call to audit your trade website and local Google rankings.",
+  },
 };
 
 export default function ContactPage() {

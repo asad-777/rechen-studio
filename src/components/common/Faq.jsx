@@ -106,9 +106,6 @@ export default function Faq({
       {/* Footer Support Prompt with Integrated Themed FAQ Vector Illustration */}
       <div className="mt-14 p-8 sm:p-10 rounded-3xl bg-base-b border border-base-c flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
         <div className="flex items-center gap-5 text-left z-10">
-          <div className="w-14 h-14 rounded-2xl bg-base-a border border-base-c flex items-center justify-center text-primary-color shrink-0 shadow-sm">
-            <ChatCircleText weight="duotone" className="w-7 h-7 text-primary-color" />
-          </div>
           <div className="space-y-1 max-w-md">
             <h4 className="font-heading text-lg sm:text-xl font-bold text-text-content">Have a specific question about your trade?</h4>
             <p className="font-sans text-xs sm:text-sm text-text-content/70">Talk directly with our lead architects. No pushy sales reps.</p>

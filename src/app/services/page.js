@@ -6,8 +6,20 @@ import ContactCta from "../../components/common/ContactCta";
 import Faq from "../../components/common/Faq";
 
 export const metadata = {
-  title: "Services & Capabilities | High-Converting Web Apps, Local SEO & Lead Systems",
-  description: "Explore Araa Soft's engineering capabilities: bespoke high-converting web apps, Google local SEO domination, and automated lead booking systems for contractors."
+  title: "Services",
+  description: "Explore Araa Soft's engineering capabilities: bespoke high-converting Next.js web applications, Google local Map Pack SEO domination, and automated lead booking systems for trade and service businesses.",
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "Araa Soft | Custom Web Development, Local SEO & AI Automation / Services",
+    description: "Bespoke high-converting Next.js web apps, Google Map Pack local SEO rankings, and automated lead booking systems engineered to scale your trade business.",
+    url: "https://araasoft.com/services",
+  },
+  twitter: {
+    title: "Araa Soft | Custom Web Development, Local SEO & AI Automation / Services",
+    description: "Bespoke high-converting Next.js web apps, Google Map Pack local SEO rankings, and automated lead booking systems.",
+  },
 };
 
 export default function ServicesHubPage() {

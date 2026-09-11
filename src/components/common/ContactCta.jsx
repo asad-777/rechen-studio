@@ -2,91 +2,66 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { CalendarCheck, ArrowRight, ShieldCheck } from '@phosphor-icons/react';
+import Image from 'next/image';
 import { trackEvent } from '../../lib/analytics';
 
 export default function ContactCta() {
   return (
-    <section id="contact-cta" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
-      <div className="relative overflow-hidden rounded-[2.5rem] bg-base-b text-text-content border border-base-c p-8 sm:p-12 lg:p-16 shadow-2xl">
-        
-        {/* Background glow */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary-color/10 rounded-full blur-[120px]" />
-          <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-primary-color/10 rounded-full blur-[120px]" />
+    <section id="contact-cta" className="relative w-full min-h-[80vh] lg:min-h-[85vh] overflow-hidden z-10 my-16">
+      
+      {/* Soft Ambient Radial Background Glow */}
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-full max-w-2xl h-96 bg-base-1a/10 rounded-full blur-[180px] pointer-events-none" />
+
+      <div className="w-full min-h-[80vh] lg:min-h-[85vh] grid grid-cols-1 lg:grid-cols-2 items-stretch">
+
+        {/* Side 1: Full-Size Image Container */}
+        <div className="relative w-full h-[450px] sm:h-[550px] lg:h-full min-h-[450px] lg:min-h-[80vh] overflow-hidden">
+          <Image
+            src="/home-cto/pic3.jpg"
+            alt="Why wait when others are converting? Get a digital presence now and start capturing more clients."
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
+          />
+          {/* Subtle gradient overlay to smoothly transition edges */}
+          <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-transparent via-transparent to-base-1a/80 lg:to-base-1a pointer-events-none" />
         </div>
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        {/* Side 2: Clean, Spacious Full-Scale CTA Content */}
+        <div className="flex flex-col justify-center items-start text-left p-8 sm:p-14 lg:p-20 xl:p-24 space-y-8 z-10">
+          
+          <h2 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold text-text-content tracking-tight leading-[1.08]">
+            Ready to get <br />
+            <span className="text-primary-color">started?</span>
+          </h2>
 
-          {/* Left Column: Heading, Copy & CTAs */}
-          <div className="lg:col-span-7 space-y-6 text-left">
-            
-            <div className="space-y-4">
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-primary-color bg-base-a px-3.5 py-1.5 rounded-full border border-base-c">
-                Ready For High-Ticket Growth?
-              </span>
+          <p className="font-sans text-base sm:text-lg lg:text-xl text-text-content/80 leading-relaxed max-w-xl">
+            Tell us about your business goals and service area. We will map out a custom web and local SEO engine to turn searchers into booked clients.
+          </p>
 
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-text-content tracking-tight leading-tight">
-                Turn Your Website Into Your <br className="hidden sm:inline" />
-                <span className="text-primary-color">#1 Sales Rep</span>
-              </h2>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4 w-full sm:w-auto">
+            <Link
+              href="/contact-us"
+              onClick={() => trackEvent('contact_cta_click', { cta_label: 'Book a discovery call' })}
+              className="px-9 py-4 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-primary-color hover:bg-primary-color/90 text-black shadow-xl shadow-primary-color/20 text-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              Book a discovery call
+            </Link>
 
-              <p className="font-sans text-sm sm:text-base md:text-lg text-text-content/80 leading-relaxed max-w-xl">
-                Stop letting competitors take the high-ticket jobs in your area. Get a bespoke, high-converting digital engine engineered in 7 to 14 days.
-              </p>
-            </div>
-
-            {/* Action buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-3.5 pt-2">
-              <Link
-                href="/contact-us"
-                onClick={() => trackEvent('bottom_cta_click', { cta_label: 'Book A 15-Min Discovery Call' })}
-                className="w-full sm:w-auto px-7 py-3.5 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-primary-color hover:bg-primary-color/90 text-black shadow-lg shadow-primary-color/20 flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-105 cursor-pointer"
-              >
-                <CalendarCheck weight="fill" className="w-5 h-5 text-black" />
-                <span>Book A 15-Min Discovery Call</span>
-              </Link>
-
-              <Link
-                href="/services"
-                onClick={() => trackEvent('bottom_cta_click', { cta_label: 'Explore All Services' })}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-base-a hover:bg-base-c/50 border border-base-c text-text-content flex items-center justify-center gap-2 transition-all duration-300 shadow-sm"
-              >
-                <span>Explore All Services</span>
-                <ArrowRight weight="bold" className="w-4 h-4 text-primary-color" />
-              </Link>
-            </div>
-
-            {/* Trust highlights */}
-            <div className="pt-6 border-t border-base-c/60 flex flex-wrap items-center gap-4 sm:gap-8 text-xs font-mono text-text-content/60 uppercase tracking-wider">
-              <span className="flex items-center gap-2">
-                <ShieldCheck weight="fill" className="w-4 h-4 text-special-text" />
-                <span>100% Code Ownership</span>
-              </span>
-              <span className="flex items-center gap-2">
-                <ShieldCheck weight="fill" className="w-4 h-4 text-special-text" />
-                <span>7-14 Day Delivery</span>
-              </span>
-            </div>
-
-          </div>
-
-          {/* Right Column: Clean Frameless Floating SVG Vector Graphic */}
-          <div className="lg:col-span-5 flex items-center justify-center relative">
-            <div className="w-full max-w-sm lg:max-w-md flex items-center justify-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/svgs/undraw_contact-us_s4jn.svg"
-                alt="Contact Us Vector Illustration"
-                className="w-full h-auto object-contain drop-shadow-md hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
-            </div>
+            <Link
+              href="/services"
+              onClick={() => trackEvent('contact_cta_click', { cta_label: 'Explore services' })}
+              className="px-9 py-4 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-base-b hover:bg-base-c border border-base-c hover:border-text-content/40 text-text-content hover:text-primary-color text-center transition-all duration-300 shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              Explore services
+            </Link>
           </div>
 
         </div>
 
       </div>
+
     </section>
   );
 }
