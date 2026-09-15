@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script";
 
 const spaceMono = localFont({
   src: [
@@ -110,6 +111,17 @@ export default function RootLayout({ children }) {
       className={`${spaceMono.variable} ${smoochSans.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
+      <head>
+        <Script id="clarity-script" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "yijsio16fl");
+          `}
+        </Script>
+      </head>
       <body className="min-h-full flex flex-col bg-base-1a text-text-black selection:bg-primary-a selection:text-text-white transition-colors duration-300">
         <Navbar />
         <main className="grow">
