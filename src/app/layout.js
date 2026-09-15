@@ -57,12 +57,15 @@ export const metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/hehelogo.png",
-    shortcut: "/hehelogo.png",
-    apple: "/hehelogo.png",
+    icon: "/logobg.jpg",
+    shortcut: "/logobg.jpg",
+    apple: "/logobg.jpg",
   },
   verification: {
     google: "P2-zTB2CZK9jhHpma5PWMzgzXNuN5YSbdQ6cyfQB8MU",
+    other: {
+      "msvalidate.01": "7F1D83AC8C1D6CB24F2D9EC3A78FFA9C",
+    },
   },
   openGraph: {
     title: "Araa Soft | Custom Web Development, Local SEO & AI Automation",
@@ -73,7 +76,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/hehelogo.png",
+        url: "/logobg.jpg",
         width: 1200,
         height: 630,
         alt: "Araa Soft - Custom Web Development & Local SEO",
@@ -84,7 +87,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Araa Soft | Custom Web Development, Local SEO & AI Automation",
     description: "High-performance custom web applications, Google Local SEO rankings, and automated lead generation systems.",
-    images: ["/hehelogo.png"],
+    images: ["/logobg.jpg"],
   },
   robots: {
     index: true,

@@ -95,11 +95,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" onClick={handleLogoClick} className="flex items-center gap-3 shrink-0 group">
             <Image
-              src="/bglogo.png"
+              src="/logonobg.png"
               alt="Araa Soft Logo"
               width={160}
               height={50}
-              className="w-auto h-9 md:h-10 object-contain brightness-0 invert group-hover:opacity-90 transition-opacity"
+              className="w-auto h-13 md:h-15  object-contain  invert group-hover:opacity-90 transition-opacity"
               priority
             />
             <span className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-text-content">
@@ -177,11 +177,11 @@ export default function Navbar() {
             className="flex items-center gap-3"
           >
             <Image
-              src="/bglogo.png"
+              src="/logonobg.png"
               alt="Araa Soft Logo"
               width={140}
               height={45}
-              className="w-auto h-9 object-contain brightness-0 invert"
+              className="w-auto h-9 object-contain  invert"
               priority
             />
             <span className="font-heading text-xl font-bold tracking-tight text-text-content">
