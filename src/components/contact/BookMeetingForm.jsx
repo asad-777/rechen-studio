@@ -55,16 +55,18 @@ export default function BookMeetingForm() {
     setStatus('loading');
     
     try {
-      const response = await fetch('https://formspree.io/f/moevjaae', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+      const payload = JSON.stringify(formData);
+      const reqHeaders = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      };
+
+      const [response1, response2] = await Promise.all([
+        fetch('https://formspree.io/f/moevjaae', { method: 'POST', headers: reqHeaders, body: payload }),
+        fetch('https://formspree.io/f/mwlpvedo', { method: 'POST', headers: reqHeaders, body: payload })
+      ]);
       
-      if (response.ok) {
+      if (response1.ok && response2.ok) {
         setStatus('success');
         setFormData({
           name: '',
@@ -75,7 +77,8 @@ export default function BookMeetingForm() {
           description: ''
         });
       } else {
-        const data = await response.json();
+        const failedResponse = !response1.ok ? response1 : response2;
+        const data = await failedResponse.json();
         setStatus('error');
         setErrorMessage(
           data.errors ? data.errors.map(err => err.message).join(', ') : 'Oops! There was a problem submitting your form'
