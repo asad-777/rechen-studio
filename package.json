@@ -10,11 +10,13 @@
     "update-svgs": "node scripts/update-svg-colors.js"
   },
   "dependencies": {
+    "@intl-tel-input/react": "^29.2.3",
     "@phosphor-icons/react": "^2.1.10",
     "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "daisyui": "^5.7.28",
+    "intl-tel-input": "^29.2.3",
     "lucide-react": "^1.40.0",
     "next": "16.2.12",
     "react": "19.2.4",

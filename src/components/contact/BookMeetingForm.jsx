@@ -1,43 +1,90 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   CalendarCheck, 
   Clock, 
   User, 
   EnvelopeSimple, 
-  Buildings, 
-  ChatCircleText, 
+  TextAa,
+  MapPin,
   CheckCircle, 
   WarningCircle
 } from '@phosphor-icons/react';
+import IntlTelInput from '@intl-tel-input/react/with-utils';
+import 'intl-tel-input/styles';
 
 export default function BookMeetingForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
-    service: 'Websites & Web-Apps',
-    budget: '$15k - $50k',
-    notes: ''
+    contactDetail: '',
+    subject: '',
+    location: '',
+    description: ''
   });
 
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    fetch('https://freeipapi.com/api/json')
+      .then(res => res.json())
+      .then(data => {
+        if (data.regionName && data.countryName) {
+          setFormData(prev => ({
+            ...prev,
+            location: `${data.regionName}, ${data.countryName}`
+          }));
+        }
+      })
+      .catch(err => console.error('Failed to auto-detect location:', err));
+  }, []);
 
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email) {
       setStatus('error');
+      setErrorMessage('Please complete your Name and Email fields to book discovery.');
       return;
     }
     setStatus('loading');
-    setTimeout(() => {
-      setStatus('success');
-    }, 1200);
+    
+    try {
+      const response = await fetch('https://formspree.io/f/moevjaae', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          contactDetail: '',
+          subject: '',
+          location: '',
+          description: ''
+        });
+      } else {
+        const data = await response.json();
+        setStatus('error');
+        setErrorMessage(
+          data.errors ? data.errors.map(err => err.message).join(', ') : 'Oops! There was a problem submitting your form'
+        );
+      }
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('Oops! There was a problem submitting your form');
+    }
   };
 
   return (
@@ -119,76 +166,113 @@ export default function BookMeetingForm() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {/* Company / Brand */}
+            {/* Contact Detail */}
             <div className="space-y-2">
-              <label htmlFor="company" className="block font-mono text-xs font-bold text-text-black uppercase tracking-wider">
-                Company / Brand
+              <label htmlFor="contactDetail" className="block font-mono text-xs font-bold text-text-black uppercase tracking-wider">
+                Contact Detail
               </label>
               <div className="relative">
-                <Buildings weight="regular" className="absolute left-3.5 top-3.5 w-5 h-5 text-text-black/60" />
+                <style>{`
+                  /* Override intl-tel-input default text color and border for the form */
+                  .iti { 
+                    width: 100%; 
+                    --iti-hover-color: rgba(255, 255, 255, 0.08);
+                    --iti-border-color: rgba(255, 255, 255, 0.1);
+                    --iti-country-selector-bg: #1a1a1a;
+                    --iti-icon-color: #f1f1f1;
+                  }
+                  .iti__country-list {
+                    background-color: var(--iti-country-selector-bg) !important;
+                    color: #f1f1f1 !important;
+                    border: 1px solid var(--iti-border-color) !important;
+                    border-radius: 0.75rem;
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+                  }
+                  .iti__country {
+                    padding: 10px 12px !important;
+                    transition: background-color 0.2s;
+                  }
+                  .iti__country.iti__highlight, .iti__country:hover {
+                    background-color: var(--iti-hover-color) !important;
+                  }
+                  .iti__country-list input[type="text"], .iti__search-input {
+                    background-color: rgba(255, 255, 255, 0.05) !important;
+                    color: #f1f1f1 !important;
+                    border: 1px solid var(--iti-border-color) !important;
+                    border-radius: 0.5rem;
+                    padding: 8px 12px !important;
+                    margin: 8px !important;
+                    width: calc(100% - 16px) !important;
+                    box-sizing: border-box;
+                  }
+                `}</style>
+                <IntlTelInput
+                  initOptions={{
+                    initialCountry: "us",
+                    separateDialCode: true
+                  }}
+                  onChangeNumber={(number) => setFormData(prev => ({ ...prev, contactDetail: number }))}
+                  inputProps={{
+                    id: "contactDetail",
+                    name: "contactDetail",
+                    placeholder: "Phone number",
+                    className: "w-full py-3 pr-4 rounded-xl bg-base-1a border border-base-3a focus:border-primary-a focus:ring-2 focus:ring-primary-a text-text-black placeholder-text-black/50 font-sans text-sm focus:outline-none transition-colors"
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Location */}
+            <div className="space-y-2">
+              <label htmlFor="location" className="block font-mono text-xs font-bold text-text-black uppercase tracking-wider">
+                Location
+              </label>
+              <div className="relative">
+                <MapPin weight="regular" className="absolute left-3.5 top-3.5 w-5 h-5 text-text-black/60" />
                 <input
                   type="text"
-                  id="company"
-                  name="company"
-                  placeholder="e.g., NovaFin Tech"
-                  value={formData.company}
+                  id="location"
+                  name="location"
+                  placeholder="e.g., City, State, or Zip"
+                  value={formData.location}
                   onChange={handleChange}
                   className="w-full pl-11 pr-4 py-3 rounded-xl bg-base-1a border border-base-3a focus:border-primary-a focus:ring-2 focus:ring-primary-a text-text-black placeholder-text-black/50 font-sans text-sm focus:outline-none transition-colors"
                 />
               </div>
             </div>
+          </div>
 
-            {/* Service of Interest */}
-            <div className="space-y-2">
-              <label htmlFor="service" className="block font-mono text-xs font-bold text-text-black uppercase tracking-wider">
-                Primary Architecture Target
-              </label>
-              <select
-                id="service"
-                name="service"
-                value={formData.service}
+          {/* Subject */}
+          <div className="space-y-2">
+            <label htmlFor="subject" className="block font-mono text-xs font-bold text-text-black uppercase tracking-wider">
+              Subject
+            </label>
+            <div className="relative">
+              <TextAa weight="regular" className="absolute left-3.5 top-3.5 w-5 h-5 text-text-black/60" />
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="What is this regarding?"
+                value={formData.subject}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-base-1a border border-base-3a focus:border-primary-a focus:ring-2 focus:ring-primary-a text-text-black font-sans text-sm focus:outline-none transition-colors"
-              >
-                <option value="Websites & Web-Apps">Websites & Web-Apps</option>
-                <option value="Technical SEO & Growth">Technical SEO & Growth</option>
-                <option value="Social Media Strategy">Social Media & Branding</option>
-                <option value="Complete Digital Transformation">Complete Transformation</option>
-              </select>
+                className="w-full pl-11 pr-4 py-3 rounded-xl bg-base-1a border border-base-3a focus:border-primary-a focus:ring-2 focus:ring-primary-a text-text-black placeholder-text-black/50 font-sans text-sm focus:outline-none transition-colors"
+              />
             </div>
           </div>
 
-          {/* Budget tier */}
+          {/* Description */}
           <div className="space-y-2">
-            <label htmlFor="budget" className="block font-mono text-xs font-bold text-text-black uppercase tracking-wider">
-              Estimated Scoping Budget
-            </label>
-            <select
-              id="budget"
-              name="budget"
-              value={formData.budget}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl bg-base-1a border border-base-3a focus:border-primary-a focus:ring-2 focus:ring-primary-a text-text-black font-sans text-sm focus:outline-none transition-colors"
-            >
-              <option value="$10k - $25k">$10,000 - $25,000</option>
-              <option value="$25k - $50k">$25,000 - $50,000</option>
-              <option value="$50k - $100k+">$50,000 - $100,000+</option>
-              <option value="Retainer / Ongoing">Dedicated Monthly Retainer</option>
-            </select>
-          </div>
-
-          {/* Notes */}
-          <div className="space-y-2">
-            <label htmlFor="notes" className="block font-mono text-xs font-bold text-text-black uppercase tracking-wider">
-              Project Context / Tech Stack Specifications
+            <label htmlFor="description" className="block font-mono text-xs font-bold text-text-black uppercase tracking-wider">
+              Description
             </label>
             <div className="relative">
               <textarea
-                id="notes"
-                name="notes"
+                id="description"
+                name="description"
                 rows={4}
-                placeholder="Describe your goals, desired timelines, existing stack, or any specific challenges..."
-                value={formData.notes}
+                placeholder="How can we help you? Describe your project or inquiry..."
+                value={formData.description}
                 onChange={handleChange}
                 className="w-full p-4 rounded-xl bg-base-1a border border-base-3a focus:border-primary-a focus:ring-2 focus:ring-primary-a text-text-black placeholder-text-black/50 font-sans text-sm focus:outline-none transition-colors resize-none"
               />
@@ -198,7 +282,7 @@ export default function BookMeetingForm() {
           {status === 'error' && (
             <div className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 font-sans text-xs">
               <WarningCircle weight="fill" className="w-4 h-4 shrink-0" />
-              <span>Please complete your Name and Email fields to book discovery.</span>
+              <span>{errorMessage}</span>
             </div>
           )}
 
