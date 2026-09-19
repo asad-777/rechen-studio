@@ -13,6 +13,8 @@ import Faq from "../components/common/Faq";
 import ContactCta from "../components/common/ContactCta";
 import HomeInteractionTracker from "../components/analytics/HomeInteractionTracker";
 import HomeClientWrapper from "../components/home/HomeClientWrapper";
+import SchemaMarkup from "../components/seo/SchemaMarkup";
+import { faqsData } from "../data/faqsData";
 
 export default function Home() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -55,6 +57,20 @@ export default function Home() {
       <Faq />
 
       <ContactCta />
+      <SchemaMarkup
+        schemaData={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqsData.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        }}
+      />
     </HomeClientWrapper>
   );
 }

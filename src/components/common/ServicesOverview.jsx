@@ -1,15 +1,12 @@
-'use client';
-
 import React from 'react';
-import Link from 'next/link';
 import { 
   Code, 
   ChartBar, 
   ShareNetwork, 
   ArrowUpRight, 
   CheckCircle,
-} from '@phosphor-icons/react';
-import { trackEvent } from '../../lib/analytics';
+} from '@phosphor-icons/react/dist/ssr';
+import TrackedLink from './TrackedLink';
 
 export default function ServicesOverview() {
   const services = [
@@ -56,14 +53,15 @@ export default function ServicesOverview() {
           </p>
         </div>
 
-        <Link
+        <TrackedLink
           href="/services"
-          onClick={() => trackEvent('services_overview_click', { action: 'see_all_services' })}
+          action="services_overview_click"
+          actionData={{ action: 'see_all_services' }}
           className="w-fit inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-base-b hover:bg-base-c border border-base-c text-text-content font-mono text-sm font-bold uppercase tracking-wider transition-all shadow-md shrink-0 cursor-pointer"
         >
           <span>See All Service</span>
           <ArrowUpRight weight="bold" className="w-4 h-4 text-primary-color" />
-        </Link>
+        </TrackedLink>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

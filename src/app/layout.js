@@ -4,6 +4,7 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script";
+import SchemaMarkup from "../components/seo/SchemaMarkup";
 
 const spaceMono = localFont({
   src: [
@@ -128,6 +129,16 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <SchemaMarkup 
+          schemaData={{
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Araa Soft",
+            "image": "https://araasoft.com/logobg.jpg",
+            "url": "https://araasoft.com",
+            "description": "At Araa Soft, we design and engineer custom high-speed websites, Google Local SEO Map Pack ranking systems, and automated lead capture engines for businesses and contractors."
+          }}
+        />
       </body>
       <Analytics />
     </html>

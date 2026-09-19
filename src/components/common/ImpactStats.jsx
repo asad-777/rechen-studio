@@ -1,7 +1,5 @@
-'use client';
-
 import React from 'react';
-import { Stack, Trophy, Robot, Sparkle } from '@phosphor-icons/react';
+import { Stack, Trophy, Robot, Sparkle } from '@phosphor-icons/react/dist/ssr';
 
 export default function ImpactStats() {
   const stats = [
