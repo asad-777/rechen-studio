@@ -50,7 +50,7 @@ export default function Newsletter() {
         {/* Left info */}
         <div className="text-left space-y-1 w-full lg:w-auto">
           <h3 className="font-heading text-lg sm:text-xl font-bold text-text-content">
-            Subscribe to our Studio Newsletter
+            Subscribe to our Newsletter
           </h3>
           <p className="font-sans text-xs sm:text-sm text-text-content/70">
             SEO mechanics, conversion funnels, and modern tech updates delivered monthly.

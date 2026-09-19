@@ -18,7 +18,7 @@ export default function FoundersSection() {
   ];
 
   return (
-    <section id="founders" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
+    <section id="founders" className="min-h-[95vh] w-full flex flex-col justify-center items-center bg-black relative">
       
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">

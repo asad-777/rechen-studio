@@ -3,11 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRight } from '@phosphor-icons/react';
 import { trackEvent } from '../../lib/analytics';
 
 export default function ContactCta() {
   return (
-    <section id="contact-cta" className="relative w-full min-h-[80vh] lg:min-h-[85vh] overflow-hidden z-10 my-16">
+    <section id="contact-cta" className="min-h-[95vh] w-full flex flex-col justify-center overflow-hidden bg-black relative">
       
       {/* Soft Ambient Radial Background Glow */}
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-full max-w-2xl h-96 bg-base-1a/10 rounded-full blur-[180px] pointer-events-none" />

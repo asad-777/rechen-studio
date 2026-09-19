@@ -26,7 +26,8 @@ export default function Faq({
   };
 
   return (
-    <section id="faq" className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
+    <section id="faq" className="relative w-full bg-black z-10">
+      <div className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       
       {/* Header section */}
       <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
@@ -111,6 +112,7 @@ export default function Faq({
             Book A 15-Min Call
           </Link>
         </div>
+      </div>
       </div>
     </section>
   );

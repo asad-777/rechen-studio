@@ -183,7 +183,8 @@ export default function ProblemStatement() {
     {
       svg: "/svgs/undraw_throw-away_aaho.svg",
       headlineSegments: [
-        { text: "Broken Lovable & Wordpress", highlight: true },
+        { text: "Broken", highlight: false },
+        { text: "Lovable & Wordpress", highlight: true },
         { text: "Pages.", highlight: false }
       ],
       description: "Buggy single-page websites that load in 5+ seconds, break on mobile devices, and have broken contact forms where submitted quote requests vanish into thin air."
@@ -192,25 +193,25 @@ export default function ProblemStatement() {
       svg: "/svgs/undraw_fall_zh0m.svg",
       headlineSegments: [
         { text: "Losing ", highlight: false },
-        { text: "$1000+ High-Ticket Jobs.", highlight: true }
+        { text: "$1000+ High-Ticket", highlight: true },
+        { text: "Jobs.", highlight: false }
       ],
       description: "When commercial clients or homeowners want roofing, remodeling, or electrical work, an amateur digital presence instantly destroys trust before you even quote."
     }
   ];
 
   return (
-    <section id="problem" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 overflow-hidden">
+    <section id="problem" className="relative w-full bg-black z-10">
+      <div className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
       
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-24 space-y-4">
         <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-text-content leading-tight">
           Why Most Contractors Are <br className="hidden sm:inline" />
-          <span className="text-primary-color">Leaking High-Ticket Jobs</span>
+          Leaking High-Ticket Jobs
         </h2>
         
-        <p className="font-sans text-base sm:text-lg text-text-content/70 leading-relaxed">
-          Having a broken DIY website or an inactive Facebook page isn&apos;t just an aesthetic issue — it costs your business tens of thousands in lost revenue every month.
-        </p>
+       
       </div>
 
       {/* Dotted Curved Pathway & Staggered Items Container */}
@@ -294,6 +295,7 @@ export default function ProblemStatement() {
 
       </div>
 
+      </div>
     </section>
   );
 }

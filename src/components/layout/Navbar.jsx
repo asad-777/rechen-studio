@@ -34,10 +34,10 @@ export default function Navbar() {
 
   const navLinks = [
     ...(pathname !== '/' ? [{ name: 'Home', href: '/' }] : []),
-    { name: 'Services', href: '/services' },
+    { name: 'What We Do', href: '/services' },
     { name: 'Who We Help', href: '/#niches' },
-    { name: 'Process', href: '/#process' },
-    { name: 'About', href: '/about' },
+    { name: 'Get a Quote', href: '/contact-us' },
+    { name: 'About Us', href: '/about' },
   ];
 
   const handleNavClick = (e, href) => {

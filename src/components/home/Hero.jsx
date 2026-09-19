@@ -7,7 +7,7 @@ import { trackEvent } from '../../lib/analytics';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-black text-white transition-colors duration-300">
+    <section className="min-h-[95vh] relative flex items-center overflow-hidden bg-black text-white transition-colors duration-300 w-full">
       {/* Background Videos */}
       <div className="absolute inset-0 z-0">
         {/* Desktop Video */}

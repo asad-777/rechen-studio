@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Sparkle, Cpu, Cloud, ShieldCheck } from '@phosphor-icons/react';
 import { trackEvent } from '../../lib/analytics';
 
@@ -34,7 +35,7 @@ export default function BrandsMarquee() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-base-b/40 border-y border-base-c overflow-hidden relative z-10">
+    <section className="min-h-[95vh] py-10 sm:py-16 flex flex-col justify-center overflow-hidden bg-black border-y border-base-c relative w-full">
       
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[250px] bg-primary-color/5 rounded-full blur-3xl pointer-events-none" />
@@ -46,12 +47,10 @@ export default function BrandsMarquee() {
           
           
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-text-content leading-tight">
-            Integrated With <span className="text-primary-color">World-Class AI</span> & Tech Platforms
+            Integrated With Best AI & Tech Platforms
           </h2>
           
-          <p className="font-sans text-sm sm:text-base md:text-lg text-text-content/70 leading-relaxed max-w-2xl mx-auto">
-            We supercharge your social presence with cutting-edge AI integrations, top ranking websites, Fully optimized google buisness profile, and client acquisition funnels.
-          </p>
+          
         </div>
 
         <style>{`

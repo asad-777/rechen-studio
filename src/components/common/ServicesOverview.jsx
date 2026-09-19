@@ -40,7 +40,8 @@ export default function ServicesOverview() {
   ];
 
   return (
-    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+    <section id="services" className="relative w-full bg-black z-10">
+      <div className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
         <div className="space-y-4 max-w-3xl">
@@ -70,43 +71,40 @@ export default function ServicesOverview() {
           return (
             <div
               key={idx}
-              className={`group relative rounded-3xl bg-base-b p-8 sm:p-9 border border-base-c hover:border-primary-color/60 transition-all duration-300 hover:-translate-y-1 shadow-xl flex flex-col justify-between overflow-hidden space-y-6 ${service.colSpan}`}
+              className={`group relative p-8 sm:p-9 flex flex-col justify-start overflow-hidden space-y-6 ${service.colSpan}`}
             >
               {/* Top Accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-primary-color opacity-80 group-hover:opacity-100 transition-opacity" />
               
               <div className="space-y-5">
                 
                
 
                 {/* Frameless Vector SVG Illustration */}
-                <div className="h-36 w-full flex items-center justify-center overflow-hidden">
+                <div className="h-36 w-full flex items-center justify-start overflow-hidden text-left">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={service.svg}
                     alt={`${service.title} illustration`}
-                    className="max-h-full max-w-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform duration-300"
+                    className="max-h-full max-w-full object-contain filter drop-shadow-sm "
                     loading="lazy"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-text-content group-hover:text-primary-color mt-6 transition-colors">
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-text-content mt-6 text-left">
                     {service.title}
                   </h3>
-                  <p className="font-sans text-xs sm:text-sm text-text-content/70 leading-relaxed pt-2">
+                  {/* <p className="font-sans text-xs sm:text-sm text-text-content/70 leading-relaxed pt-2">
                     {service.description}
-                  </p>
+                  </p> */}
                 </div>
               </div>
 
               {/* Bullet highlights */}
               <div className="pt-4 border-t border-base-c/60 space-y-2.5">
-                <p className="font-mono text-[11px] uppercase tracking-wider text-text-content/50 font-bold">Included Capabilities:</p>
                 <ul className="space-y-2">
                   {service.highlights.map((item, i) => (
                     <li key={i} className="flex items-center gap-2.5 text-xs sm:text-sm font-sans text-text-content/90">
-                      <CheckCircle weight="fill" className="w-3.5 h-3.5 text-special-text shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -115,6 +113,7 @@ export default function ServicesOverview() {
             </div>
           );
         })}
+      </div>
       </div>
     </section>
   );
