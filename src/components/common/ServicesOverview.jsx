@@ -43,7 +43,7 @@ export default function ServicesOverview() {
     <section id="services" className="relative w-full bg-black z-10">
       <div className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+      <div className="flex flex-col lg:flex-row items-center text-center lg:items-end lg:text-left justify-between gap-8 mb-16">
         <div className="space-y-4 max-w-3xl">
           <h2 className="font-heading text-3xl sm:text-5xl font-bold text-text-content tracking-tight leading-tight">
             Digital Architecture That 
@@ -80,7 +80,7 @@ export default function ServicesOverview() {
                
 
                 {/* Frameless Vector SVG Illustration */}
-                <div className="h-36 w-full flex items-center justify-start overflow-hidden text-left">
+                <div className="h-36 w-full flex items-center justify-center lg:justify-start overflow-hidden text-center lg:text-left">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={service.svg}
@@ -91,7 +91,7 @@ export default function ServicesOverview() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-text-content mt-6 text-left">
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-text-content mt-6 text-center lg:text-left">
                     {service.title}
                   </h3>
                   {/* <p className="font-sans text-xs sm:text-sm text-text-content/70 leading-relaxed pt-2">
@@ -102,7 +102,7 @@ export default function ServicesOverview() {
 
               {/* Bullet highlights */}
               <div className="pt-4 border-t border-base-c/60 space-y-2.5">
-                <ul className="space-y-2">
+                <ul className="space-y-2 flex flex-col items-center lg:items-start">
                   {service.highlights.map((item, i) => (
                     <li key={i} className="flex items-center gap-2.5 text-xs sm:text-sm font-sans text-text-content/90">
                       <span>{item}</span>

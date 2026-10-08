@@ -45,15 +45,15 @@ function FlowingProcessStep({ step, index }) {
   return (
     <div 
       ref={ref}
-      className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 py-10 sm:py-14 relative z-10 items-center"
+      className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-16 py-10 sm:py-14 relative z-10 items-center"
     >
       {/* Content Column */}
-      <div className={`space-y-3.5 ${isRight ? 'md:order-2 md:pl-8 lg:pl-12' : 'md:order-1 md:pr-8 lg:pr-12'}`}>
+      <div className={`space-y-3.5 ${isRight ? 'order-2 pl-3 sm:pl-6 md:pl-8 lg:pl-12' : 'order-1 pr-3 sm:pr-6 md:pr-8 lg:pr-12'}`}>
         
        
 
         {/* Headline with Highlights */}
-        <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold tracking-tight leading-snug">
+        <h3 className="font-heading text-sm sm:text-xl md:text-3xl font-bold tracking-tight leading-snug">
           {step.headlineSegments.map((segment, sIdx) => {
             const words = segment.text.split(' ');
             return words.map((word, wIdx) => {
@@ -119,7 +119,7 @@ function FlowingProcessStep({ step, index }) {
       </div>
 
       {/* Opposite Side Frameless Floating Illustration */}
-      <div className={`hidden md:flex items-center justify-center ${isRight ? 'md:order-1 md:pr-8 lg:pr-12' : 'md:order-2 md:pl-8 lg:pl-12'}`}>
+      <div className={`flex items-center justify-center ${isRight ? 'order-1 pr-3 sm:pr-6 md:pr-8 lg:pr-12' : 'order-2 pl-3 sm:pl-6 md:pl-8 lg:pl-12'}`}>
         <div 
           className="w-full max-w-xs lg:max-w-sm h-48 lg:h-56 flex items-center justify-center transition-all duration-500 overflow-hidden"
           style={{
@@ -243,7 +243,7 @@ export default function ProcessSteps() {
       <div ref={containerRef} className="relative">
         
         {/* Central Curved Dotted SVG Path */}
-        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-24 lg:w-32 pointer-events-none z-0">
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-12 sm:w-16 md:w-24 lg:w-32 pointer-events-none z-0">
           <svg 
             className="w-full h-full"
             viewBox="0 0 100 1100" 

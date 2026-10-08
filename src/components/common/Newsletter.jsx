@@ -48,7 +48,7 @@ export default function Newsletter() {
       <div className="flex flex-col lg:flex-row items-center justify-between gap-5 relative z-10">
         
         {/* Left info */}
-        <div className="text-left space-y-1 w-full lg:w-auto">
+        <div className="text-center lg:text-left space-y-1 w-full lg:w-auto flex flex-col items-center lg:items-start">
           <h3 className="font-heading text-lg sm:text-xl font-bold text-text-content">
             Subscribe to our Newsletter
           </h3>

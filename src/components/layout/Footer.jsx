@@ -81,10 +81,10 @@ export default function Footer() {
         </section>
 
         {/* Middle: Clean Brand & Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pt-4 pb-12 border-b border-base-c/60 flex-1 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pt-4 pb-12 border-b border-base-c/60 flex-1 items-start text-center lg:text-left">
           
           {/* Col 1: Logo, Tagline & Socials */}
-          <div className="lg:col-span-5 space-y-5">
+          <div className="lg:col-span-5 space-y-5 flex flex-col items-center lg:items-start">
             <Link href="/" className="flex items-center gap-3.5 group w-fit">
               <Image
                 src="/logonobg.png"
@@ -104,7 +104,7 @@ export default function Footer() {
             </Link>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex items-center gap-3 pt-2 justify-center lg:justify-start">
               {socials.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -124,8 +124,8 @@ export default function Footer() {
           </div>
 
           {/* Col 2: Sitemap Links */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-mono text-xs uppercase tracking-widest text-text-content font-bold border-l-2 border-primary-color pl-3">
+          <div className="lg:col-span-3 space-y-4 flex flex-col items-center lg:items-start">
+            <h4 className="font-mono text-xs uppercase tracking-widest text-text-content font-bold border-b-2 lg:border-b-0 lg:border-l-2 border-primary-color pb-1 lg:pb-0 lg:pl-3 w-fit">
               Sitemap
             </h4>
             <ul className="space-y-3 font-mono text-xs sm:text-sm">
@@ -144,8 +144,8 @@ export default function Footer() {
           </div>
 
           {/* Col 3: Others Links */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="font-mono text-xs uppercase tracking-widest text-text-content font-bold border-l-2 border-primary-color pl-3">
+          <div className="lg:col-span-2 space-y-4 flex flex-col items-center lg:items-start">
+            <h4 className="font-mono text-xs uppercase tracking-widest text-text-content font-bold border-b-2 lg:border-b-0 lg:border-l-2 border-primary-color pb-1 lg:pb-0 lg:pl-3 w-fit">
               Others
             </h4>
             <ul className="space-y-3 font-mono text-xs sm:text-sm">
@@ -178,7 +178,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom: Copyrights & Legal Links */}
-        <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-text-content/60">
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-text-content/60 text-center">
           <p>© {new Date().getFullYear()} Araa Soft. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/about#privacy" className="hover:text-primary-color transition-colors">

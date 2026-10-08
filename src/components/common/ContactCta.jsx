@@ -30,7 +30,7 @@ export default function ContactCta() {
         </div>
 
         {/* Side 2: Clean, Spacious Full-Scale CTA Content */}
-        <div className="flex flex-col justify-center items-start text-left p-8 sm:p-14 lg:p-20 xl:p-24 space-y-8 z-10">
+        <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left p-8 sm:p-14 lg:p-20 xl:p-24 space-y-8 z-10">
           
           <h2 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold text-text-content tracking-tight leading-[1.08]">
             Ready to get <br />
@@ -41,7 +41,7 @@ export default function ContactCta() {
             Tell us about your business goals and service area. We will map out a custom web and local SEO engine to turn searchers into booked clients.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4 pt-4 w-full sm:w-auto">
             <Link
               href="/contact-us"
               onClick={() => trackEvent('contact_cta_click', { cta_label: 'Book a discovery call' })}

@@ -35,19 +35,19 @@ export default function BrandsMarquee() {
   ];
 
   return (
-    <section className="min-h-[95vh] py-10 sm:py-16 flex flex-col justify-center overflow-hidden bg-black border-y border-base-c relative w-full">
+    <section className=" py-10 sm:py-16 flex flex-col justify-center overflow-hidden bg-black border-y border-base-c relative w-fit">
       
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[250px] bg-primary-color/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[250px] bg-primary-color/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10 sm:space-y-14 relative z-10">
+      <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10 sm:space-y-14 relative z-10">
         
         {/* Prominent Impact Header */}
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-full   justify-center mx-auto space-y-4">
           
           
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-text-content leading-tight">
-            Integrated With Best AI & Tech Platforms
+          <h2 className="font-heading sm:max-w-1/2 max-w-2/3 mx-auto text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-text-content leading-tight">
+            Integrated With AI & Popular Platforms
           </h2>
           
           
@@ -78,23 +78,23 @@ export default function BrandsMarquee() {
         `}</style>
         
         {/* Big Dual Marquee Streams */}
-        <div className="flex flex-col gap-6 sm:gap-8 [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] py-2">
+        <div className="flex flex-col gap-6 sm:gap-8 [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] py-2 w-full overflow-hidden">
           
           {/* Row 1 - AI Tools Stream (Left) */}
           <div className="relative w-full overflow-hidden flex group">
-            <div className="animate-marquee-big items-center gap-4 sm:gap-6 pl-4 sm:pl-6">
+            <div className="animate-marquee-big items-center gap-4 sm:gap-6 pl-4 sm:pl-6 min-w-max">
               {[...aiTools, ...aiTools, ...aiTools].map((tool, idx) => (
                 <div 
                   key={`ai-${idx}`} 
                   onClick={() => trackEvent('brand_badge_click', { brand_name: tool.name, category: 'AI Tools', tag: tool.tag })}
-                  className="flex items-center gap-3.5 sm:gap-4 px-5 sm:px-7 py-3.5 sm:py-4.5 rounded-2xl bg-base-b/90 border border-base-c hover:border-primary-color/70 hover:bg-base-b transition-all duration-300 group/item cursor-pointer shrink-0 shadow-md hover:shadow-primary-color/10 hover:-translate-y-1"
+                  className="flex items-center gap-3.5 sm:gap-4 px-5 sm:px-7 py-3.5 sm:py-4.5 rounded-2xl  transition-all duration-300 group/item cursor-pointer shrink-0 shadow-md hover:shadow-primary-color/10 hover:-translate-y-1"
                 >
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-base-a border border-base-c flex items-center justify-center p-1.5 shrink-0 group-hover/item:border-primary-color/50 transition-colors">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11  flex items-center justify-center p-1.5 shrink-0 group-hover/item:border-primary-color/50 transition-colors">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`https://icon.horse/icon/${tool.domain}`}
                       alt={`${tool.name} logo`}
-                      className="w-full h-full object-contain rounded-md filter grayscale group-hover/item:grayscale-0 group-hover/item:scale-110 transition-all duration-300"
+                      className="w-full h-full object-contain rounded-md  scale-110 transition-all duration-300"
                       loading="lazy"
                     />
                   </div>
@@ -102,7 +102,7 @@ export default function BrandsMarquee() {
                     <span className="font-heading font-bold text-base sm:text-xl text-text-content group-hover/item:text-primary-color tracking-tight transition-colors duration-300 block">
                       {tool.name}
                     </span>
-                    <span className="font-mono text-[10px] sm:text-xs text-text-content/50 uppercase tracking-wider block">
+                    <span className="font-mono hidden text-[10px] sm:text-xs text-text-content/50 uppercase tracking-wider block">
                       {tool.tag}
                     </span>
                   </div>
@@ -113,19 +113,19 @@ export default function BrandsMarquee() {
 
           {/* Row 2 - Cloud & Web Stack Stream (Right) */}
           <div className="relative w-full overflow-hidden flex group">
-            <div className="animate-marquee-reverse-big items-center gap-4 sm:gap-6 pl-4 sm:pl-6">
+            <div className="animate-marquee-reverse-big items-center gap-4 sm:gap-6 pl-4 sm:pl-6 min-w-max">
               {[...techStack, ...techStack, ...techStack].map((tool, idx) => (
                 <div 
                   key={`tech-${idx}`} 
                   onClick={() => trackEvent('brand_badge_click', { brand_name: tool.name, category: 'Tech Stack', tag: tool.tag })}
-                  className="flex items-center gap-3.5 sm:gap-4 px-5 sm:px-7 py-3.5 sm:py-4.5 rounded-2xl bg-base-b/90 border border-base-c hover:border-primary-color/70 hover:bg-base-b transition-all duration-300 group/item cursor-pointer shrink-0 shadow-md hover:shadow-primary-color/10 hover:-translate-y-1"
+                  className="flex items-center gap-3.5 sm:gap-4 px-5 sm:px-7 py-3.5 sm:py-4.5 rounded-2xl  transition-all duration-300 group/item cursor-pointer shrink-0 shadow-md hover:shadow-primary-color/10 hover:-translate-y-1"
                 >
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-base-a border border-base-c flex items-center justify-center p-1.5 shrink-0 group-hover/item:border-primary-color/50 transition-colors">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl  flex items-center justify-center p-1.5 shrink-0 group-hover/item:border-primary-color/50 transition-colors">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`https://icon.horse/icon/${tool.domain}`}
                       alt={`${tool.name} logo`}
-                      className="w-full h-full object-contain rounded-md filter grayscale group-hover/item:grayscale-0 group-hover/item:scale-110 transition-all duration-300"
+                      className="w-full h-full object-contain rounded-md scale-110 transition-all duration-300"
                       loading="lazy"
                     />
                   </div>
@@ -133,7 +133,7 @@ export default function BrandsMarquee() {
                     <span className="font-heading font-bold text-base sm:text-xl text-text-content group-hover/item:text-primary-color tracking-tight transition-colors duration-300 block">
                       {tool.name}
                     </span>
-                    <span className="font-mono text-[10px] sm:text-xs text-text-content/50 uppercase tracking-wider block">
+                    <span className="font-mono text-[10px] hidden sm:text-xs text-text-content/50 uppercase tracking-wider block">
                       {tool.tag}
                     </span>
                   </div>

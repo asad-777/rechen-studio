@@ -50,18 +50,18 @@ export default function ImpactStats() {
             return (
               <div
                 key={idx}
-                className="group relative p-7 flex flex-col justify-start space-y-5"
+                className="group relative p-7 flex flex-col justify-center lg:justify-start space-y-5 text-center lg:text-left items-center lg:items-start"
               >
                 <div className="space-y-4 ">
                   {/* Top Icon & Metric Value */}
-                  <div className="flex items-center w-full justify-start gap-3">
-                    <div className="font-heading text-2xl lg:text-3xl w-full font-bold tracking-tight text-primary-color text-left min-h-[4.5rem] flex items-start">
+                  <div className="flex items-center w-full justify-center lg:justify-start gap-3">
+                    <div className="font-heading text-2xl lg:text-3xl w-full font-bold tracking-tight text-primary-color text-center lg:text-left min-h-[4.5rem] flex items-center lg:items-start justify-center lg:justify-start">
                       {stat.value}
                     </div>
                   </div>
 
                   {/* Clean Seamless Frameless SVG Illustration */}
-                  <div className="h-28 w-full flex items-center justify-start overflow-hidden">
+                  <div className="h-28 w-full flex items-center justify-center lg:justify-start overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={stat.svg}
@@ -72,7 +72,7 @@ export default function ImpactStats() {
                   </div>
                 </div>
 
-                <div className="space-y-1.5 pt-3 border-t border-base-c/60">
+                <div className="space-y-1.5 pt-3 border-t border-base-c/60 flex flex-col items-center lg:items-start w-full">
                   <h3 className="font-mono text-sm font-bold text-text-content uppercase tracking-wide">
                     {stat.label}
                   </h3>

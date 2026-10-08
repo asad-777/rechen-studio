@@ -44,12 +44,12 @@ function FlowingProblemItem({ item, index }) {
   return (
     <div 
       ref={ref}
-      className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 py-12 sm:py-20 relative z-10 items-center"
+      className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-16 py-12 sm:py-20 relative z-10 items-center"
     >
       {/* Text Column Container */}
-      <div className={`space-y-4 ${isRight ? 'md:order-2 md:pl-8 lg:pl-14' : 'md:order-1 md:pr-8 lg:pr-14'}`}>
+      <div className={`space-y-4 ${isRight ? 'order-2 pl-3 sm:pl-6 md:pl-8 lg:pl-14' : 'order-1 pr-3 sm:pr-6 md:pr-8 lg:pr-14'}`}>
         {/* Headline with Highlight Keywords */}
-        <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+        <h3 className="font-heading text-lg sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
           {item.headlineSegments.map((segment, sIdx) => {
             const words = segment.text.split(' ');
             return words.map((word, wIdx) => {
@@ -90,7 +90,7 @@ function FlowingProblemItem({ item, index }) {
         </h3>
 
         {/* Flowing Body Text */}
-        <p className="font-sans text-base sm:text-lg md:text-xl text-text-content leading-relaxed pt-2">
+        <p className="font-sans text-xs sm:text-sm md:text-xl text-text-content leading-relaxed pt-2">
           {bodyWords.map((word, idx) => {
             const wordThreshold = (idx / bodyWords.length) * 0.8;
             const active = progress >= wordThreshold;
@@ -113,7 +113,7 @@ function FlowingProblemItem({ item, index }) {
       </div>
 
       {/* Opposite Side Frameless Floating Illustration */}
-      <div className={`hidden md:flex items-center justify-center ${isRight ? 'md:order-1 md:pr-8 lg:pr-14' : 'md:order-2 md:pl-8 lg:pl-14'}`}>
+      <div className={`flex items-center justify-center ${isRight ? 'order-1 pr-3 sm:pr-6 md:pr-8 lg:pr-14' : 'order-2 pl-3 sm:pl-6 md:pl-8 lg:pl-14'}`}>
         <div 
           className="w-full max-w-xs lg:max-w-sm h-52 lg:h-64 flex items-center justify-center transition-all duration-500 overflow-hidden"
           style={{
@@ -218,7 +218,7 @@ export default function ProblemStatement() {
       <div ref={containerRef} className="relative">
         
         {/* Central Dotted Curved SVG Path (Runs down the center corridor between left and right items) */}
-        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-28 lg:w-36 pointer-events-none z-0">
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-12 sm:w-16 md:w-28 lg:w-36 pointer-events-none z-0">
           <svg 
             className="w-full h-full"
             viewBox="0 0 100 900" 

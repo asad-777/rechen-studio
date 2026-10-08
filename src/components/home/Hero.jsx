@@ -39,7 +39,7 @@ export default function Hero() {
       <div className="relative z-10 w-full min-h-screen py-48 lg:px-16 px-6 sm:px-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 max-screen mx-auto">
         
         {/* Left Content */}
-        <div className="flex flex-col space-y-6 lg:space-y-8 max-w-2xl">
+        <div className="flex flex-col space-y-6 lg:space-y-8 max-w-2xl text-center lg:text-left items-center lg:items-start">
           <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05]">
             Araa<span className="text-primary-color ml-3">Soft</span>
           </h1>
