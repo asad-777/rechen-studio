@@ -93,7 +93,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-6">
           
           {/* Logo */}
-          <Link href="/" onClick={handleLogoClick} className="flex items-center gap-3 shrink-0 group">
+          <Link href="/" onClick={handleLogoClick} className="cursor-target flex items-center gap-3 shrink-0 group">
             <Image
               src="/logonobg.png"
               alt="Araa Soft Logo"
@@ -116,7 +116,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`font-mono text-sm font-semibold transition-colors duration-200 ${
+                  className={`cursor-target font-mono text-sm font-semibold transition-colors duration-200 ${
                     isActive
                       ? 'text-primary-color'
                       : 'text-text-content/80 hover:text-primary-color'
@@ -132,7 +132,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center shrink-0">
             <div className='border-2 border-primary-a group rounded-full p-1 hover:scale-105 transition-all duration-300  cursor-pointer'>
             <Link href="/contact-us">
-              <button className="px-4 py-1.5 font-mono text-xs sm:text-sm  bg-primary-a text-black rounded-full backdrop-blur-2xl  font-bold uppercase tracking-wider flex items-center gap-2 ">
+              <button className="cursor-target px-4 py-1.5 font-mono text-xs sm:text-sm  bg-primary-a text-black rounded-full backdrop-blur-2xl  font-bold uppercase tracking-wider flex items-center gap-2 ">
                 <span className="flex items-center gap-1.5 text-black">
                   <PhoneCall weight="fill" className="w-4 h-4 text-black" />
                   <span className="opacity-50 font-mono text-xs text-black">/</span>
@@ -149,7 +149,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 rounded-xl bg-base-b border border-base-c text-text-content hover:text-primary-color hover:border-primary-color/50 transition-colors cursor-pointer"
+              className="cursor-target p-2 rounded-xl bg-base-b border border-base-c text-text-content hover:text-primary-color hover:border-primary-color/50 transition-colors cursor-pointer"
               aria-label="Open navigation menu"
             >
               <List weight="bold" className="w-6 h-6" />

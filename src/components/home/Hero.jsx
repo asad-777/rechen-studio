@@ -53,7 +53,7 @@ export default function Hero() {
             <Link href="/contact-us">
               <button 
                 onClick={() => trackEvent('hero_cta_click', { label: 'Get In Touch', device: 'mobile' })}
-                className="w-full sm:w-auto px-6 py-3 bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm font-bold uppercase tracking-wider rounded-full shadow-lg shadow-primary-color/20 flex items-center justify-center gap-2.5 transition-all duration-300 active:scale-95 cursor-pointer"
+                className="cursor-target w-full sm:w-auto px-6 py-3 bg-primary-color hover:bg-primary-color/90 text-black font-mono text-sm font-bold uppercase tracking-wider rounded-full shadow-lg shadow-primary-color/20 flex items-center justify-center gap-2.5 transition-all duration-300 active:scale-95 cursor-pointer"
               >
                 <span className="flex items-center gap-1.5">
                   <PhoneCall weight="fill" className="w-4 h-4 text-black" />

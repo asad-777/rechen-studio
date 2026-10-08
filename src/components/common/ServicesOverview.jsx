@@ -58,7 +58,7 @@ export default function ServicesOverview() {
           href="/services"
           action="services_overview_click"
           actionData={{ action: 'see_all_services' }}
-          className="w-fit inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-base-b hover:bg-base-c border border-base-c text-text-content font-mono text-sm font-bold uppercase tracking-wider transition-all shadow-md shrink-0 cursor-pointer"
+          className="cursor-target w-fit inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-base-b hover:bg-base-c border border-base-c text-text-content font-mono text-sm font-bold uppercase tracking-wider transition-all shadow-md shrink-0 cursor-pointer"
         >
           <span>See All Service</span>
           <ArrowUpRight weight="bold" className="w-4 h-4 text-primary-color" />

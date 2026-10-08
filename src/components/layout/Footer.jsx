@@ -85,7 +85,7 @@ export default function Footer() {
           
           {/* Col 1: Logo, Tagline & Socials */}
           <div className="lg:col-span-5 space-y-5 flex flex-col items-center lg:items-start">
-            <Link href="/" className="flex items-center gap-3.5 group w-fit">
+            <Link href="/" className="cursor-target flex items-center gap-3.5 group w-fit">
               <Image
                 src="/logonobg.png"
                 alt="Araa Soft Logo"
@@ -114,7 +114,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="p-3 rounded-2xl bg-base-b border border-base-c text-text-content/70 hover:text-primary-color hover:border-primary-color/60 hover:scale-110 transition-all shadow-sm"
+                    className="cursor-target p-3 rounded-2xl bg-base-b border border-base-c text-text-content/70 hover:text-primary-color hover:border-primary-color/60 hover:scale-110 transition-all shadow-sm"
                   >
                     <Icon weight="fill" className="w-4 h-4" />
                   </a>
@@ -134,7 +134,7 @@ export default function Footer() {
                   <Link
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="text-text-content/70 hover:text-primary-color hover:translate-x-1.5 transition-all inline-block"
+                    className="cursor-target text-text-content/70 hover:text-primary-color hover:translate-x-1.5 transition-all inline-block"
                   >
                     {link.name}
                   </Link>
@@ -154,7 +154,7 @@ export default function Footer() {
                   <Link
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="text-text-content/70 hover:text-primary-color hover:translate-x-1.5 transition-all inline-block"
+                    className="cursor-target text-text-content/70 hover:text-primary-color hover:translate-x-1.5 transition-all inline-block"
                   >
                     {link.name}
                   </Link>
@@ -168,7 +168,7 @@ export default function Footer() {
             <button
               onClick={scrollToTop}
               type="button"
-              className="py-3 px-5 rounded-2xl bg-base-b border border-base-c hover:border-primary-color text-text-content/80 hover:text-text-content font-mono text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all shadow-sm cursor-pointer hover:-translate-y-0.5 w-full lg:w-auto"
+              className="cursor-target py-3 px-5 rounded-2xl bg-base-b border border-base-c hover:border-primary-color text-text-content/80 hover:text-text-content font-mono text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all shadow-sm cursor-pointer hover:-translate-y-0.5 w-full lg:w-auto"
             >
               <span>Back to top</span>
               <ArrowUp weight="bold" className="w-4 h-4 text-primary-color" />

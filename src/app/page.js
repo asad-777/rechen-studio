@@ -11,6 +11,7 @@ import ProcessSteps from "../components/process/ProcessSteps";
 import FoundersSection from "../components/home/FoundersSection";
 import Faq from "../components/common/Faq";
 import ContactCta from "../components/common/ContactCta";
+import TargetCursor from "../components/common/TargetCursor";
 import HomeInteractionTracker from "../components/analytics/HomeInteractionTracker";
 import HomeClientWrapper from "../components/home/HomeClientWrapper";
 import SchemaMarkup from "../components/seo/SchemaMarkup";
@@ -21,6 +22,12 @@ export default function Home() {
 
   return (
     <HomeClientWrapper>
+      <TargetCursor 
+        spinDuration={2}
+        hideDefaultCursor={true}
+        parallaxOn={true}
+        cursorColor="#14C38E" 
+      />
       <HomeInteractionTracker />
       {gaId && (
         <>

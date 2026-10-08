@@ -45,7 +45,7 @@ export default function ContactCta() {
             <Link
               href="/contact-us"
               onClick={() => trackEvent('contact_cta_click', { cta_label: 'Book a discovery call' })}
-              className="px-9 py-4 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-primary-color hover:bg-primary-color/90 text-black shadow-xl shadow-primary-color/20 text-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+              className="cursor-target px-9 py-4 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-primary-color hover:bg-primary-color/90 text-black shadow-xl shadow-primary-color/20 text-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
             >
               Book a discovery call
             </Link>
@@ -53,7 +53,7 @@ export default function ContactCta() {
             <Link
               href="/services"
               onClick={() => trackEvent('contact_cta_click', { cta_label: 'Explore services' })}
-              className="px-9 py-4 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-base-b hover:bg-base-c border border-base-c hover:border-text-content/40 text-text-content hover:text-primary-color text-center transition-all duration-300 shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
+              className="cursor-target px-9 py-4 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-base-b hover:bg-base-c border border-base-c hover:border-text-content/40 text-text-content hover:text-primary-color text-center transition-all duration-300 shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
             >
               Explore services
             </Link>

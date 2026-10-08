@@ -56,7 +56,7 @@ export default function Faq({
                 type="button"
                 onClick={() => toggleFaq(idx)}
                 aria-expanded={isOpen}
-                className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left focus:outline-none cursor-pointer"
+                className="cursor-target w-full px-6 py-5 flex items-center justify-between gap-4 text-left focus:outline-none cursor-pointer"
               >
                 <span className={`font-mono text-base sm:text-lg font-bold transition-colors duration-200 ${
                   isOpen ? 'text-primary-color' : 'text-text-content hover:text-primary-color'
@@ -107,7 +107,7 @@ export default function Faq({
           <Link
             href="/contact-us"
             onClick={() => trackEvent('faq_cta_click', { cta_label: 'Book A 15-Min Call' })}
-            className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-primary-color hover:bg-primary-color/90 text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-md hover:scale-105 cursor-pointer text-center"
+            className="cursor-target w-full sm:w-auto px-6 py-3.5 rounded-full bg-primary-color hover:bg-primary-color/90 text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-md hover:scale-105 cursor-pointer text-center"
           >
             Book A 15-Min Call
           </Link>
